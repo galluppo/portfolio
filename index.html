@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Michael Galluppo — Product Leader, Creative, Servant Leader</title>
+<meta name="description" content="Michael Galluppo connects deep technical systems to human outcomes — building studio, streaming, broadcast, and AI products at Apple, Amazon MGM Studios, Fox, NBC, MLB Advanced Media, and HBO. Founder of OLY.AI." />
+<style>
+  :root{
+    --ink:#0A0E26;          /* dark blue base */
+    --ink-2:#0E1330;
+    --surface:#141B3D;
+    --surface-2:#1B2450;
+    --line:rgba(255,255,255,.11);
+    --line-soft:rgba(255,255,255,.06);
+    --text:#F2F2F7;
+    --muted:#989BB8;
+    --muted-2:#71749A;
+    --warm:#FFB25C;         /* creative / human — stage gold */
+    --warm-deep:#FF8F5E;
+    --violet:#9B6BFF;       /* AI / transformation — electric violet */
+    --violet-deep:#6D3BE4;
+    --cool:#66E0CE;         /* rational / systems — signal teal */
+    --cool-deep:#4FC7E0;
+    --tri:linear-gradient(105deg,var(--warm) 0%,var(--violet) 50%,var(--cool) 100%);
+    --tri-v:linear-gradient(180deg,var(--warm) 0%,var(--violet) 50%,var(--cool) 100%);
+    --font-display:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --font-body:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --font-mono:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --wrap:1160px;
+    --r-card:22px;
+    --r-panel:28px;
+    --glass:rgba(255,255,255,.045);
+    --glass-hover:rgba(255,255,255,.065);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 640px at 82% -6%, rgba(155,107,255,.15), transparent 60%),
+      radial-gradient(900px 620px at 96% 14%, rgba(255,178,92,.07), transparent 55%),
+      radial-gradient(1000px 800px at 2% 20%, rgba(102,224,206,.07), transparent 55%),
+      var(--ink);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-size:18px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:rgba(155,107,255,.32);color:#fff;}
+  :focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:3px;}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,5vw,48px);}
+
+  .eyebrow{font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+  .grad-text{background:var(--tri);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+  h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.025em;line-height:1.08;margin:0;}
+  em{font-style:normal;font-weight:700;}
+  p{margin:0 0 1rem;}
+  .lead{color:var(--muted);}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:linear-gradient(180deg,rgba(12,8,31,.9),rgba(12,8,31,.5));border-bottom:1px solid var(--line-soft);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:15px clamp(20px,5vw,48px);max-width:var(--wrap);margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-body);font-size:15px;font-weight:600;letter-spacing:-.01em;}
+  .brand .node{width:10px;height:10px;border-radius:50%;background:var(--tri);box-shadow:0 0 14px rgba(155,107,255,.7);flex:none;}
+  .nav-links{display:flex;gap:26px;align-items:center;}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--muted);transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{font-family:var(--font-body);font-weight:600;font-size:13.5px;letter-spacing:0;padding:9px 18px;border:1px solid var(--line);border-radius:999px;color:var(--text);transition:.2s;}
+  .nav-cta:hover{border-color:var(--violet);background:rgba(155,107,255,.12);}
+  @media(max-width:820px){.nav-links{display:none;}}
+
+  /* hero */
+  .hero{position:relative;padding:clamp(40px,7vh,88px) 0 clamp(48px,8vh,96px);}
+  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(24px,4vw,56px);align-items:center;}
+  @media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:12px;}}
+  .kicker{display:inline-flex;align-items:center;gap:12px;margin-bottom:28px;}
+  .kicker .wire{width:44px;height:1px;background:var(--tri);}
+  .hero h1{font-size:clamp(2.6rem,6.6vw,5.2rem);font-weight:700;letter-spacing:-.035em;line-height:1.04;margin-bottom:26px;}
+  .hero .deck{max-width:52ch;font-size:clamp(1.06rem,1.7vw,1.28rem);color:var(--muted);line-height:1.58;font-weight:400;}
+  .hero .deck b{color:var(--text);font-weight:600;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;}
+  .btn{font-family:var(--font-body);font-size:15px;font-weight:600;letter-spacing:0;padding:14px 26px;border-radius:999px;transition:transform .15s ease,box-shadow .2s,background .2s;display:inline-flex;align-items:center;gap:10px;cursor:pointer;}
+  .btn-primary{background:var(--tri);color:#0A0E26;font-weight:700;box-shadow:0 10px 34px -10px rgba(155,107,255,.5);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 44px -12px rgba(102,224,206,.5);}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);background:var(--glass);}
+  .btn-ghost:hover{border-color:rgba(255,255,255,.24);background:var(--glass-hover);}
+
+  /* hero visual / transformer */
+  .visual{position:relative;width:100%;}
+  .visual svg{width:100%;height:auto;display:block;overflow:visible;}
+  @media(max-width:940px){.visual{max-width:460px;margin:8px auto 0;}}
+
+  .flow{}
+  .ring{transform-box:fill-box;transform-origin:center;animation:spin 40s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .ring.rev{animation-duration:56s;animation-direction:reverse;}
+  .head{transform-box:fill-box;transform-origin:center;animation:head 5s ease-in-out infinite;}
+  @keyframes head{0%,100%{opacity:.55;}50%{opacity:.95;}}
+  .pnode{transform-box:fill-box;transform-origin:center;animation:pnode 5s ease-in-out infinite;}
+  @keyframes pnode{0%,100%{opacity:.8;}50%{opacity:1;}}
+  .lbl{font-family:var(--font-mono);font-weight:600;font-size:9.5px;letter-spacing:.09em;fill:var(--muted);text-transform:uppercase;}
+
+  /* logo wall */
+  .logos{margin-top:clamp(34px,6vh,64px);border-top:1px solid var(--line-soft);padding-top:24px;}
+  .logos .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);margin-bottom:18px;}
+  .logos .row{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;}
+  .logos .row span{font-family:var(--font-display);font-weight:600;font-size:clamp(.96rem,1.6vw,1.15rem);color:#C4C6DE;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:8px;}
+  .logos .row .apple-ico{width:16px;height:16px;fill:#C4C6DE;}
+  .logos .row span.founder{color:var(--violet);}
+
+  /* threaded body */
+  .thread{position:relative;}
+  .thread::before{content:"";position:absolute;left:7px;top:8px;bottom:0;width:2px;background:var(--tri-v);opacity:.5;}
+  @media(max-width:760px){.thread::before{left:5px;}}
+  section.blk{position:relative;padding:clamp(56px,9vh,112px) 0;}
+  .blk-head{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;margin-bottom:44px;}
+  .node-dot{width:16px;height:16px;flex:none;border-radius:50%;background:var(--ink);border:2px solid var(--violet);box-shadow:0 0 0 5px var(--ink),0 0 18px rgba(155,107,255,.5);z-index:2;}
+  .node-dot.warm{border-color:var(--warm);box-shadow:0 0 0 5px var(--ink),0 0 18px rgba(255,178,92,.45);}
+  .node-dot.cool{border-color:var(--cool);box-shadow:0 0 0 5px var(--ink),0 0 18px rgba(102,224,206,.45);}
+  .blk-head h2{font-size:clamp(1.9rem,4vw,3.05rem);margin:12px 0 0;}
+  .blk-head .sub{color:var(--muted);margin-top:16px;max-width:60ch;font-weight:400;}
+  .indent{padding-left:38px;}
+  @media(max-width:760px){.indent{padding-left:26px;}.blk-head{gap:16px;}}
+
+  /* pillars */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:860px){.pillars{grid-template-columns:1fr;}}
+  .pillar{position:relative;border:1px solid var(--line);border-radius:var(--r-card);padding:32px 30px;background:var(--glass);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),border-color .25s,background .25s;}
+  .pillar:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.2);background:var(--glass-hover);}
+  .pillar .ico{width:34px;height:34px;margin-bottom:20px;}
+  .pillar h3{font-size:1.32rem;font-weight:600;margin-bottom:12px;}
+  .pillar p{color:var(--muted);font-size:.97rem;margin:0;font-weight:400;}
+  .pillar .tag{font-family:var(--font-mono);font-weight:600;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted-2);display:block;margin-top:20px;}
+  .pillar::after{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:var(--tri);opacity:0;transition:opacity .25s;}
+  .pillar:hover::after{opacity:.7;}
+
+  /* work */
+  .work{display:grid;gap:16px;}
+  .case{display:grid;grid-template-columns:170px 1fr;gap:34px;border:1px solid var(--line);border-radius:var(--r-card);padding:32px 34px;background:var(--glass);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);transition:border-color .25s,transform .25s cubic-bezier(.2,.7,.2,1),background .25s;}
+  .case:hover{border-color:rgba(255,255,255,.2);background:var(--glass-hover);transform:translateY(-2px);}
+  @media(max-width:780px){.case{grid-template-columns:1fr;gap:16px;padding:26px 24px;}}
+  .case.current{border-color:rgba(155,107,255,.38);background:rgba(155,107,255,.08);}
+  .case .meta .logo{font-family:var(--font-display);font-weight:600;font-size:1.15rem;letter-spacing:-.01em;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:8px;line-height:1;}
+  .case .meta .logo .apple-ico{width:17px;height:17px;fill:var(--text);}
+  .case .meta .role{font-family:var(--font-mono);font-weight:500;font-size:12px;line-height:1.55;color:var(--muted);display:block;}
+  .case .meta .role.dim{color:var(--muted-2);}
+  .case .meta .when{font-family:var(--font-mono);font-weight:600;font-size:11px;letter-spacing:.04em;color:var(--violet);margin-top:10px;display:inline-block;}
+  .case h3{font-size:1.4rem;font-weight:600;margin-bottom:12px;letter-spacing:-.015em;}
+  .case p{color:var(--muted);font-size:.99rem;font-weight:400;margin-bottom:16px;}
+  .case p b{color:var(--text);font-weight:600;}
+  .case .stats{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:4px;}
+  .case .stat{display:flex;flex-direction:column;gap:2px;}
+  .case .stat b{font-family:var(--font-display);font-size:1.3rem;font-weight:700;letter-spacing:-.02em;line-height:1;}
+  .case .stat span{font-size:12px;color:var(--muted-2);}
+  .case .chips{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{font-family:var(--font-body);font-weight:500;font-size:12.5px;letter-spacing:0;padding:6px 13px;border:none;border-radius:999px;background:rgba(255,255,255,.07);color:var(--muted);}
+  .chip.award{background:rgba(255,178,92,.14);color:var(--warm);}
+
+  /* AI-early band */
+  .aiband{border:1px solid var(--line);border-radius:var(--r-panel);padding:clamp(28px,4vw,46px);background:radial-gradient(120% 140% at 8% 0%,rgba(155,107,255,.13),var(--glass));backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);position:relative;overflow:hidden;}
+  .aiband .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:38px;align-items:center;}
+  @media(max-width:820px){.aiband .grid{grid-template-columns:1fr;gap:26px;}}
+  .aiband h3{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;margin-bottom:14px;}
+  .aiband p{color:var(--muted);font-weight:400;margin-bottom:20px;}
+  .aiband .kit{display:flex;flex-wrap:wrap;gap:9px;}
+  .aiband .kit .chip{background:rgba(155,107,255,.14);color:#C9BBFF;}
+  .miniflow{display:flex;flex-direction:column;gap:14px;}
+  .miniflow .row2{display:flex;align-items:center;gap:14px;font-family:var(--font-body);font-weight:500;font-size:13px;color:var(--muted);}
+  .miniflow .dotm{width:8px;height:8px;border-radius:50%;flex:none;}
+  .aiband + .aiband{margin-top:16px;}
+  .aiband.now-band{background:radial-gradient(120% 140% at 92% 100%,rgba(102,224,206,.13),var(--glass));}
+  .aiband.now-band .kit .chip{background:rgba(102,224,206,.14);color:#B7F3E8;}
+
+  /* philosophy */
+  .phi{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;}
+  @media(max-width:900px){.phi{grid-template-columns:1fr;gap:34px;}}
+  .tenets{display:grid;gap:2px;}
+  .tenet{border-top:1px solid var(--line);padding:20px 0;display:grid;grid-template-columns:34px 1fr;gap:16px;}
+  .tenet:last-child{border-bottom:1px solid var(--line);}
+  .tenet .n{font-family:var(--font-mono);font-weight:600;font-size:13px;color:var(--violet);}
+  .tenet h3{font-size:1.18rem;font-weight:600;margin-bottom:6px;}
+  .tenet p{color:var(--muted);font-size:.96rem;font-weight:400;margin:0;}
+  .winwin{border:1px solid var(--line);border-radius:var(--r-panel);background:var(--glass);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);padding:22px;overflow:hidden;}
+  .winwin svg{display:block;border-radius:14px;}
+  .winwin figcaption{font-family:var(--font-mono);font-weight:600;font-size:11px;letter-spacing:.06em;color:var(--muted-2);text-align:center;margin-top:14px;}
+  .beam{fill:none;stroke-linecap:round;stroke-width:2px;}
+  .beam-warm{stroke:#FFB25C;filter:drop-shadow(0 0 4px rgba(255,178,92,.6));animation:beamflow 2.6s linear infinite;}
+  .beam-cool{stroke:#66E0CE;filter:drop-shadow(0 0 4px rgba(102,224,206,.6));animation:beamflow 2.6s linear infinite;animation-delay:.55s;}
+  .beam-out{stroke:url(#gv);stroke-width:2.6px;filter:drop-shadow(0 0 5px rgba(155,107,255,.55));animation:beamflow 1.9s linear infinite;animation-delay:1.05s;}
+  @keyframes beamflow{from{stroke-dashoffset:0;}to{stroke-dashoffset:-100;}}
+  .node-pulse{transform-box:fill-box;transform-origin:center;animation:nodepulse 3.4s ease-in-out infinite;}
+  @keyframes nodepulse{0%,100%{opacity:.82;}50%{opacity:1;}}
+  .lbl-tech{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-weight:600;font-size:8.5px;letter-spacing:.07em;text-transform:uppercase;}
+
+  /* range */
+  .range{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  @media(max-width:860px){.range{grid-template-columns:1fr;gap:22px;}}
+  .col h3{font-size:.95rem;font-family:var(--font-body);font-weight:700;letter-spacing:.01em;text-transform:none;margin-bottom:16px;}
+  .col h3 .b{display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--tri);margin-right:9px;vertical-align:middle;}
+  .col ul{list-style:none;margin:0;padding:0;}
+  .col li{padding:9px 0;border-bottom:1px solid var(--line-soft);color:var(--muted);font-size:.95rem;font-weight:400;}
+  .col li b{color:var(--text);font-weight:600;}
+  .domains{margin-top:32px;display:flex;flex-wrap:wrap;gap:9px;}
+
+  /* references */
+  .refs{border:1px solid var(--line);border-radius:var(--r-panel);padding:clamp(30px,4vw,48px);text-align:center;background:var(--glass);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);}
+  .feature-quote{max-width:54ch;margin:0 auto 32px;text-align:center;}
+  .feature-quote p{font-family:var(--font-display);font-weight:600;font-size:clamp(1.28rem,2.6vw,1.66rem);letter-spacing:-.015em;line-height:1.42;color:var(--text);margin:0 0 14px;}
+  .feature-quote cite{font-style:normal;display:block;font-family:var(--font-body);font-weight:600;font-size:13.5px;color:var(--muted);}
+  .feature-quote cite span{display:block;font-weight:400;font-size:12.5px;color:var(--muted-2);margin-top:2px;}
+  .refs-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;text-align:left;margin-bottom:26px;}
+  @media(max-width:700px){.refs-grid{grid-template-columns:1fr;}}
+  .quote-card{background:rgba(255,255,255,.035);border:1px solid var(--line-soft);border-radius:16px;padding:26px;}
+  .quote-card .q{font-family:var(--font-display);font-weight:500;font-size:1.08rem;letter-spacing:-.01em;line-height:1.5;color:var(--text);margin:0 0 14px;}
+  .quote-card .src{font-family:var(--font-body);font-weight:600;font-size:13px;color:var(--text);margin:0;}
+  .quote-card .src span{display:block;font-weight:400;font-size:12.5px;color:var(--muted-2);margin-top:2px;}
+  .recognition{margin-bottom:24px;display:flex;justify-content:center;}
+  .refs .li-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-weight:600;font-size:14px;padding:12px 22px;border:1px solid var(--line);border-radius:999px;transition:.2s;}
+  .refs .li-btn:hover{border-color:rgba(255,255,255,.28);background:var(--glass-hover);}
+  .refs .li-btn svg{width:16px;height:16px;fill:currentColor;}
+
+  /* now */
+  .now{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;border:1px solid var(--line);border-radius:var(--r-panel);padding:clamp(30px,5vw,52px);background:radial-gradient(120% 140% at 0% 0%,rgba(155,107,255,.1),var(--glass));backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);}
+  @media(max-width:820px){.now{grid-template-columns:1fr;gap:26px;}}
+  .now .badge{font-family:var(--font-mono);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--warm);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+  .now .badge .pulse{width:9px;height:9px;border-radius:50%;background:var(--warm);animation:pulse 2.4s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,178,92,.5);}70%{box-shadow:0 0 0 12px rgba(255,178,92,0);}100%{box-shadow:0 0 0 0 rgba(255,178,92,0);}}
+  .now h2{font-size:clamp(1.8rem,3.4vw,2.5rem);margin-bottom:16px;}
+  .now p{color:var(--muted);font-weight:400;margin-bottom:0;}
+  .now .oly-mark{font-family:var(--font-display);font-size:clamp(2.8rem,7.4vw,5rem);font-weight:700;line-height:.95;letter-spacing:-.035em;text-align:center;}
+  .now .oly-mark .dot{color:var(--violet);}
+  .now .oly-sub{font-family:var(--font-mono);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:14px;text-align:center;}
+  .now a.oly-mark{display:block;transition:opacity .2s;}
+  .now a.oly-mark:hover{opacity:.85;}
+  .oly-visit{display:inline-block;margin-top:16px;font-family:var(--font-mono);font-weight:600;font-size:12px;letter-spacing:.04em;color:var(--violet);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s;}
+  .oly-visit:hover{border-color:var(--violet);}
+  .logos .row .founder a{border-bottom:1px solid transparent;transition:border-color .2s;}
+  .logos .row .founder a:hover{border-color:currentColor;}
+
+  /* contact */
+  .contact{text-align:center;padding:clamp(72px,12vh,150px) 0 84px;}
+  .contact .eyebrow{margin-bottom:24px;display:block;}
+  .contact h2{font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:700;margin-bottom:24px;letter-spacing:-.03em;}
+  .contact .mail{font-family:var(--font-body);font-weight:600;font-size:clamp(1.05rem,2.3vw,1.32rem);border-bottom:2px solid transparent;padding-bottom:3px;transition:.2s;}
+  .contact .mail:hover{border-color:var(--violet);}
+  .contact .alt{margin-top:24px;color:var(--muted);font-size:.95rem;font-weight:400;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;align-items:center;}
+  .contact .alt a{color:var(--muted);border-bottom:1px solid var(--line);}
+  .contact .alt a:hover{color:var(--text);}
+
+  footer{border-top:1px solid var(--line-soft);padding:28px 0;}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-family:var(--font-mono);font-weight:500;font-size:12px;color:var(--muted-2);letter-spacing:.02em;}
+  .colophon{margin-top:14px;font-family:var(--font-mono);font-weight:500;font-size:11.5px;color:var(--muted-2);opacity:.7;letter-spacing:.01em;}
+  .colophon + .colophon{margin-top:6px;}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important;}.reveal{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><span class="node"></span> Michael&nbsp;Galluppo</a>
+    <nav class="nav-links">
+      <a href="#beyond">Beyond the title</a>
+      <a href="#work">Work</a>
+      <a href="#lead">How I lead</a>
+      <a href="#now">Founder</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<a id="top"></a>
+<div class="wrap">
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="kicker"><span class="wire"></span><span class="eyebrow">Product · Systems · Creative · AI</span></div>
+        <h1>The future is already here.<br><span class="grad-text">I work on the distribution.</span></h1>
+        <p class="deck">Gibson was right — it just isn't evenly distributed yet. I've spent my career on exactly that: streaming, broadcast, cloud, and <b>machine learning back when "AI" still sounded like science fiction</b>. The throughline was never the tech. It's <b>connecting people and systems into win-wins</b>, using clear communication and honest reasoning.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#work">See the work →</a>
+          <a class="btn btn-ghost" href="#lead">How I lead</a>
+        </div>
+      </div>
+
+      <!-- Animated vector-transformer: inputs → transformer → Michael (synthesis) → win-win -->
+      <div class="visual" aria-hidden="true">
+        <svg viewBox="0 0 560 470" role="img" aria-label="A vector transformer: creative, systems, people and data flow through a transformation core into a synthesized outcome">
+          <defs>
+            <linearGradient id="tri" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB25C"/><stop offset=".5" stop-color="#9B6BFF"/><stop offset="1" stop-color="#66E0CE"/></linearGradient>
+            <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#9B6BFF" stop-opacity=".35"/><stop offset="1" stop-color="#9B6BFF" stop-opacity="0"/></radialGradient>
+            <clipPath id="pclip"><circle cx="410" cy="212" r="96"/></clipPath>
+          </defs>
+
+          <circle cx="410" cy="212" r="150" fill="url(#glow)"/>
+
+          <!-- flow paths: inputs -> core -->
+          <g fill="none" stroke-width="1.6" opacity=".85">
+            <path id="f1" class="flow" d="M60 78 C150 78 168 212 196 212" stroke="#FFB25C"/>
+            <path id="f2" class="flow" d="M60 168 C150 168 176 212 196 212" stroke="#66E0CE"/>
+            <path id="f3" class="flow" d="M60 258 C150 258 176 212 196 212" stroke="#9B6BFF"/>
+            <path id="f4" class="flow" d="M60 348 C150 348 168 212 196 212" stroke="#FFB25C"/>
+          </g>
+          <!-- core -> portrait -->
+          <g fill="none" stroke-width="1.8" opacity=".9">
+            <path id="f5" class="flow" d="M244 175 C285 175 292 212 314 212" stroke="url(#tri)"/>
+            <path id="f6" class="flow" d="M244 249 C285 249 292 212 314 212" stroke="url(#tri)"/>
+          </g>
+          <!-- portrait -> win-win -->
+          <path id="f7" class="flow" d="M410 308 C410 372 442 388 486 388" fill="none" stroke="url(#tri)" stroke-width="1.8" opacity=".9"/>
+
+          <!-- input nodes + labels -->
+          <g>
+            <circle class="pnode" cx="60" cy="78" r="9" fill="#FFB25C"/>
+            <circle class="pnode" cx="60" cy="168" r="9" fill="#66E0CE" style="animation-delay:.6s"/>
+            <circle class="pnode" cx="60" cy="258" r="9" fill="#9B6BFF" style="animation-delay:1.1s"/>
+            <circle class="pnode" cx="60" cy="348" r="9" fill="#FFB25C" style="animation-delay:1.6s"/>
+            <text class="lbl" x="16" y="66">Creative</text>
+            <text class="lbl" x="16" y="156">Systems</text>
+            <text class="lbl" x="16" y="246">People</text>
+            <text class="lbl" x="16" y="336">Data</text>
+          </g>
+
+          <!-- transformer core -->
+          <rect x="196" y="112" width="48" height="200" rx="12" fill="rgba(155,107,255,.12)" stroke="#9B6BFF" stroke-width="1.2"/>
+          <g fill="url(#tri)">
+            <rect class="head" x="206" y="130" width="28" height="7" rx="3.5"/>
+            <rect class="head" x="206" y="152" width="28" height="7" rx="3.5" style="animation-delay:.3s"/>
+            <rect class="head" x="206" y="174" width="28" height="7" rx="3.5" style="animation-delay:.6s"/>
+            <rect class="head" x="206" y="196" width="28" height="7" rx="3.5" style="animation-delay:.9s"/>
+            <rect class="head" x="206" y="218" width="28" height="7" rx="3.5" style="animation-delay:1.2s"/>
+            <rect class="head" x="206" y="240" width="28" height="7" rx="3.5" style="animation-delay:1.5s"/>
+            <rect class="head" x="206" y="262" width="28" height="7" rx="3.5" style="animation-delay:1.8s"/>
+            <rect class="head" x="206" y="284" width="28" height="7" rx="3.5" style="animation-delay:2.1s"/>
+          </g>
+          <text class="lbl" x="220" y="104" text-anchor="middle">Transformer</text>
+
+          <!-- portrait node -->
+          <circle cx="410" cy="212" r="112" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+          <circle class="ring" cx="410" cy="212" r="112" fill="none" stroke="url(#tri)" stroke-width="1.5" stroke-dasharray="3 12"/>
+          <circle class="ring rev" cx="410" cy="212" r="124" fill="none" stroke="url(#tri)" stroke-width="1" stroke-dasharray="2 20" opacity=".6"/>
+          <circle cx="410" cy="212" r="99" fill="rgba(155,107,255,.12)"/>
+          <image href="michael.jpg" x="314" y="116" width="192" height="192" clip-path="url(#pclip)" preserveAspectRatio="xMidYMid slice"/>
+          <circle cx="410" cy="212" r="96" fill="none" stroke="url(#tri)" stroke-width="2"/>
+
+          <!-- win-win output -->
+          <circle cx="500" cy="388" r="34" fill="rgba(255,255,255,.05)" stroke="url(#tri)" stroke-width="1.8"/>
+          <text class="lbl" x="500" y="385" text-anchor="middle" fill="#F2F2F7">WIN</text>
+          <text class="lbl" x="500" y="398" text-anchor="middle" fill="#F2F2F7">–WIN</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="logos">
+      <div class="label">Built studio, streaming &amp; AI platforms at</div>
+      <div class="row">
+        <span><svg class="apple-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.04c-.02-2.05 1.68-3.03 1.75-3.08-.95-1.39-2.43-1.58-2.96-1.6-1.26-.13-2.46.74-3.1.74-.63 0-1.62-.72-2.66-.7-1.37.02-2.63.8-3.34 2.03-1.42 2.47-.36 6.12 1.02 8.12.67.98 1.48 2.08 2.53 2.04 1.01-.04 1.4-.65 2.62-.65 1.22 0 1.57.65 2.65.63 1.09-.02 1.79-1 2.46-1.98.77-1.13 1.09-2.23 1.11-2.29-.02-.01-2.13-.82-2.15-3.25zM15.1 6.09c.56-.68.94-1.62.84-2.56-.81.03-1.79.54-2.37 1.22-.52.6-.98 1.56-.86 2.48.9.07 1.83-.46 2.39-1.14z"/></svg>Apple</span>
+        <span>Amazon&nbsp;MGM&nbsp;Studios</span>
+        <span>Fox</span>
+        <span>NBC</span>
+        <span>MLB&nbsp;Advanced&nbsp;Media</span>
+        <span>HBO</span>
+        <span class="founder"><a href="https://oly.ai" target="_blank" rel="noopener">Founder, OLY.AI</a></span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+<div class="thread">
+
+  <!-- ============ BEYOND THE TITLE ============ -->
+  <section class="blk" id="beyond">
+    <div class="blk-head reveal">
+      <span class="node-dot warm"></span>
+      <div class="txt">
+        <span class="eyebrow">01 — Beyond the title</span>
+        <h2>The résumé says product.<br>The work is <em>people, systems, and win-wins.</em></h2>
+        <p class="sub">A title tells you what I own. It doesn't tell you how I work. Three things sit underneath everything I've shipped.</p>
+      </div>
+    </div>
+
+    <div class="pillars indent">
+      <article class="pillar reveal">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4c-6 8-14 10-14 19a14 14 0 0028 0c0-9-8-11-14-19z" stroke="rgba(242,242,247,.75)" stroke-width="1.5"/><circle cx="20" cy="24" r="5" stroke="rgba(242,242,247,.75)" stroke-width="1.5"/></svg>
+        <h3>Creative at heart</h3>
+        <p>I design experiences, not just specs. A broadcast-synced NFT drop, a gamified token economy, self-aware graphics that respond in real time — the fun part is inventing something that didn't exist yet, then making it real.</p>
+        <span class="tag">Invention · Experience · Play</span>
+      </article>
+      <article class="pillar reveal">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M6 20h9m10 0h9M20 6v9m0 10v9" stroke="rgba(242,242,247,.75)" stroke-width="1.5"/><circle cx="20" cy="20" r="6" stroke="rgba(242,242,247,.75)" stroke-width="1.5"/></svg>
+        <h3>Rational communicator</h3>
+        <p>I make the complex legible. I turn tangled systems into a shared language, put the reasoning on the table, and get a room of stakeholders to sign the same decision — without needing authority over any of them.</p>
+        <span class="tag">Clarity · Reasoning · Trust</span>
+      </article>
+      <article class="pillar reveal">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 6l3 8 8 1-6 6 2 8-7-4-7 4 2-8-6-6 8-1z" stroke="rgba(242,242,247,.75)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <h3>Servant leader</h3>
+        <p>I lead by clearing the path. The best outcome is the one where the team wins, the partners win, and the business wins at the same time. I optimize for the win-win, not for who gets the credit.</p>
+        <span class="tag">Empower · Unblock · Win-win</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section class="blk" id="work">
+    <div class="blk-head reveal">
+      <span class="node-dot"></span>
+      <div class="txt">
+        <span class="eyebrow">02 — Selected work</span>
+        <h2>Orchestrating people, systems, and&nbsp;launches.</h2>
+        <p class="sub">Studios, streaming, broadcast, Web3, and AI — one pattern throughout: many teams and moving parts, aligned toward a launch that holds. Program-level figures reflect contribution, not sole attribution.</p>
+      </div>
+    </div>
+
+    <div class="work indent">
+
+      <!-- APPLE (current) -->
+      <article class="case current reveal">
+        <div class="meta">
+          <span class="logo"><svg class="apple-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.04c-.02-2.05 1.68-3.03 1.75-3.08-.95-1.39-2.43-1.58-2.96-1.6-1.26-.13-2.46.74-3.1.74-.63 0-1.62-.72-2.66-.7-1.37.02-2.63.8-3.34 2.03-1.42 2.47-.36 6.12 1.02 8.12.67.98 1.48 2.08 2.53 2.04 1.01-.04 1.4-.65 2.62-.65 1.22 0 1.57.65 2.65.63 1.09-.02 1.79-1 2.46-1.98.77-1.13 1.09-2.23 1.11-2.29-.02-.01-2.13-.82-2.15-3.25zM15.1 6.09c.56-.68.94-1.62.84-2.56-.81.03-1.79.54-2.37 1.22-.52.6-.98 1.56-.86 2.48.9.07 1.83-.46 2.39-1.14z"/></svg>Apple</span>
+          <span class="role">Technical Product Manager</span>
+          <span class="role dim">Studio Technologies · Apple&nbsp;TV · Culver City, CA</span>
+          <span class="when">Mar 2026 – Present</span>
+        </div>
+        <div>
+          <h3>Using AI to build the studio of the future</h3>
+          <p>On Apple's Studio Technologies team, I work at the front edge of production — bringing <b>AI into the filmmaking and studio workflow</b> for Apple TV. The brief is exactly the kind of problem I chase: reimagine how content gets made and moved, with intelligence built into the pipeline rather than bolted on after.</p>
+          <div class="chips"><span class="chip">AI in production</span><span class="chip">Apple TV</span><span class="chip">Studio workflow</span><span class="chip">Studio of the future</span></div>
+        </div>
+      </article>
+
+      <!-- AMAZON MGM -->
+      <article class="case reveal">
+        <div class="meta">
+          <span class="logo">Amazon MGM</span>
+          <span class="role">Technical Product Manager (PMT)</span>
+          <span class="role dim">Origin · Studio in the Cloud</span>
+          <span class="when">Nov 2024 – Feb 2026</span>
+        </div>
+        <div>
+          <h3>Bringing MGM into the Amazon cloud — and into Prime Video</h3>
+          <p>After the acquisition, I helped modernize and integrate MGM with <b>Amazon Prime Video</b> — a "Studio in the Cloud" effort spanning global workflows, distribution, and the data supply chain in a complex, fast-moving industry. I built the system of record for approved content assets, consolidating metadata from script through vending onto <b>Origin</b>, a next-gen operational data platform, and drove a <b>93% reduction in defective title submissions (16% → 1%)</b> through automated ingestion, validation, and routing — with API integrations across Deluxe, Rightsline, and Spherex.</p>
+          <div class="stats">
+            <div class="stat"><b>93%</b><span>reduction in defective title submissions</span></div>
+            <div class="stat"><b>~9</b><span>downstream systems coordinated</span></div>
+            <div class="stat"><b>8</b><span>stakeholder sign-offs at launch</span></div>
+          </div>
+          <div class="chips"><span class="chip">Studio in the Cloud</span><span class="chip">Prime Video integration</span><span class="chip">MEC / MMC / Avails</span><span class="chip">Deluxe · Rightsline · Spherex</span><span class="chip">AWS Lambda / S3</span><span class="chip">Data supply chain</span></div>
+        </div>
+      </article>
+
+      <!-- FOX MPF -->
+      <article class="case reveal">
+        <div class="meta">
+          <span class="logo">Fox</span>
+          <span class="role">Director, Product Management</span>
+          <span class="role dim">Media Player Frameworks · CPE Video</span>
+          <span class="when">Jan 2018 – May 2022</span>
+        </div>
+        <div>
+          <h3>One video player for 10+ platforms and ~10 brands</h3>
+          <p>Every app team had built its own player — inconsistent features, broken analytics, redundant work. As Director, I chartered a unified set of Web / iOS / Android SDKs and drove it across Fox Sports, Fox News, Fox Nation and more — the first broadcaster to stream 4K, HDR10, and Dolby 5.1 for marquee live events like the Super Bowl and World Cup, standardizing streaming metrics org-wide.</p>
+          <div class="stats">
+            <div class="stat"><b>&lt;1%</b><span>re-buffering ratio held</span></div>
+            <div class="stat"><b>29%</b><span>video-start-time improvement</span></div>
+            <div class="stat"><b>&lt;20s</b><span>behind live · NFL playoffs</span></div>
+          </div>
+          <div class="chips"><span class="chip award">Webby Winner — Sport Media</span><span class="chip award">Emmy Nominee — Sports Innovation</span><span class="chip">iOS / Android / Web SDKs</span><span class="chip">Multi-CDN</span><span class="chip">Conviva · Mux</span><span class="chip">Chromecast</span></div>
+        </div>
+      </article>
+
+      <!-- BCL -->
+      <article class="case reveal">
+        <div class="meta">
+          <span class="logo">Blockchain Creative Labs</span>
+          <span class="role">Founding Team Member</span>
+          <span class="role dim">Head of Product &amp; Strategy · Fox</span>
+        </div>
+        <div>
+          <h3>An award-winning, industry-first NFT broadcast experience</h3>
+          <p>I was the <b>first team member and head of product &amp; strategy</b> for Blockchain Creative Labs, Fox's Web3 venture. Our flagship — <b>The Masked Singer "Maskverse"</b> — was a massive effort: crypto-wallet onboarding, gamified NFT "drops" synced to live episodes, real-time minting at the character reveal, a marketplace, and smart-contract prizes. In coordination with partners including <b>WWE</b>, BCL <b>led the industry into community-based NFT broadcast games and watch parties</b> — and the work earned a shelf of awards.</p>
+          <div class="stats">
+            <div class="stat"><b>1st</b><span>team member &amp; head of product</span></div>
+            <div class="stat"><b>Real-time</b><span>mint at the character reveal</span></div>
+            <div class="stat"><b>Multi-</b><span>award-winning launch</span></div>
+          </div>
+          <div class="chips"><span class="chip award">★ Award-winning</span><span class="chip">Eluvio blockchain</span><span class="chip">Smart contracts</span><span class="chip">WWE partnership</span><span class="chip">Watch parties</span><span class="chip">0-to-1 product</span></div>
+        </div>
+      </article>
+
+      <!-- MLB ADVANCED MEDIA -->
+      <article class="case reveal">
+        <div class="meta">
+          <span class="logo">MLB Advanced Media</span>
+          <span class="role">Technical Product Owner</span>
+          <span class="role dim">BAMTech era</span>
+          <span class="when">Nov 2015 – Mar 2017</span>
+        </div>
+        <div>
+          <h3>Streaming for WWE, HBO GO, and Fox Sports — and the data behind Statcast</h3>
+          <p>At MLB Advanced Media — the streaming pioneer behind BAMTech — I led DTC OTT projects for <b>WWE</b>, <b>HBO GO</b>, and <b>Fox Sports</b> across iOS, tvOS, FireTV, Roku, and Android, and contributed to <b>Statcast</b>, MLB's computer-vision ballpark tracking system that turned every pitch, hit, and sprint into data. It was live sports at massive scale, and an early education in shipping real-time media and analytics together.</p>
+          <div class="stats">
+            <div class="stat"><b>Live</b><span>sports streaming at scale</span></div>
+            <div class="stat"><b>Statcast</b><span>computer-vision tracking data</span></div>
+          </div>
+          <div class="chips"><span class="chip">WWE</span><span class="chip">HBO GO</span><span class="chip">Fox Sports GO</span><span class="chip">BAMTech</span><span class="chip">Statcast</span></div>
+        </div>
+      </article>
+
+      <!-- NBC -->
+      <article class="case reveal">
+        <div class="meta">
+          <span class="logo">NBCUniversal</span>
+          <span class="role">Technical Product Owner</span>
+          <span class="role dim">Graphics Platform Modernization</span>
+          <span class="when">Jun 2014 – Nov 2015</span>
+        </div>
+        <div>
+          <h3>One graphics platform across msnbc and NBC News</h3>
+          <p>Part of NBC's "Project 15 of 2015" digital transformation. I consolidated fragmented graphics systems — Chyron, Thunder, iNews plugins — into a single platform, designed the "quarterback" orchestration logic for self-aware graphics with frame-accurate multi-operator control, and unified DAM/MAM workflows that lifted Art Department productivity 40%. The work won an <b>Emmy</b> for on-air graphics and coverage of the 2015 elections.</p>
+          <div class="stats">
+            <div class="stat"><b>40%</b><span>Art Department productivity gain</span></div>
+            <div class="stat"><b>2</b><span>networks unified</span></div>
+            <div class="stat"><b>3</b><span>phase rollout</span></div>
+          </div>
+          <div class="chips"><span class="chip award">Emmy Award — On-Air Graphics</span><span class="chip">VIZRT · Chyron</span><span class="chip">iNews · Sony switchers</span><span class="chip">DAM / MAM</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ AI EARLY BAND ============ -->
+  <section class="blk" id="ai">
+    <div class="blk-head reveal">
+      <span class="node-dot cool"></span>
+      <div class="txt">
+        <span class="eyebrow">03 — Before it had a name</span>
+        <h2>I was building AI when<br>"AI" was still <em>science fiction.</em></h2>
+      </div>
+    </div>
+
+    <div class="aiband indent reveal">
+      <div class="grid">
+        <div>
+          <h3>Voice, NLP, and machine learning — early</h3>
+          <p>Long before every product had a chatbot, I was building <b>Alexa Skills and Google Actions</b>, working hands-on with <b>NLP frameworks</b>, and applying <b>machine learning and deep learning</b> to real problems. That head start is why AI feels native to how I work now — from Apple's studio-of-the-future to running an AI company of my own.</p>
+          <div class="kit">
+            <span class="chip">Alexa Skills</span><span class="chip">Google Actions</span><span class="chip">NLP frameworks</span><span class="chip">Machine learning</span><span class="chip">Deep learning</span><span class="chip">Conversational UX</span>
+          </div>
+        </div>
+        <div class="miniflow">
+          <div class="row2"><span class="dotm" style="background:var(--warm)"></span> Voice &amp; language interfaces</div>
+          <div class="row2"><span class="dotm" style="background:var(--violet)"></span> ML / DL models on real data</div>
+          <div class="row2"><span class="dotm" style="background:var(--cool)"></span> → AI-native product leadership today</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="aiband now-band indent reveal">
+      <div class="grid">
+        <div>
+          <h3>Personal orchestration, always-on</h3>
+          <p>That head start didn't stop at a job title. I run my own life — and ran OLY.AI — on an agent stack I built myself: <b>Openclaw</b> and <b>Nanoclaw</b> for task orchestration, with an <b>Obsidian</b> vault underneath as the memory layer that ties it all together. I talk and consult about this often, helping other people and teams unlock the same superpower.</p>
+          <div class="kit">
+            <span class="chip">Openclaw</span><span class="chip">Nanoclaw</span><span class="chip">Obsidian</span><span class="chip">Agent orchestration</span><span class="chip">Speaking &amp; consulting</span>
+          </div>
+        </div>
+        <div class="miniflow">
+          <div class="row2"><span class="dotm" style="background:var(--cool)"></span> Openclaw + Nanoclaw — task orchestration</div>
+          <div class="row2"><span class="dotm" style="background:var(--violet)"></span> Obsidian — the memory layer</div>
+          <div class="row2"><span class="dotm" style="background:var(--warm)"></span> → Speaking &amp; consulting on personal AI ops</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW I LEAD ============ -->
+  <section class="blk" id="lead">
+    <div class="blk-head reveal">
+      <span class="node-dot warm"></span>
+      <div class="txt">
+        <span class="eyebrow">04 — How I lead</span>
+        <h2>The win-win isn't soft.<br>It's the <em>rational</em> outcome.</h2>
+        <p class="sub">When two sides each get what they actually need, the deal holds and the team keeps building. Getting there is a discipline — communication and reasoning, applied on purpose.</p>
+      </div>
+    </div>
+
+    <div class="phi indent">
+      <div class="tenets reveal">
+        <div class="tenet"><span class="n">01</span><div><h3>Make the reasoning visible</h3><p>Decisions hold when everyone can see the logic. I write it down, name the trade-offs, and let the argument — not the org chart — win.</p></div></div>
+        <div class="tenet"><span class="n">02</span><div><h3>Influence without authority</h3><p>I rarely own the teams I need. So I lead with clarity and credibility: understand each stakeholder's real interest, then find the path that serves all of them.</p></div></div>
+        <div class="tenet"><span class="n">03</span><div><h3>Design for leverage</h3><p>One shared framework beats ten one-offs. I build reusable systems — a player SDK, a BRD template, a metadata model — so the next win comes cheaper.</p></div></div>
+        <div class="tenet"><span class="n">04</span><div><h3>Clear the path, then get out of it</h3><p>My job is to unblock the people doing the work and hand them the credit. Servant leadership isn't a slogan — it's how good people stay.</p></div></div>
+        <div class="tenet"><span class="n">05</span><div><h3>Steelman the other side</h3><p>Before I argue against a position, I try to state it better than the person holding it. You can't find the win-win until you actually understand the other side's win.</p></div></div>
+      </div>
+
+      <figure class="winwin reveal">
+        <svg viewBox="0 0 400 240" width="100%" aria-label="Diagram: two inputs flowing through animated beams into a converged win-win outcome">
+          <defs>
+            <linearGradient id="gv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB25C"/><stop offset=".5" stop-color="#9B6BFF"/><stop offset="1" stop-color="#66E0CE"/></linearGradient>
+            <pattern id="wgrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/></pattern>
+          </defs>
+
+          <rect width="400" height="240" fill="url(#wgrid)"/>
+
+          <!-- static guide lines -->
+          <path d="M62 65 L150 65 L193 112" fill="none" stroke="rgba(255,178,92,.22)" stroke-width="1.4"/>
+          <path d="M62 175 L150 175 L193 128" fill="none" stroke="rgba(102,224,206,.22)" stroke-width="1.4"/>
+          <path d="M227 120 L336 120" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.4"/>
+
+          <!-- animated traveling beams -->
+          <path class="beam beam-warm" pathLength="100" stroke-dasharray="14 86" d="M62 65 L150 65 L193 112"/>
+          <path class="beam beam-cool" pathLength="100" stroke-dasharray="14 86" d="M62 175 L150 175 L193 128"/>
+          <path class="beam beam-out" pathLength="100" stroke-dasharray="20 80" d="M227 120 L336 120"/>
+
+          <!-- source nodes -->
+          <rect x="28" y="48" width="34" height="34" rx="9" fill="rgba(255,178,92,.1)" stroke="#FFB25C" stroke-width="1.4"/>
+          <text class="lbl-tech" x="45" y="101" text-anchor="middle" fill="#FFC98A">PEOPLE</text>
+
+          <rect x="28" y="158" width="34" height="34" rx="9" fill="rgba(102,224,206,.1)" stroke="#66E0CE" stroke-width="1.4"/>
+          <text class="lbl-tech" x="45" y="211" text-anchor="middle" fill="#9BEFE0">SYSTEMS</text>
+
+          <!-- sync node -->
+          <rect class="node-pulse" x="193" y="103" width="34" height="34" rx="10" fill="url(#gv)"/>
+
+          <!-- output node -->
+          <rect x="336" y="96" width="58" height="48" rx="12" fill="rgba(255,255,255,.04)" stroke="url(#gv)" stroke-width="1.6"/>
+          <text class="lbl-tech" x="365" y="116" text-anchor="middle" fill="#F2F2F7">WIN</text>
+          <text class="lbl-tech" x="365" y="130" text-anchor="middle" fill="#F2F2F7">–WIN</text>
+        </svg>
+        <figcaption>Not a trade-off — convergence.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ RANGE ============ -->
+  <section class="blk" id="range">
+    <div class="blk-head reveal">
+      <span class="node-dot"></span>
+      <div class="txt">
+        <span class="eyebrow">05 — Range</span>
+        <h2>Deep in the stack.<br>Fluent in the business.</h2>
+        <p class="sub">I move across technical depth, product strategy, and outcome without a translation layer in between. Here's where the depth lives.</p>
+      </div>
+    </div>
+
+    <div class="range indent">
+      <div class="col reveal">
+        <h3><span class="b"></span>Technical &amp; AI</h3>
+        <ul>
+          <li><b>ML &amp; deep learning</b> — since before the hype</li>
+          <li><b>Voice &amp; NLP</b> — Alexa Skills, Google Actions</li>
+          <li><b>AI-first workflows</b> — agents, MCP orchestration</li>
+          <li><b>Cloud architecture</b> — AWS Lambda, S3</li>
+          <li><b>Systems &amp; data integration</b> — ETL, dual-write</li>
+          <li><b>Metadata &amp; knowledge graphs</b> — 1000+ fields</li>
+          <li><b>Web3</b> — smart contracts, wallets, NFTs</li>
+        </ul>
+      </div>
+      <div class="col reveal">
+        <h3><span class="b"></span>Product &amp; Program</h3>
+        <ul>
+          <li><b>Product strategy &amp; vision</b> — tenets, 3YP</li>
+          <li><b>Technical program management</b> — cross-team</li>
+          <li><b>Requirements &amp; specs</b> — BRDs, acceptance criteria</li>
+          <li><b>Roadmapping</b> — RICE, phased delivery</li>
+          <li><b>Launch management</b> — Go/No-Go, rollback</li>
+          <li><b>Stakeholder leadership</b> — influence w/o authority</li>
+          <li><b>Business reviews</b> — MBR / QBR, RAG</li>
+        </ul>
+      </div>
+      <div class="col reveal">
+        <h3><span class="b"></span>Media &amp; Creative</h3>
+        <ul>
+          <li><b>Streaming &amp; QoE</b> — Conviva, Mux, multi-CDN</li>
+          <li><b>Video player SDKs</b> — Web, iOS, Android, tvOS</li>
+          <li><b>Live sports &amp; data</b> — Statcast, low-latency</li>
+          <li><b>Broadcast &amp; playout</b> — VIZRT, GPI/VDCP</li>
+          <li><b>0→1 product design</b> — experiences from scratch</li>
+          <li><b>Gamification</b> — drops, economies, scarcity</li>
+          <li><b>Studio &amp; production tech</b> — cloud workflows</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="domains indent">
+      <span class="chip">Studio &amp; production tech</span><span class="chip">Media &amp; entertainment</span><span class="chip">Streaming / OTT</span><span class="chip">Live sports &amp; data</span><span class="chip">Video playback &amp; QoE</span><span class="chip">Content metadata</span><span class="chip">Data supply chain</span><span class="chip">Broadcast graphics</span><span class="chip">Web3 / NFTs</span><span class="chip">Applied AI</span><span class="chip">SMB fintech</span>
+    </div>
+  </section>
+
+  <!-- ============ REFERENCES ============ -->
+  <section class="blk" id="refs">
+    <div class="blk-head reveal">
+      <span class="node-dot warm"></span>
+      <div class="txt">
+        <span class="eyebrow">06 — In their words</span>
+        <h2>What the people I've<br>worked with <em>say.</em></h2>
+      </div>
+    </div>
+    <div class="refs indent reveal">
+      <blockquote class="feature-quote">
+        <p>"He will undoubtedly be the nucleus of any team he's a part of and set the tone for any project. This is his gift."</p>
+        <cite>Stephanie Harris<span>Co-Founder, Receipts.xyz — reported to Michael at MXM Hyperfactory &amp; Qello</span></cite>
+      </blockquote>
+      <div class="refs-grid">
+        <div class="quote-card">
+          <p class="q">"He successfully drove stakeholders to consensus, clarified ambiguities, and positioned internal and external partner delivery teams for success."</p>
+          <p class="src">Dave Ambrose<span>on the Fox Sports GO launch</span></p>
+        </div>
+        <div class="quote-card">
+          <p class="q">"Impressed with Michael's ability to adapt to changing criteria and scope while keeping a cool and steady head."</p>
+          <p class="src">James Matarese<span>VP Artworks, NBC News — client on the graphics project</span></p>
+        </div>
+        <div class="quote-card">
+          <p class="q">"Michael took a chaotic crypto project and implemented organizational structures and operational processes."</p>
+          <p class="src">Caleb Gates<span>on the Blockchain Creative Labs launch</span></p>
+        </div>
+        <div class="quote-card">
+          <p class="q">"Michael regularly took time to teach me the essentials of being a great visionary, staying five steps ahead."</p>
+          <p class="src">Peter Slavish<span>colleague at Qello Concerts</span></p>
+        </div>
+      </div>
+      <div class="recognition"><span class="chip">Member — Television Academy, Science &amp; Technology Council</span></div>
+      <a class="li-btn" href="https://www.linkedin.com/in/galluppo" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        More recommendations on LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ NOW ============ -->
+  <section class="blk" id="now">
+    <div class="blk-head reveal">
+      <span class="node-dot"></span>
+      <div class="txt">
+        <span class="eyebrow">07 — Founder chapter</span>
+        <h2>Before this, I built my own.</h2>
+      </div>
+    </div>
+
+    <div class="now indent reveal">
+      <div>
+        <div class="badge">2022 – 2025</div>
+        <h2>OLY.AI</h2>
+        <p>I founded and ran OLY.AI from 2022 to 2025 — AI-powered financial reporting for small businesses, built on the QuickBooks ecosystem. I bootstrapped it to <b>$680K in annual recurring revenue</b> with full P&amp;L ownership, owning strategy, product, and go-to-market end to end. It's where technical depth, product ownership, and an AI-native way of working all came together — the same instinct for connecting people and systems into win-wins that I've carried into every role since, including where I am today.</p>
+      </div>
+      <div style="text-align:center">
+        <a class="oly-mark" href="https://oly.ai" target="_blank" rel="noopener">OLY<span class="dot">.</span>AI</a>
+        <div class="oly-sub">Founder &amp; CEO · 2022–2025 · $680K ARR</div>
+        <a class="oly-visit" href="https://oly.ai" target="_blank" rel="noopener">Still live — visit oly.ai ↗</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /thread -->
+</div><!-- /wrap -->
+
+<!-- ============ CONTACT ============ -->
+<div class="wrap">
+  <section class="contact" id="contact">
+    <span class="eyebrow">Let's build a win-win</span>
+    <h2>Have a hard problem<br>worth <em>getting right?</em></h2>
+    <a class="mail" href="mailto:michael@oly.ai">michael@oly.ai</a>
+    <div class="alt">
+      <a href="mailto:m.galluppo@gmail.com">m.galluppo@gmail.com</a>
+      <a href="https://www.linkedin.com/in/galluppo" target="_blank" rel="noopener">LinkedIn</a>
+      <span>Hollywood, Los Angeles, CA</span>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Michael Galluppo</span>
+    <span>Product · Systems · Creative · AI · Win-win</span>
+  </div>
+  <div class="wrap colophon">On the shelf — <i>Accelerando</i>, <i>Neuromancer</i>, <i>The Moon Is a Harsh Mistress</i>, <i>Meditations in Emergencies</i></div>
+  <div class="wrap colophon">Off the grid — a week of high-desert dust at the end of each summer, and a soft spot for a well-run gifting economy.</div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach((el) => io.observe(el));
+  } else { els.forEach((el) => el.classList.add('in')); }
+</script>
+</body>
+</html>
