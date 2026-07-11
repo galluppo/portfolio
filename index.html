@@ -219,9 +219,27 @@
   .quote-card .src{font-family:var(--font-body);font-weight:600;font-size:13px;color:var(--text);margin:0;}
   .quote-card .src span{display:block;font-weight:400;font-size:12.5px;color:var(--muted-2);margin-top:2px;}
   .recognition{margin-bottom:24px;display:flex;justify-content:center;}
-  .refs .li-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-weight:600;font-size:14px;padding:12px 22px;border:1px solid var(--line);border-radius:999px;transition:.2s;}
-  .refs .li-btn:hover{border-color:rgba(255,255,255,.28);background:var(--glass-hover);}
-  .refs .li-btn svg{width:16px;height:16px;fill:currentColor;}
+  .li-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-weight:600;font-size:14px;padding:12px 22px;border:1px solid var(--line);border-radius:999px;transition:.2s;}
+  .li-btn:hover{border-color:rgba(255,255,255,.28);background:var(--glass-hover);}
+  .li-btn svg{width:16px;height:16px;flex:none;fill:currentColor;}
+
+  /* writing */
+  .writing{display:grid;gap:20px;}
+  .essay-feature{display:block;border:1px solid var(--line);border-radius:var(--r-panel);padding:clamp(28px,4vw,44px);background:var(--glass);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);transition:border-color .25s,background .25s;}
+  .essay-feature:hover{border-color:rgba(255,255,255,.2);background:var(--glass-hover);}
+  .essay-feature .meta{font-family:var(--font-mono);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);margin-bottom:14px;}
+  .essay-feature h3{font-size:clamp(1.5rem,3vw,2rem);font-weight:600;margin-bottom:14px;letter-spacing:-.015em;line-height:1.18;}
+  .essay-feature p{color:var(--muted);font-size:1.02rem;font-weight:400;margin-bottom:20px;max-width:64ch;}
+  .essay-feature .read{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-weight:600;font-size:14px;color:var(--violet);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s;}
+  .essay-feature:hover .read{border-color:var(--violet);}
+  .essay-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  @media(max-width:760px){.essay-grid{grid-template-columns:1fr;}}
+  .essay-card{display:block;border:1px solid var(--line);border-radius:var(--r-card);padding:24px;background:var(--glass);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);transition:border-color .25s,transform .25s cubic-bezier(.2,.7,.2,1),background .25s;}
+  .essay-card:hover{border-color:rgba(255,255,255,.2);background:var(--glass-hover);transform:translateY(-2px);}
+  .essay-card .meta{font-family:var(--font-mono);font-weight:600;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);margin-bottom:10px;}
+  .essay-card h4{font-family:var(--font-display);font-weight:600;font-size:1.08rem;letter-spacing:-.01em;line-height:1.3;margin:0 0 10px;color:var(--text);}
+  .essay-card p{color:var(--muted);font-size:.92rem;font-weight:400;margin:0;}
+  .writing-more{text-align:center;margin-top:4px;}
 
   /* now */
   .now{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;border:1px solid var(--line);border-radius:var(--r-panel);padding:clamp(30px,5vw,52px);background:radial-gradient(120% 140% at 0% 0%,rgba(155,107,255,.1),var(--glass));backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);}
@@ -738,12 +756,63 @@
     </div>
   </section>
 
+  <!-- ============ WRITING ============ -->
+  <section class="blk" id="writing">
+    <div class="blk-head reveal">
+      <span class="node-dot cool"></span>
+      <div class="txt">
+        <span class="eyebrow">07 — In my words</span>
+        <h2>Writing, not just <em>shipping.</em></h2>
+        <p class="sub">AI safety, media and attention, the founder's road — some of what I've published, unfiltered by a comms team.</p>
+      </div>
+    </div>
+
+    <div class="writing indent reveal">
+      <a class="essay-feature" href="https://www.linkedin.com/pulse/when-things-mattered-time-i-watch-six-astronauts-die-real-galluppo--xveoc" target="_blank" rel="noopener">
+        <div class="meta">December 2025 · Essay</div>
+        <h3>When things mattered: the day I watched six astronauts die</h3>
+        <p>On the Challenger disaster, and how algorithmic feeds have replaced the kind of shared, unifying attention that day once commanded — a case for why a common reality matters as much as any roadmap.</p>
+        <span class="read">Read the piece on LinkedIn →</span>
+      </a>
+
+      <div class="essay-grid">
+        <a class="essay-card" href="https://www.linkedin.com/pulse/ai-safety-normies-most-important-century-human-michael-galluppo--jdsxc" target="_blank" rel="noopener">
+          <div class="meta">July 2024</div>
+          <h4>AI Safety for Normies</h4>
+          <p>An accessible walk through AGI, alignment, and existential risk — written for people who aren't already fluent in the AI-safety discourse.</p>
+        </a>
+        <a class="essay-card" href="https://www.linkedin.com/pulse/everybodys-expert-now-navigating-ai-challenges-leaders-galluppo-hib4c" target="_blank" rel="noopener">
+          <div class="meta">January 2024</div>
+          <h4>Everybody's an Expert Now</h4>
+          <p>A caution against "Techno Hipster" AI expertise — the real thing only comes from years spent actually building, not just talking about it.</p>
+        </a>
+        <a class="essay-card" href="https://www.linkedin.com/pulse/beyond-corporate-ladder-journey-resilience-change-michael-galluppo-vde4c" target="_blank" rel="noopener">
+          <div class="meta">October 2023</div>
+          <h4>Beyond the Corporate Ladder</h4>
+          <p>On a hard childhood, entry-level jobs, corporate ceilings, and the decision to walk away and found OLY.AI instead.</p>
+        </a>
+        <a class="essay-card" href="https://www.linkedin.com/pulse/first-ai-native-accounting-firm-startup-partners-olyai-galluppo--esksc" target="_blank" rel="noopener">
+          <div class="meta">December 2025</div>
+          <h4>The First AI-Native Accounting Firm</h4>
+          <p>How OLY.AI and Startup Partners are replacing backward-looking accounting reports with real-time financial intelligence.</p>
+        </a>
+      </div>
+
+      <div class="writing-more">
+        <a class="li-btn" href="https://www.linkedin.com/in/galluppo/recent-activity/articles/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          More writing on LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ NOW ============ -->
   <section class="blk" id="now">
     <div class="blk-head reveal">
       <span class="node-dot"></span>
       <div class="txt">
-        <span class="eyebrow">07 — Founder chapter</span>
+        <span class="eyebrow">08 — Founder chapter</span>
         <h2>Before this, I built my own.</h2>
       </div>
     </div>
