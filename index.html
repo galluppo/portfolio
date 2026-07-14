@@ -102,7 +102,13 @@
   .twinkle{animation:twinkle 4.5s ease-in-out infinite;}
   @keyframes twinkle{0%,100%{opacity:.1;}50%{opacity:.55;}}
   .pulse{offset-rotate:0deg;animation:pulseout 3.6s cubic-bezier(.4,0,.2,1) infinite;}
+  .pulse.p-warm{animation-name:po-warm;}
+  .pulse.p-violet{animation-name:po-violet;}
+  .pulse.p-cool{animation-name:po-cool;}
   @keyframes pulseout{0%{offset-distance:0%;opacity:0;}14%{opacity:1;}82%{opacity:1;}100%{offset-distance:100%;opacity:0;}}
+  @keyframes po-warm{0%{offset-distance:0%;opacity:0;fill:#fff;}14%{opacity:1;}82%{opacity:1;}100%{offset-distance:100%;opacity:0;fill:#FFB25C;}}
+  @keyframes po-violet{0%{offset-distance:0%;opacity:0;fill:#fff;}14%{opacity:1;}82%{opacity:1;}100%{offset-distance:100%;opacity:0;fill:#9B6BFF;}}
+  @keyframes po-cool{0%{offset-distance:0%;opacity:0;fill:#fff;}14%{opacity:1;}82%{opacity:1;}100%{offset-distance:100%;opacity:0;fill:#66E0CE;}}
   .lbl{font-family:var(--font-mono);font-weight:600;font-size:9.5px;letter-spacing:.09em;fill:var(--muted);text-transform:uppercase;}
 
   /* logo wall */
@@ -383,17 +389,17 @@
           </g>
           <circle cx="270" cy="235" r="96" fill="none" stroke="url(#tri)" stroke-width="1.5" opacity=".55"/>
 
-          <!-- light pulses distributing outward — each starts from outer nodes flowing outward -->
-          <circle class="pulse" r="3" fill="#E4D8FF" style="offset-path:path('M322 46 L360 10');"/>
-          <circle class="pulse" r="3" fill="#CFF9F0" style="offset-path:path('M36 238 L-8 238');animation-delay:1.6s"/>
-          <circle class="pulse" r="3" fill="#FFE7C4" style="offset-path:path('M300 448 L300 490');animation-delay:2.8s"/>
-          <circle class="pulse" r="3" fill="#E4D8FF" style="offset-path:path('M500 372 L548 420');animation-delay:.8s"/>
-          <circle class="pulse" r="3" fill="#FFE7C4" style="offset-path:path('M516 120 L550 80');animation-delay:3.6s"/>
-          <circle class="pulse" r="3" fill="#CFF9F0" style="offset-path:path('M448 42 L488 8');animation-delay:2.2s"/>
-          <circle class="pulse" r="3" fill="#E4D8FF" style="offset-path:path('M530 238 L572 238');animation-delay:4.2s"/>
-          <circle class="pulse" r="3" fill="#CFF9F0" style="offset-path:path('M78 92 L30 50');animation-delay:1.2s"/>
-          <circle class="pulse" r="3" fill="#FFE7C4" style="offset-path:path('M200 69 L230 40');animation-delay:.4s"/>
-          <circle class="pulse" r="3" fill="#E4D8FF" style="offset-path:path('M92 392 L50 440');animation-delay:2.4s"/>
+          <!-- light pulses distributing outward — each starts at the portrait's rim and flows out to its node, taking on the node's color -->
+          <circle class="pulse p-violet" r="3" fill="#fff" style="offset-path:path('M296.5 138.6 L322 46');"/>
+          <circle class="pulse p-warm" r="3" fill="#fff" style="offset-path:path('M231.2 142.9 L200 69');animation-delay:.4s"/>
+          <circle class="pulse p-cool" r="3" fill="#fff" style="offset-path:path('M337.8 161.5 L448 42');animation-delay:2.2s"/>
+          <circle class="pulse p-cool" r="3" fill="#fff" style="offset-path:path('M189.8 175.3 L78 92');animation-delay:1.2s"/>
+          <circle class="pulse p-warm" r="3" fill="#fff" style="offset-path:path('M170 236.3 L36 238');animation-delay:1.6s"/>
+          <circle class="pulse p-cool" r="3" fill="#fff" style="offset-path:path('M195 301.2 L92 392');animation-delay:2.4s"/>
+          <circle class="pulse p-warm" r="3" fill="#fff" style="offset-path:path('M283.9 334 L300 448');animation-delay:2.8s"/>
+          <circle class="pulse p-violet" r="3" fill="#fff" style="offset-path:path('M355.9 286.2 L500 372');animation-delay:.8s"/>
+          <circle class="pulse p-violet" r="3" fill="#fff" style="offset-path:path('M370 236.2 L530 238');animation-delay:3.2s"/>
+          <circle class="pulse p-warm" r="3" fill="#fff" style="offset-path:path('M360.6 192.7 L516 120');animation-delay:2s"/>
         </svg>
       </div>
     </div>
