@@ -1,905 +1,1098 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-mode="sun">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Michael Galluppo — Product Leader, Systems Thinker, Servant Leader</title>
-<meta name="description" content="Michael Galluppo connects deep technical systems to human outcomes — building studio, streaming, broadcast, and AI products at Apple, Amazon MGM Studios, Fox, NBC, MLB Advanced Media, and HBO. Founder of OLY.AI." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Michael Galluppo · Building AI in Los Angeles</title>
+<meta name="description" content="Michael Galluppo builds AI in Los Angeles. Studios, streaming, and live broadcast at Apple, Amazon MGM Studios, Fox, NBC, and MLB Advanced Media. Founder & CEO of OLY.AI.">
+<link rel="canonical" href="https://www.galluppo.com/">
+<meta name="theme-color" content="#0D0A0A">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.galluppo.com/">
+<meta property="og:title" content="Michael Galluppo · Building AI in Los Angeles">
+<meta property="og:description" content="CEO, product leader, media technologist, builder. Studios, streaming, and live broadcast, now with intelligence built in.">
+<meta property="og:image" content="https://www.galluppo.com/michael.jpg">
+<meta name="twitter:card" content="summary">
+<script>try{if(localStorage.getItem('gh-mode')==='moon')document.documentElement.dataset.mode='moon'}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <style>
-  :root{
-    --ink:#0A0E26;          /* dark blue base */
-    --ink-2:#0E1330;
-    --surface:#141B3D;
-    --surface-2:#1B2450;
-    --line:rgba(255,255,255,.11);
-    --line-soft:rgba(255,255,255,.06);
-    --text:#F2F2F7;
-    --muted:#989BB8;
-    --muted-2:#71749A;
-    --warm:#FFB25C;         /* creative / human — stage gold */
-    --warm-deep:#FF8F5E;
-    --violet:#9B6BFF;       /* AI / transformation — electric violet */
-    --violet-deep:#6D3BE4;
-    --cool:#66E0CE;         /* rational / systems — signal teal */
-    --cool-deep:#4FC7E0;
-    --tri:linear-gradient(105deg,var(--warm) 0%,var(--violet) 50%,var(--cool) 100%);
-    --tri-v:linear-gradient(180deg,var(--warm) 0%,var(--violet) 50%,var(--cool) 100%);
-    --font-display:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --font-body:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --font-mono:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --wrap:1160px;
-    --r-card:22px;
-    --r-panel:28px;
-    --glass:rgba(255,255,255,.045);
-    --glass-hover:rgba(255,255,255,.065);
-  }
+/* Layout: a prestige title card over a live, parallax LA horizon; portrait backlit by the real sun; then infographics, a 12-col HUD bento, and a sci-fi "required reading" reel */
+:root{
+  --night:#0D0A0A; --night-2:#161110; --night-3:#221916;
+  --bone:#F2E9DB; --smoke:#A89A8A; --dim:#6F6359;
+  --amber:#F2A65A; --ember:#E0674A; --haze:#8C739F; --lilac:#D9B8E6; --glint:#FFD9A8;
+  /* channel triplets so alpha variants follow the mode */
+  --night-rgb:13,10,10; --bone-rgb:242,233,219; --amber-rgb:242,166,90; --ember-rgb:224,103,74;
+  --haze-rgb:140,115,159; --lilac-rgb:217,184,230; --glow-rgb:255,196,130;
+  --surf-rgb:34,25,22; --surf2-rgb:22,17,16;
+  --line:rgba(var(--bone-rgb),.085); --line-2:rgba(var(--bone-rgb),.17);
+  --photo:sepia(.28) saturate(1.08) contrast(1.06) brightness(.96);
 
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:
-      radial-gradient(1100px 640px at 82% -6%, rgba(155,107,255,.15), transparent 60%),
-      radial-gradient(900px 620px at 96% 14%, rgba(255,178,92,.07), transparent 55%),
-      radial-gradient(1000px 800px at 2% 20%, rgba(102,224,206,.07), transparent 55%),
-      var(--ink);
-    color:var(--text);
-    font-family:var(--font-body);
-    font-size:18px;line-height:1.65;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-    overflow-x:hidden;
-  }
-  a{color:inherit;text-decoration:none;}
-  ::selection{background:rgba(155,107,255,.32);color:#fff;}
-  :focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:3px;}
-  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,5vw,48px);}
+  --f-display:"Instrument Serif","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --f-body:"Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 
-  .eyebrow{font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-  .grad-text{background:var(--tri);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
-  h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.025em;line-height:1.08;margin:0;}
-  em{font-style:normal;font-weight:700;}
-  p{margin:0 0 1rem;}
-  .lead{color:var(--muted);}
+  --gutter:clamp(16px,4vw,56px); --max:1320px;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  color-scheme:dark;
+}
+/* Moon mode: same layout, blue-hour palette */
+:root[data-mode="moon"]{
+  --night:#070B14; --night-2:#0C1322; --night-3:#141D31;
+  --bone:#E4ECF7; --smoke:#8FA0B8; --dim:#57667F;
+  --amber:#7FB8FF; --ember:#5CC8E8; --haze:#6C7BD9; --lilac:#B7C6FF; --glint:#CFE4FF;
+  --night-rgb:7,11,20; --bone-rgb:228,236,247; --amber-rgb:127,184,255; --ember-rgb:92,200,232;
+  --haze-rgb:108,123,217; --lilac-rgb:183,198,255; --glow-rgb:160,200,255;
+  --surf-rgb:20,29,49; --surf2-rgb:12,19,34;
+  --photo:saturate(.72) contrast(1.08) brightness(.92) hue-rotate(-6deg);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--bone);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%}
+:focus-visible{outline:1px solid var(--amber);outline-offset:4px}
+::selection{background:rgba(var(--amber-rgb),.3);color:var(--bone)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.par{will-change:transform}
 
-  /* nav */
-  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:linear-gradient(180deg,rgba(12,8,31,.9),rgba(12,8,31,.5));border-bottom:1px solid var(--line-soft);}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:15px clamp(20px,5vw,48px);max-width:var(--wrap);margin:0 auto;}
-  .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-body);font-size:15px;font-weight:600;letter-spacing:-.01em;}
-  .brand .node{width:10px;height:10px;border-radius:50%;background:var(--tri);box-shadow:0 0 14px rgba(155,107,255,.7);flex:none;}
-  .nav-links{display:flex;gap:26px;align-items:center;}
-  .nav-links a{font-size:14px;font-weight:500;color:var(--muted);transition:color .2s;}
-  .nav-links a:hover{color:var(--text);}
-  .nav-cta{font-family:var(--font-body);font-weight:600;font-size:13.5px;letter-spacing:0;padding:9px 18px;border:1px solid var(--line);border-radius:999px;color:var(--text);transition:.2s;}
-  .nav-cta:hover{border-color:var(--violet);background:rgba(155,107,255,.12);}
-  @media(max-width:820px){.nav-links{display:none;}}
+.colgrid{position:fixed;inset:0;pointer-events:none;z-index:0;display:flex;justify-content:center;padding-inline:var(--gutter)}
+.colgrid i{display:block;width:100%;max-width:var(--max);height:100%;
+  background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px calc(100%/12));border-right:1px solid var(--line);opacity:.5;
+  -webkit-mask:linear-gradient(180deg,transparent 0,#000 30%,#000 80%,transparent);mask:linear-gradient(180deg,transparent 0,#000 30%,#000 80%,transparent)}
+.grain{position:fixed;inset:-50%;pointer-events:none;z-index:50;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-  /* hero */
-  .hero{position:relative;padding:clamp(40px,7vh,88px) 0 clamp(48px,8vh,96px);}
-  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(24px,4vw,56px);align-items:center;}
-  @media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:12px;}}
-  .kicker{display:inline-flex;align-items:center;gap:12px;margin-bottom:28px;}
-  .kicker .wire{width:44px;height:1px;background:var(--tri);}
-  .hero h1{font-size:clamp(2.6rem,6.6vw,5.2rem);font-weight:700;letter-spacing:-.035em;line-height:1.04;margin-bottom:26px;}
-  .hero .deck{max-width:52ch;font-size:clamp(1.06rem,1.7vw,1.28rem);color:var(--muted);line-height:1.58;font-weight:400;}
-  .hero .deck b{color:var(--text);font-weight:600;}
-  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;}
-  .btn{font-family:var(--font-body);font-size:15px;font-weight:600;letter-spacing:0;padding:14px 26px;border-radius:999px;transition:transform .15s ease,box-shadow .2s,background .2s;display:inline-flex;align-items:center;gap:10px;cursor:pointer;}
-  .btn-primary{background:var(--tri);color:#0A0E26;font-weight:700;box-shadow:0 10px 34px -10px rgba(155,107,255,.5);}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 44px -12px rgba(102,224,206,.5);}
-  .btn-ghost{border:1px solid var(--line);color:var(--text);background:var(--glass);}
-  .btn-ghost:hover{border-color:rgba(255,255,255,.24);background:var(--glass-hover);}
+.wrap{position:relative;z-index:1;width:100%;max-width:calc(var(--max) + 2*var(--gutter));margin-inline:auto;padding-inline:var(--gutter)}
+.mono{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.logo{width:1em;height:1em;fill:currentColor;flex:none;display:inline-block;vertical-align:middle}
 
-  /* hero visual / transformer */
-  .visual{position:relative;width:100%;}
-  .visual svg{width:100%;height:auto;display:block;overflow:visible;}
-  @media(max-width:940px){.visual{max-width:460px;margin:8px auto 0;}}
+/* ============ HERO ============ */
+.hero{position:relative;overflow-x:clip;min-height:clamp(680px,90vh,940px);display:flex;flex-direction:column;overflow:hidden;isolation:isolate}
+#horizon{position:absolute;inset:0;width:100%;height:100%;z-index:-1;display:block}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:20%;z-index:-1;background:linear-gradient(180deg,transparent,var(--night))}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:22px;border-bottom:1px solid var(--line)}
+.mark{font-family:var(--f-display);font-size:26px;line-height:1;text-decoration:none}
+.mark em{color:var(--amber)}
+.nav{display:flex;gap:clamp(14px,2.4vw,34px);flex-wrap:wrap}
+.nav a{text-decoration:none;color:var(--smoke);transition:color .3s}
+.nav a:hover{color:var(--bone)}
+.topright{display:flex;align-items:center;gap:clamp(14px,2.4vw,34px);flex-wrap:wrap;justify-content:flex-end}
+.mode{display:inline-flex;padding:3px;gap:2px;border:1px solid var(--line-2);border-radius:999px;background:rgba(var(--night-rgb),.45);backdrop-filter:blur(8px)}
+.mode button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:6px 12px 6px 10px;border-radius:999px;color:var(--smoke);font:inherit;letter-spacing:inherit;text-transform:inherit;transition:background .4s var(--ease),color .3s}
+.mode button:hover{color:var(--bone)}
+.mode button:focus-visible{outline:1px solid var(--amber);outline-offset:2px}
+.mode button[aria-pressed="true"]{background:var(--amber);color:var(--night);box-shadow:0 0 18px rgba(var(--amber-rgb),.45)}
+.mode svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.mode #modeMoon svg{fill:currentColor;stroke:none}
+body,.cell,.chips span,.clink{transition:background-color .6s,color .6s,border-color .6s}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+@media (max-width:520px){.mode span{display:none}.mode button{padding:7px}}
 
-  .ring{transform-box:fill-box;transform-origin:center;animation:spin 44s linear infinite;}
-  @keyframes spin{to{transform:rotate(360deg);}}
-  .ring.rev{animation-duration:60s;animation-direction:reverse;}
-  .pnode{transform-box:fill-box;transform-origin:center;animation:pnode 5s ease-in-out infinite;}
-  @keyframes pnode{0%,100%{opacity:.75;}50%{opacity:1;}}
-  .twinkle{animation:twinkle 4.5s ease-in-out infinite;}
-  @keyframes twinkle{0%,100%{opacity:.1;}50%{opacity:.55;}}
-  .pulse{offset-rotate:0deg;animation:pulseout 3.6s cubic-bezier(.4,0,.2,1) infinite;}
-  .pulse.p-warm{animation-name:po-warm;}
-  .pulse.p-violet{animation-name:po-violet;}
-  .pulse.p-cool{animation-name:po-cool;}
-  @keyframes pulseout{0%{offset-distance:0%;opacity:0;}14%{opacity:1;}82%{opacity:1;}100%{offset-distance:100%;opacity:0;}}
-  @keyframes po-warm{0%{offset-distance:0%;opacity:0;fill:#fff;}14%{opacity:1;}82%{opacity:1;}100%{offset-distance:100%;opacity:0;fill:#FFB25C;}}
-  @keyframes po-violet{0%{offset-distance:0%;opacity:0;fill:#fff;}14%{opacity:1;}82%{opacity:1;}100%{offset-distance:100%;opacity:0;fill:#9B6BFF;}}
-  @keyframes po-cool{0%{offset-distance:0%;opacity:0;fill:#fff;}14%{opacity:1;}82%{opacity:1;}100%{offset-distance:100%;opacity:0;fill:#66E0CE;}}
-  .lbl{font-family:var(--font-mono);font-weight:600;font-size:9.5px;letter-spacing:.09em;fill:var(--muted);text-transform:uppercase;}
+.hero-inner{flex:1;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.55fr);gap:40px;align-items:end;padding-block:clamp(36px,6vh,70px) clamp(56px,9vh,100px)}
+.hero-copy{min-width:0}
+.coord{color:var(--amber);display:flex;align-items:center;gap:12px;margin:0 0 clamp(18px,3vh,30px)}
+.coord::before{content:"";width:28px;height:1px;background:currentColor}
+.name{font-family:var(--f-display);font-weight:400;margin:0;font-size:clamp(4rem,12.2vw,12rem);line-height:.84;letter-spacing:-.025em}
+.name span{display:block;background:linear-gradient(100deg,var(--bone) 0%,var(--bone) 38%,var(--glint) 50%,var(--bone) 62%,var(--bone) 100%);
+  background-size:260% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:rise 1.4s var(--ease) both,rake 9s ease-in-out 1.6s infinite}
+.name span:nth-child(2){font-style:italic;padding-left:.42em;animation-delay:.14s,2.2s}
+@keyframes rise{from{opacity:0;transform:translateY(.28em);filter:blur(12px)}to{opacity:1;transform:none;filter:none}}
+@keyframes rake{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+.credit{font-family:var(--f-display);font-style:italic;font-size:clamp(1.9rem,4vw,3.4rem);line-height:1.1;margin:clamp(14px,2.4vh,26px) 0 0;padding-left:.1em;display:flex;align-items:baseline;gap:.32em;animation:rise 1.4s var(--ease) .35s both}
+.credit .as{color:var(--smoke)}
+.roller{display:inline-block;height:1.15em;overflow:hidden;vertical-align:bottom;transition:width .7s var(--ease);position:relative;top:.12em}
+.roller-track{display:flex;flex-direction:column;transition:transform .9s var(--ease)}
+.roller-track span{display:block;height:1.15em;line-height:1.15em;white-space:nowrap;font-style:normal;color:var(--amber);padding-right:.06em}
+.credit .caret{width:2px;height:.8em;background:var(--amber);align-self:center;opacity:.8;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.logline{max-width:50ch;color:var(--smoke);font-size:clamp(1rem,1.3vw,1.15rem);font-weight:300;margin:clamp(20px,3.4vh,34px) 0 0;animation:rise 1.4s var(--ease) .55s both;text-wrap:pretty;text-shadow:0 1px 18px rgba(var(--night-rgb),.9)}
+.logline b{color:var(--bone);font-weight:500}
 
-  /* logo wall */
-  .logos{margin-top:clamp(34px,6vh,64px);border-top:1px solid var(--line-soft);padding-top:24px;}
-  .logos .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);margin-bottom:18px;}
-  .logos .row{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;}
-  .logos .row span{font-family:var(--font-display);font-weight:600;font-size:clamp(.96rem,1.6vw,1.15rem);color:#C4C6DE;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:8px;}
-  .logos .row .apple-ico{width:16px;height:16px;fill:#C4C6DE;}
-  .logos .row span.founder{color:var(--violet);}
+/* portrait: arch window, backlit by the canvas sun */
+.portrait{margin:0;position:relative;justify-self:end;width:min(100%,360px);animation:rise 1.6s var(--ease) .25s both}
+.arch{position:relative;aspect-ratio:3/4;border-radius:999px 999px 3px 3px;overflow:hidden;border:1px solid rgba(var(--glow-rgb),.35);
+  box-shadow:0 0 0 8px rgba(var(--night-rgb),.25),0 0 90px 10px rgba(var(--glow-rgb),.35);background:var(--night-3)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block;filter:var(--photo);transition:filter .6s}
+.arch::before{content:"";position:absolute;inset:0;z-index:1;background:
+  radial-gradient(120% 70% at 85% 0%,rgba(var(--glow-rgb),.45),transparent 55%),
+  linear-gradient(180deg,transparent 55%,rgba(var(--night-rgb),.75));mix-blend-mode:soft-light}
+.arch::after{content:"";position:absolute;inset:0;z-index:2;background:repeating-linear-gradient(180deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px);pointer-events:none}
+.ptag{position:absolute;display:flex;flex-direction:column;gap:2px;color:var(--smoke);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ptag b{color:var(--bone);font-weight:500}
+.ptag.tl{left:-18px;top:18%;transform:translateX(-100%);text-align:right}
+.ptag.tl::after{content:"";position:absolute;right:-14px;top:7px;width:10px;height:1px;background:var(--amber)}
+.ptag.br{right:0;bottom:-44px;flex-direction:row;gap:14px}
+.ptag .on{color:var(--amber)}
+.reticle{position:absolute;inset:-10px;pointer-events:none;z-index:3;background:
+  linear-gradient(var(--amber),var(--amber)) bottom left/16px 1px no-repeat,linear-gradient(var(--amber),var(--amber)) bottom left/1px 16px no-repeat,
+  linear-gradient(var(--amber),var(--amber)) bottom right/16px 1px no-repeat,linear-gradient(var(--amber),var(--amber)) bottom right/1px 16px no-repeat}
 
-  /* threaded body */
-  .thread{position:relative;}
-  .thread::before{content:"";position:absolute;left:7px;top:8px;bottom:0;width:2px;background:var(--tri-v);opacity:.5;}
-  @media(max-width:760px){.thread::before{left:5px;}}
-  section.blk{position:relative;padding:clamp(56px,9vh,112px) 0;}
-  .blk-head{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;margin-bottom:44px;}
-  .node-dot{width:16px;height:16px;flex:none;border-radius:50%;background:var(--ink);border:2px solid var(--violet);box-shadow:0 0 0 5px var(--ink),0 0 18px rgba(155,107,255,.5);z-index:2;}
-  .node-dot.warm{border-color:var(--warm);box-shadow:0 0 0 5px var(--ink),0 0 18px rgba(255,178,92,.45);}
-  .node-dot.cool{border-color:var(--cool);box-shadow:0 0 0 5px var(--ink),0 0 18px rgba(102,224,206,.45);}
-  .blk-head h2{font-size:clamp(1.9rem,4vw,3.05rem);margin:12px 0 0;}
-  .blk-head .sub{color:var(--muted);margin-top:16px;max-width:60ch;font-weight:400;}
-  .indent{padding-left:38px;}
-  @media(max-width:760px){.indent{padding-left:26px;}.blk-head{gap:16px;}}
+.hero-foot{display:flex;justify-content:space-between;align-items:center;gap:18px 40px;flex-wrap:wrap;padding-block:18px 26px;border-top:1px solid var(--line)}
+.credits{display:flex;align-items:center;flex-wrap:wrap;gap:12px clamp(18px,2.6vw,34px);color:var(--smoke);margin:0}
+.credits .lbl{color:var(--dim)}
+.credits .logo{font-size:26px;opacity:.78;transition:opacity .3s,color .3s}
+.credits .logo:hover{opacity:1;color:var(--amber)}
+.credits img{height:18px;width:auto;opacity:.8}
+.readout{display:flex;gap:22px;flex-wrap:wrap;color:var(--smoke);font-variant-numeric:tabular-nums;margin:0}
+.readout b{color:var(--bone);font-weight:500}
+.readout .phase{color:var(--amber)}
+#phaseIcon{display:none;width:16px;height:16px;vertical-align:-3px;margin-right:8px}
+:root[data-mode="moon"] #phaseIcon{display:inline-block}
+:root[data-mode="moon"] .readout .phase::before{display:none}
+.readout .phase::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;margin-right:8px;vertical-align:middle;box-shadow:0 0 10px currentColor;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
 
-  /* pillars */
-  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  @media(max-width:860px){.pillars{grid-template-columns:1fr;}}
-  .pillar{position:relative;border:1px solid var(--line);border-radius:var(--r-card);padding:32px 30px;background:var(--glass);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),border-color .25s,background .25s;}
-  .pillar:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.2);background:var(--glass-hover);}
-  .pillar .ico{width:34px;height:34px;margin-bottom:20px;}
-  .pillar h3{font-size:1.32rem;font-weight:600;margin-bottom:12px;}
-  .pillar p{color:var(--muted);font-size:.97rem;margin:0;font-weight:400;}
-  .pillar .tag{font-family:var(--font-mono);font-weight:600;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted-2);display:block;margin-top:20px;}
-  .pillar::after{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:var(--tri);opacity:0;transition:opacity .25s;}
-  .pillar:hover::after{opacity:.7;}
+/* ============ SECTIONS ============ */
+section{position:relative;overflow:clip;padding-block:clamp(56px,10vh,110px) 0}
+.shead{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;align-items:end;margin-bottom:clamp(28px,4vh,44px)}
+.shead .mono{grid-column:1 / span 3;color:var(--dim);margin:0}
+.shead h2{grid-column:4 / span 9;font-family:var(--f-display);font-weight:400;font-size:clamp(2.4rem,5vw,4.4rem);line-height:.98;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.shead h2 em{color:var(--amber)}
+.ghost{position:absolute;right:-2vw;top:0;font-family:var(--f-display);font-style:italic;font-size:clamp(8rem,22vw,22rem);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(var(--bone-rgb),.06);pointer-events:none;z-index:0;white-space:nowrap}
 
-  /* work */
-  .work{display:grid;gap:16px;}
-  .case{display:grid;grid-template-columns:170px 1fr;gap:34px;border:1px solid var(--line);border-radius:var(--r-card);padding:32px 34px;background:var(--glass);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);transition:border-color .25s,transform .25s cubic-bezier(.2,.7,.2,1),background .25s;}
-  .case:hover{border-color:rgba(255,255,255,.2);background:var(--glass-hover);transform:translateY(-2px);}
-  @media(max-width:780px){.case{grid-template-columns:1fr;gap:16px;padding:26px 24px;}}
-  .case.current{border-color:rgba(155,107,255,.38);background:rgba(155,107,255,.08);}
-  .case .meta .logo{font-family:var(--font-display);font-weight:600;font-size:1.15rem;letter-spacing:-.01em;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:8px;line-height:1;}
-  .case .meta .logo .apple-ico{width:17px;height:17px;fill:var(--text);}
-  .case .meta .role{font-family:var(--font-mono);font-weight:500;font-size:12px;line-height:1.55;color:var(--muted);display:block;}
-  .case .meta .role.dim{color:var(--muted-2);}
-  .case .meta .when{font-family:var(--font-mono);font-weight:600;font-size:11px;letter-spacing:.04em;color:var(--violet);margin-top:10px;display:inline-block;}
-  .case h3{font-size:1.4rem;font-weight:600;margin-bottom:12px;letter-spacing:-.015em;}
-  .case p{color:var(--muted);font-size:.99rem;font-weight:400;margin-bottom:16px;}
-  .case p b{color:var(--text);font-weight:600;}
-  .case .stats{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:4px;}
-  .case .stat{display:flex;flex-direction:column;gap:2px;}
-  .case .stat b{font-family:var(--font-display);font-size:1.3rem;font-weight:700;letter-spacing:-.02em;line-height:1;}
-  .case .stat span{font-size:12px;color:var(--muted-2);}
-  .case .chips{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;}
-  .chip{font-family:var(--font-body);font-weight:500;font-size:12.5px;letter-spacing:0;padding:6px 13px;border:none;border-radius:999px;background:rgba(255,255,255,.07);color:var(--muted);}
-  .chip.award{background:rgba(255,178,92,.14);color:var(--warm);}
+/* panel shared by infographic + bento cells */
+.cell{--tick:var(--line-2);position:relative;min-width:0;padding:clamp(20px,2.2vw,30px);display:flex;flex-direction:column;gap:14px;
+  background:linear-gradient(180deg,rgba(var(--surf-rgb),.66),rgba(var(--surf2-rgb),.82));border:1px solid var(--line);border-radius:3px;transition:border-color .4s}
+.cell::before{content:"";position:absolute;inset:-1px;pointer-events:none;background:
+  linear-gradient(var(--tick),var(--tick)) top left/14px 1px no-repeat,linear-gradient(var(--tick),var(--tick)) top left/1px 14px no-repeat,
+  linear-gradient(var(--tick),var(--tick)) top right/14px 1px no-repeat,linear-gradient(var(--tick),var(--tick)) top right/1px 14px no-repeat,
+  linear-gradient(var(--tick),var(--tick)) bottom left/14px 1px no-repeat,linear-gradient(var(--tick),var(--tick)) bottom left/1px 14px no-repeat,
+  linear-gradient(var(--tick),var(--tick)) bottom right/14px 1px no-repeat,linear-gradient(var(--tick),var(--tick)) bottom right/1px 14px no-repeat}
+.cell::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(var(--amber-rgb),.11),transparent 60%)}
+.cell:hover{--tick:var(--amber);border-color:rgba(var(--amber-rgb),.22)}
+.cell:hover::after{opacity:1}
+.chead{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--dim)}
+.tag{display:inline-flex;align-items:center;gap:8px;color:var(--smoke)}
+.tag::before{content:"";width:7px;height:7px;border:1px solid currentColor;transform:rotate(45deg)}
+.tag.venture{color:var(--amber)}.tag.venture::before{background:currentColor}
+.tag.idea{color:var(--lilac)}
+.tag.live{color:var(--ember)}.tag.live::before{border-radius:50%;transform:none;background:currentColor;box-shadow:0 0 10px currentColor;animation:pulse 2s ease-in-out infinite}
+.tag .logo{font-size:15px;margin-left:2px}
+.dates{font-variant-numeric:tabular-nums}
+.cell h3{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,2.8vw,2.6rem);line-height:1;letter-spacing:-.015em;margin:0;text-wrap:balance}
+.cell h3 small{display:block;font-family:var(--f-body);font-size:.95rem;letter-spacing:0;color:var(--smoke);margin-top:10px;line-height:1.4}
+.cell p{margin:0;color:var(--smoke);font-weight:300;max-width:62ch;text-wrap:pretty}
+.cell p b{color:var(--bone);font-weight:500}
+.push{margin-top:auto}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);padding:5px 9px;border:1px solid var(--line-2);border-radius:2px}
+.chips span.hot{color:var(--night);background:var(--amber);border-color:var(--amber)}
+.bigmark{position:absolute;right:clamp(18px,2vw,28px);top:clamp(46px,5vw,60px);font-size:clamp(46px,5vw,70px);color:rgba(var(--bone-rgb),.09);pointer-events:none}
+.cell:hover .bigmark{color:rgba(var(--amber-rgb),.2)}
 
-  /* AI-early band */
-  .aiband{border:1px solid var(--line);border-radius:var(--r-panel);padding:clamp(28px,4vw,46px);background:radial-gradient(120% 140% at 8% 0%,rgba(155,107,255,.13),var(--glass));backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);position:relative;overflow:hidden;}
-  .aiband .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:38px;align-items:center;}
-  @media(max-width:820px){.aiband .grid{grid-template-columns:1fr;gap:26px;}}
-  .aiband h3{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;margin-bottom:14px;}
-  .aiband p{color:var(--muted);font-weight:400;margin-bottom:20px;}
-  .aiband .kit{display:flex;flex-wrap:wrap;gap:9px;}
-  .aiband .kit .chip{background:rgba(155,107,255,.14);color:#C9BBFF;}
-  .miniflow{display:flex;flex-direction:column;gap:14px;}
-  .miniflow .row2{display:flex;align-items:center;gap:14px;font-family:var(--font-body);font-weight:500;font-size:13px;color:var(--muted);}
-  .miniflow .dotm{width:8px;height:8px;border-radius:50%;flex:none;}
-  .aiband + .aiband{margin-top:16px;}
-  .aiband.now-band{background:radial-gradient(120% 140% at 92% 100%,rgba(102,224,206,.13),var(--glass));}
-  .aiband.now-band .kit .chip{background:rgba(102,224,206,.14);color:#B7F3E8;}
+/* ============ TIMELINE ============ */
+.tl-scroll{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.tl-panel{padding:clamp(18px,2vw,28px) clamp(12px,1.6vw,24px) 12px}
+#timeline{display:block;width:100%;min-width:860px;height:auto}
+#timeline text{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+#timeline .lane{fill:var(--dim)}
+#timeline .yr{fill:var(--dim);font-size:10.5px}
+#timeline .lbl{fill:var(--bone);font-family:var(--f-body);font-size:13px;letter-spacing:0;text-transform:none;font-weight:500}
+#timeline .sub{fill:var(--smoke);font-size:9.5px}
+#timeline .bar{transition:opacity .3s}
+#timeline g.item:hover .bar{opacity:1;filter:drop-shadow(0 0 10px rgba(var(--amber-rgb),.6))}
+.tl-note{display:flex;gap:24px;flex-wrap:wrap;color:var(--dim);padding:14px 4px 0;border-top:1px solid var(--line);margin-top:6px}
+.tl-note i{display:inline-block;width:18px;height:6px;border-radius:3px;background:var(--amber);margin-right:8px;vertical-align:middle}
+.tl-note i.dash{background:repeating-linear-gradient(90deg,var(--amber) 0 4px,transparent 4px 7px)}
 
-  /* philosophy */
-  .phi{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;}
-  @media(max-width:900px){.phi{grid-template-columns:1fr;gap:34px;}}
-  .tenets{display:grid;gap:2px;}
-  .tenet{border-top:1px solid var(--line);padding:20px 0;display:grid;grid-template-columns:34px 1fr;gap:16px;}
-  .tenet:last-child{border-bottom:1px solid var(--line);}
-  .tenet .n{font-family:var(--font-mono);font-weight:600;font-size:13px;color:var(--violet);}
-  .tenet h3{font-size:1.18rem;font-weight:600;margin-bottom:6px;}
-  .tenet p{color:var(--muted);font-size:.96rem;font-weight:400;margin:0;}
-  .textlink{color:var(--text);border-bottom:1px solid var(--line);transition:border-color .2s;}
-  .textlink:hover{border-color:var(--violet);}
-  .winwin{border:1px solid var(--line);border-radius:var(--r-panel);background:var(--glass);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);padding:22px;overflow:hidden;}
-  .winwin svg{display:block;border-radius:14px;}
-  .winwin figcaption{font-family:var(--font-mono);font-weight:600;font-size:11px;letter-spacing:.06em;color:var(--muted-2);text-align:center;margin-top:14px;}
-  .beam{fill:none;stroke-linecap:round;stroke-width:2px;}
-  .beam-warm{stroke:#FFB25C;filter:drop-shadow(0 0 4px rgba(255,178,92,.6));animation:beamflow 2.6s linear infinite;}
-  .beam-cool{stroke:#66E0CE;filter:drop-shadow(0 0 4px rgba(102,224,206,.6));animation:beamflow 2.6s linear infinite;animation-delay:.55s;}
-  .beam-out{stroke:url(#gv);stroke-width:2.6px;filter:drop-shadow(0 0 5px rgba(155,107,255,.55));animation:beamflow 1.9s linear infinite;animation-delay:1.05s;}
-  @keyframes beamflow{from{stroke-dashoffset:0;}to{stroke-dashoffset:-100;}}
-  .node-pulse{transform-box:fill-box;transform-origin:center;animation:nodepulse 3.4s ease-in-out infinite;}
-  @keyframes nodepulse{0%,100%{opacity:.82;}50%{opacity:1;}}
-  .lbl-tech{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-weight:600;font-size:8.5px;letter-spacing:.07em;text-transform:uppercase;}
+/* ============ NUMBERS ============ */
+.numbers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.numbers .cell{gap:10px}
+.numbers svg.viz{width:100%;height:auto;display:block}
+.numbers .big{font-family:var(--f-display);font-size:clamp(3rem,4.4vw,4.2rem);line-height:.9;letter-spacing:-.03em;color:var(--amber)}
+.numbers .big small{font-size:.45em;color:var(--bone)}
+.numbers p{font-size:.92rem}
+.viz text{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;fill:var(--smoke)}
+.viz .strong{fill:var(--bone);font-family:var(--f-display);font-size:22px;letter-spacing:0}
+.viz .axis{stroke:var(--line-2);stroke-width:1}
+.viz .grid{stroke:var(--line);stroke-width:1}
+.draw{stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+.seen .draw{animation:drawin 1.6s var(--ease) forwards}
+@keyframes drawin{to{stroke-dashoffset:0}}
+.dot{fill:rgba(var(--bone-rgb),.1)}
+.seen .dot{animation:lit .5s var(--ease) forwards;animation-delay:calc(var(--i) * 12ms)}
+@keyframes lit{to{fill:var(--amber)}}
+.grow{transform-box:fill-box;transform-origin:left;transform:scaleX(.001)}
+.seen .grow{animation:grow 1.3s var(--ease) forwards}
+@keyframes grow{to{transform:scaleX(1)}}
+.needle{transform-box:view-box;transform-origin:120px 118px;transform:rotate(-90deg)}
+.seen .needle{animation:needle 1.8s var(--ease) forwards}
+@keyframes needle{to{transform:rotate(-57.6deg)}}
+/* graphics are complete at rest when motion is off or JS never runs */
+.no-io .draw{stroke-dashoffset:0}.no-io .dot{fill:var(--amber)}.no-io .grow{transform:none}.no-io .needle{transform:rotate(-57.6deg)}
 
-  /* range */
-  .range{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
-  @media(max-width:860px){.range{grid-template-columns:1fr;gap:22px;}}
-  .col h3{font-size:.95rem;font-family:var(--font-body);font-weight:700;letter-spacing:.01em;text-transform:none;margin-bottom:16px;}
-  .col h3 .b{display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--tri);margin-right:9px;vertical-align:middle;}
-  .col ul{list-style:none;margin:0;padding:0;}
-  .col li{padding:9px 0;border-bottom:1px solid var(--line-soft);color:var(--muted);font-size:.95rem;font-weight:400;}
-  .col li b{color:var(--text);font-weight:600;}
-  .domains{margin-top:32px;display:flex;flex-wrap:wrap;gap:9px;}
+/* ============ BENTO ============ */
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px;grid-auto-flow:dense}
+.bento .cell{grid-column:span var(--c,4);grid-row:span var(--r,1)}
+.c-now h3{font-size:clamp(3rem,6vw,5.6rem);display:flex;align-items:center;gap:.18em}
+.c-now h3 .logo{font-size:.78em;margin-top:-.12em}
+.pipeline{position:relative;display:grid;grid-template-columns:repeat(5,1fr);margin-top:10px;padding-top:26px}
+.pipeline::before{content:"";position:absolute;left:0;right:0;top:9px;height:1px;background:linear-gradient(90deg,var(--line-2),var(--amber),var(--line-2))}
+.pipeline .sig{position:absolute;top:5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--glint);box-shadow:0 0 14px 3px rgba(var(--amber-rgb),.7);animation:travel 6s linear infinite}
+@keyframes travel{from{left:0}to{left:calc(100% - 9px)}}
+.pipeline span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);position:relative;min-width:0}
+.pipeline span::before{content:"";position:absolute;left:0;top:-21px;width:1px;height:9px;background:var(--line-2)}
+.sunwrap{position:relative;width:100%;aspect-ratio:16/7;max-width:100%}
+#sunpath{width:100%;height:100%;display:block}
+.sunstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;border-top:1px solid var(--line);padding-top:14px;font-variant-numeric:tabular-nums;margin:0}
+.sunstats div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.sunstats dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.sunstats dd{margin:0;font-family:var(--f-display);font-size:1.6rem;line-height:1}
+.sunstats dd.ph{color:var(--amber);font-style:italic}
+.oly-logo{height:30px;width:auto;align-self:flex-start;opacity:.95}
+.c-phil{justify-content:space-between;background:radial-gradient(120% 90% at 100% 100%,rgba(var(--ember-rgb),.16),transparent 55%),radial-gradient(80% 80% at 0% 0%,rgba(var(--amber-rgb),.06),transparent 60%),linear-gradient(180deg,rgba(var(--surf-rgb),.7),rgba(var(--surf2-rgb),.85))}
+.c-phil blockquote{margin:0;font-family:var(--f-display);font-size:clamp(2.4rem,4.6vw,4.3rem);line-height:1.02;letter-spacing:-.02em;text-wrap:balance}
+.c-phil blockquote em{color:var(--amber)}
+.c-phil cite{display:block;margin-top:16px;font-style:normal;color:var(--dim)}
+.tenets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;border-top:1px solid var(--line);padding-top:22px}
+.tenets div{display:flex;flex-direction:column;gap:8px;min-width:0}
+.tenets h4{margin:0;font-family:var(--f-display);font-style:italic;font-weight:400;font-size:1.6rem;line-height:1.05}
+.tenets p{font-size:.94rem}
+.principle{display:flex;gap:16px;align-items:baseline;border-top:1px solid var(--line);padding-top:18px}
+.principle .mono{color:var(--amber);white-space:nowrap}
+.principle p{color:var(--bone);font-weight:400}
+.orch svg{width:100%;height:auto;display:block}
+.orch .edge{stroke:var(--line-2);stroke-width:1;fill:none}
+.orch .flow{stroke:var(--amber);stroke-width:1.2;fill:none;stroke-dasharray:3 9;animation:flow 2.2s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-24}}
+.orch .node rect{fill:var(--night);stroke:var(--line-2)}
+.orch .node.core rect{stroke:var(--amber)}
+.orch text{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;fill:var(--smoke);text-transform:uppercase}
+.orch .node.core text{fill:var(--amber)}
+.orch .lobe{fill:rgba(var(--amber-rgb),.07);stroke:var(--bone);stroke-opacity:.6;stroke-width:1.2;stroke-linejoin:round}
+.orch .trace-b{fill:none;stroke:var(--amber);stroke-opacity:.55;stroke-width:1}
+.orch .syn circle{fill:var(--amber);animation:synapse 2.4s ease-in-out infinite}
+@keyframes synapse{0%,100%{opacity:.35}50%{opacity:1;filter:drop-shadow(0 0 4px var(--amber))}}
 
-  /* references */
-  .refs{border:1px solid var(--line);border-radius:var(--r-panel);padding:clamp(30px,4vw,48px);text-align:center;background:var(--glass);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);}
-  .feature-quote{max-width:54ch;margin:0 auto 32px;text-align:center;}
-  .feature-quote p{font-family:var(--font-display);font-weight:600;font-size:clamp(1.28rem,2.6vw,1.66rem);letter-spacing:-.015em;line-height:1.42;color:var(--text);margin:0 0 14px;}
-  .feature-quote cite{font-style:normal;display:block;font-family:var(--font-body);font-weight:600;font-size:13.5px;color:var(--muted);}
-  .feature-quote cite span{display:block;font-weight:400;font-size:12.5px;color:var(--muted-2);margin-top:2px;}
-  .refs-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;text-align:left;margin-bottom:26px;}
-  @media(max-width:700px){.refs-grid{grid-template-columns:1fr;}}
-  .quote-card{background:rgba(255,255,255,.035);border:1px solid var(--line-soft);border-radius:16px;padding:26px;}
-  .quote-card .q{font-family:var(--font-display);font-weight:500;font-size:1.08rem;letter-spacing:-.01em;line-height:1.5;color:var(--text);margin:0 0 14px;}
-  .quote-card .src{font-family:var(--font-body);font-weight:600;font-size:13px;color:var(--text);margin:0;}
-  .quote-card .src span{display:block;font-weight:400;font-size:12.5px;color:var(--muted-2);margin-top:2px;}
-  .recognition{margin-bottom:24px;display:flex;justify-content:center;}
-  .li-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-weight:600;font-size:14px;padding:12px 22px;border:1px solid var(--line);border-radius:999px;transition:.2s;}
-  .li-btn:hover{border-color:rgba(255,255,255,.28);background:var(--glass-hover);}
-  .li-btn svg{width:16px;height:16px;flex:none;fill:currentColor;}
+/* ============ SCI-FI ============ */
+.scifi{overflow:hidden;padding-bottom:20px}
+.sky{position:absolute;inset:0;z-index:0;pointer-events:none}
+.stars{position:absolute;inset:-30% 0;background-image:
+  radial-gradient(1.2px 1.2px at 12% 18%,rgba(var(--bone-rgb),.7),transparent 60%),radial-gradient(1px 1px at 32% 62%,rgba(var(--bone-rgb),.5),transparent 60%),
+  radial-gradient(1.4px 1.4px at 58% 28%,rgba(var(--glow-rgb),.8),transparent 60%),radial-gradient(1px 1px at 78% 72%,rgba(var(--bone-rgb),.5),transparent 60%),
+  radial-gradient(1px 1px at 88% 12%,rgba(var(--bone-rgb),.6),transparent 60%),radial-gradient(1.2px 1.2px at 44% 88%,rgba(var(--bone-rgb),.5),transparent 60%),
+  radial-gradient(1px 1px at 6% 80%,rgba(var(--lilac-rgb),.6),transparent 60%),radial-gradient(1px 1px at 66% 50%,rgba(var(--bone-rgb),.4),transparent 60%);
+  background-size:420px 420px}
+.stars.s2{background-size:260px 260px;opacity:.5}
+.moon{position:absolute;right:6%;top:4%;width:clamp(180px,26vw,380px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 36% 34%,rgba(var(--glow-rgb),.22),rgba(var(--amber-rgb),.08) 45%,transparent 70%);
+  box-shadow:inset -30px -20px 60px rgba(var(--night-rgb),.6),0 0 120px rgba(var(--amber-rgb),.08);border:1px solid rgba(var(--bone-rgb),.06)}
+.reads{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;position:relative;z-index:1}
+.char{padding:0;overflow:hidden}
+.char .art{position:relative;aspect-ratio:4/3;border-bottom:1px solid var(--line);background:radial-gradient(90% 90% at 50% 100%,rgba(var(--amber-rgb),.10),transparent 70%),var(--night);overflow:hidden}
+.char .art svg{position:absolute;inset:-6% 0;width:100%;height:112%}
+.char .body{padding:clamp(20px,2.2vw,28px);display:flex;flex-direction:column;gap:12px;flex:1}
+.char h3{font-size:clamp(2.2rem,3vw,2.8rem)}
+.char .book{color:var(--dim)}
+.char .book em{font-style:normal;color:var(--smoke)}
+.char .link{border-top:1px solid var(--line);padding-top:12px;color:var(--bone);font-size:.95rem;font-weight:400}
+.char .link span{color:var(--amber);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:4px}
+.art text{font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;fill:var(--smoke);text-transform:uppercase}
+.mike-l{fill:rgba(var(--bone-rgb),.1)}
+.mike-l.blink{animation:mblink 2.4s steps(1) infinite;animation-delay:var(--d)}
+@keyframes mblink{0%,60%{fill:rgba(var(--bone-rgb),.1)}61%,100%{fill:rgba(var(--amber-rgb),.85)}}
+.mike-l.smile{animation:msmile 6s ease-in-out infinite}
+@keyframes msmile{0%,45%,100%{fill:rgba(var(--bone-rgb),.12)}55%,88%{fill:var(--glint)}}
+.wm-l{animation:wmL 7s var(--ease) infinite}.wm-r{animation:wmR 7s var(--ease) infinite}
+@keyframes wmL{0%,15%{transform:translateX(0)}50%,70%{transform:translateX(52px)}100%{transform:translateX(0)}}
+@keyframes wmR{0%,15%{transform:translateX(0)}50%,70%{transform:translateX(-52px)}100%{transform:translateX(0)}}
+.wm-flash{opacity:0;animation:wmF 7s ease-in-out infinite}
+@keyframes wmF{0%,45%{opacity:0}55%,62%{opacity:1}75%,100%{opacity:0}}
+.cat-eye{transform-box:fill-box;transform-origin:center;animation:catblink 5s infinite}
+@keyframes catblink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+.cat-tail{transform-box:fill-box;transform-origin:0% 100%;animation:tail 4s ease-in-out infinite}
+@keyframes tail{50%{transform:rotate(-14deg)}}
+.trace{stroke-dasharray:4 6;animation:flow 1.6s linear infinite}
+.write{stroke-dasharray:90;stroke-dashoffset:90;animation:write 7s linear infinite;animation-delay:var(--d)}
+@keyframes write{0%{stroke-dashoffset:90;opacity:1}30%,86%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+.nanite{animation:drift 5s linear infinite;animation-delay:var(--d)}
+@keyframes drift{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-80px);opacity:0}}
 
-  /* writing */
-  .writing{display:grid;gap:20px;}
-  .essay-feature{display:block;border:1px solid var(--line);border-radius:var(--r-panel);padding:clamp(28px,4vw,44px);background:var(--glass);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);transition:border-color .25s,background .25s;}
-  .essay-feature:hover{border-color:rgba(255,255,255,.2);background:var(--glass-hover);}
-  .essay-feature .meta{font-family:var(--font-mono);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);margin-bottom:14px;}
-  .essay-feature h3{font-size:clamp(1.5rem,3vw,2rem);font-weight:600;margin-bottom:14px;letter-spacing:-.015em;line-height:1.18;}
-  .essay-feature p{color:var(--muted);font-size:1.02rem;font-weight:400;margin-bottom:20px;max-width:64ch;}
-  .essay-feature .read{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-weight:600;font-size:14px;color:var(--violet);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s;}
-  .essay-feature:hover .read{border-color:var(--violet);}
-  .essay-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-  @media(max-width:760px){.essay-grid{grid-template-columns:1fr;}}
-  .essay-card{display:block;border:1px solid var(--line);border-radius:var(--r-card);padding:24px;background:var(--glass);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);transition:border-color .25s,transform .25s cubic-bezier(.2,.7,.2,1),background .25s;}
-  .essay-card:hover{border-color:rgba(255,255,255,.2);background:var(--glass-hover);transform:translateY(-2px);}
-  .essay-card .meta{font-family:var(--font-mono);font-weight:600;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);margin-bottom:10px;}
-  .essay-card h4{font-family:var(--font-display);font-weight:600;font-size:1.08rem;letter-spacing:-.01em;line-height:1.3;margin:0 0 10px;color:var(--text);}
-  .essay-card p{color:var(--muted);font-size:.92rem;font-weight:400;margin:0;}
-  .essay-card.wide{grid-column:1 / -1;}
-  .writing-more{text-align:center;margin-top:4px;}
+footer{position:relative;z-index:1;padding-block:60px 44px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--dim)}
 
-  /* now */
-  .now{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;border:1px solid var(--line);border-radius:var(--r-panel);padding:clamp(30px,5vw,52px);background:radial-gradient(120% 140% at 0% 0%,rgba(155,107,255,.1),var(--glass));backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);}
-  @media(max-width:820px){.now{grid-template-columns:1fr;gap:26px;}}
-  .now .badge{font-family:var(--font-mono);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--warm);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
-  .now .badge .pulse{width:9px;height:9px;border-radius:50%;background:var(--warm);animation:pulse 2.4s infinite;}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,178,92,.5);}70%{box-shadow:0 0 0 12px rgba(255,178,92,0);}100%{box-shadow:0 0 0 0 rgba(255,178,92,0);}}
-  .now h2{font-size:clamp(1.8rem,3.4vw,2.5rem);margin-bottom:16px;}
-  .now p{color:var(--muted);font-weight:400;margin-bottom:0;}
-  .now .oly-mark{font-family:var(--font-display);font-size:clamp(2.8rem,7.4vw,5rem);font-weight:700;line-height:.95;letter-spacing:-.035em;text-align:center;}
-  .now .oly-mark .dot{color:var(--violet);}
-  .now .oly-sub{font-family:var(--font-mono);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:14px;text-align:center;}
-  .now a.oly-mark{display:block;transition:opacity .2s;}
-  .now a.oly-mark:hover{opacity:.85;}
-  .oly-visit{display:inline-block;margin-top:16px;font-family:var(--font-mono);font-weight:600;font-size:12px;letter-spacing:.04em;color:var(--violet);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s;}
-  .oly-visit:hover{border-color:var(--violet);}
-  .logos .row a{display:inline-flex;align-items:center;gap:8px;border-bottom:1px solid transparent;transition:border-color .2s,color .2s;}
-  .logos .row a:hover{color:var(--text);border-color:currentColor;}
-  .logos .row .founder a:hover{color:var(--violet);}
-
-  /* contact */
-  .contact{text-align:center;padding:clamp(72px,12vh,150px) 0 84px;}
-  .contact .eyebrow{margin-bottom:24px;display:block;}
-  .contact h2{font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:700;margin-bottom:24px;letter-spacing:-.03em;}
-  .contact .mail{font-family:var(--font-body);font-weight:600;font-size:clamp(1.05rem,2.3vw,1.32rem);border-bottom:2px solid transparent;padding-bottom:3px;transition:.2s;}
-  .contact .mail:hover{border-color:var(--violet);}
-  .contact .alt{margin-top:24px;color:var(--muted);font-size:.95rem;font-weight:400;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;align-items:center;}
-  .contact .alt a{color:var(--muted);border-bottom:1px solid var(--line);}
-  .contact .alt a:hover{color:var(--text);}
-
-  footer{border-top:1px solid var(--line-soft);padding:28px 0;}
-  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-family:var(--font-mono);font-weight:500;font-size:12px;color:var(--muted-2);letter-spacing:.02em;}
-  .colophon{margin-top:14px;font-family:var(--font-mono);font-weight:500;font-size:11.5px;color:var(--muted-2);opacity:.7;letter-spacing:.01em;}
-  .colophon + .colophon{margin-top:6px;}
-
-  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);}
-  .reveal.in{opacity:1;transform:none;}
-  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important;}.reveal{opacity:1;transform:none;}}
+/* ============ RESPONSIVE ============ */
+@media (max-width:1080px){
+  .bento{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .bento .cell{grid-column:span var(--t,3);grid-row:span 1}
+  .numbers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .reads{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .shead .mono,.shead h2{grid-column:1 / -1}
+  .ptag.tl{display:none}
+}
+@media (max-width:760px){
+  .hero-inner{grid-template-columns:minmax(0,1fr);gap:28px}
+  .portrait{justify-self:start;width:min(62%,260px);order:-1}
+  .ptag.br{position:static;margin-top:12px}
+}
+@media (max-width:680px){
+  .bento,.numbers,.reads{grid-template-columns:minmax(0,1fr)}
+  .bento .cell{grid-column:1 / -1}
+  .tenets{grid-template-columns:minmax(0,1fr)}
+  .pipeline{grid-template-columns:repeat(3,1fr);row-gap:14px}
+  .sunstats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .name span:nth-child(2){padding-left:0}
+  .principle{flex-direction:column;gap:6px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .draw{stroke-dashoffset:0}.dot{fill:var(--amber)}.grow{transform:none}.needle{transform:rotate(-57.6deg)}
+  .write{stroke-dashoffset:0}.nanite{opacity:.6}
+}
 </style>
 </head>
 <body>
+<!-- Brand marks: Simple Icons (CC0 paths); trademarks belong to their owners -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="lg-apple" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></symbol>
+  <symbol id="lg-amazon" viewBox="0 0 24 24"><path d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></symbol>
+  <symbol id="lg-fox" viewBox="0 0 24 24"><path d="M3.069 9.7h3.42L6.3 6.932H0v10.136h3.069V13.8h2.789v-2.778H3.069ZM24 6.932h-3.291L19.48 9.1l-1.231-2.168h-3.292l2.871 5.076-2.871 5.06h3.308l1.215-2.142 1.213 2.142H24l-2.871-5.06Zm-12.592 0A5.067 5.067 0 1 0 16.475 12a5.067 5.067 0 0 0-5.067-5.065Zm.888 7.146a.867.867 0 0 1-.873.847.847.847 0 0 1-.837-.858V9.919a.882.882 0 0 1 .837-.9.913.913 0 0 1 .873.9Z"/></symbol>
+  <symbol id="lg-nbc" viewBox="0 0 24 24"><path d="M14.8281 4.6055c-1.4058.0067-2.5666 1.2083-2.416 2.7851h1.08s.5026-.0062.6485.338c0 0-1.594.6128-1.4668 1.6093l.9922 7.3281 3.4727-8.4316c.5296-1.279-.0616-3.1668-1.6973-3.5567a2.5497 2.5497 0 0 0-.6133-.0722zm-5.6426.002a2.5551 2.5551 0 0 0-.627.0722c-1.6356.3878-2.2268 2.2757-1.6972 3.5566l3.4727 8.4317 1.2422-9.1582c.2194-1.629-.9564-2.8876-2.3907-2.9024zM4.293 8.3104c-.5719.0213-1.1298.2465-1.5586.6583-.803.7737-1.4275 2.8792.371 4.1562l6.9532 4.9258-3.334-8.0762c-.4878-1.1698-1.4785-1.6994-2.4316-1.664zm15.2715 0c-.9075.0203-1.8246.5528-2.2891 1.6641l-3.332 8.0762 6.953-4.9258c1.7987-1.275 1.172-3.3825.3692-4.1563-.4638-.446-1.0802-.672-1.7011-.6582zm1.9394 5.7872c-.4523.0075-.9351.1573-1.42.502l-6.7694 4.7948h8.0253c1.8734 0 3.0648-1.5828 2.5332-3.4843-.2595-.9264-1.2131-1.8318-2.369-1.8125zm-19.0078.002C1.3405 14.081.3879 14.9851.127 15.9101c-.5316 1.9015.6597 3.4843 2.5332 3.4843h8.0253L3.916 14.5996c-.4848-.344-.9677-.4927-1.42-.5z"/></symbol>
+  <symbol id="lg-mlb" viewBox="0 0 24 24"><path d="M22.003 5.53a1.988 1.988 0 011.99 1.827l.007.177v8.927a2.007 2.007 0 01-1.848 2.002l-.15.006H2.002a2.003 2.003 0 01-1.42-.586 1.979 1.979 0 01-.575-1.245L0 16.46V7.535a1.994 1.994 0 01.583-1.427 2.016 2.016 0 011.242-.57l.176-.007h20.002zm-7.5.703H2.001a1.312 1.312 0 00-.926.375 1.299 1.299 0 00-.374.926v8.927a1.282 1.282 0 00.374.922c.246.245.579.383.926.384h8.116a92.275 92.275 0 00-.495-.843H8.66c0-2.402.812-3.73 1.784-3.995.133-.024.07-.68-.1-.88h-.561c-.09 0-.038-.169-.038-.169l.456-.972-.062-.266H8.455l1.383-.967c.064-2.55 2.68-2.748 4.255-1.686.937.62 1.008 1.849.937 2.698-.012.054-.244.018-.244.018s-.16.937.257.937h1.838c.749-.03 1.472.478 1.472.478l.176-.643-4.026-5.244zm7.5 0h-5.59l3.207 5.36.296.038.187.245v.229l.202.041.188.255v.221l.21.037.211.23v.51c.252.228.536.418.843.563.283.108.315.562.486.803.213.352.505.493.444.69-.143.526-.682 1.414-1.184 1.456h-1.986v.85h2.488a1.3 1.3 0 001.294-1.311V7.534h-.002a1.285 1.285 0 00-1.294-1.3zM4.022 14.404a.888.888 0 01-.638 1.513.879.879 0 01-.88-.888.888.888 0 011.518-.625z"/></symbol>
+  <symbol id="lg-hbo" viewBox="0 0 24 24"><path d="M7.042 16.896H4.414v-3.754H2.708v3.754H.01L0 7.22h2.708v3.6h1.706v-3.6h2.628zm12.043.046C21.795 16.94 24 14.689 24 11.978a4.89 4.89 0 0 0-4.915-4.92c-2.707-.002-4.09 1.991-4.432 2.795.003-1.207-1.187-2.632-2.58-2.634H7.59v9.674l4.181.001c1.686 0 2.886-1.46 2.888-2.713.385.788 1.72 2.762 4.427 2.76zm-7.665-3.936c.387 0 .692.382.692.817 0 .435-.305.817-.692.817h-1.33v-1.634zm.005-3.633c.387 0 .692.382.692.817 0 .436-.305.818-.692.818h-1.33V9.373zm1.77 2.607c.305-.039.813-.387.992-.61-.063.276-.068 1.074.006 1.35-.204-.314-.688-.701-.998-.74zm3.43 0a2.462 2.462 0 1 1 4.924 0 2.462 2.462 0 0 1-4.925 0zm2.462 1.936a1.936 1.936 0 1 0 0-3.872 1.936 1.936 0 0 0 0 3.872Z"/></symbol>
+  <symbol id="lg-wwe" viewBox="0 0 24 24"><path d="M24 1.047L15.67 18.08l-3.474-8.53-3.474 8.53L.393 1.048l3.228 8.977 3.286 8.5C3.874 19.334 1.332 20.46 0 21.75c.443-.168 3.47-1.24 7.409-1.927l1.21 3.129 1.552-3.518a36.769 36.769 0 0 1 3.96-.204l1.644 3.722 1.4-3.62c2.132.145 3.861.426 4.675.692 0 0 .92-1.962 1.338-2.866a54.838 54.838 0 0 0-5.138-.092l2.722-7.042zm-21.84.026L8.64 13.86l3.568-9.155 3.567 9.155 6.481-12.788-6.433 8.452-3.615-8.22-3.615 8.22zm10.036 13.776l1.115 2.523a42.482 42.482 0 0 0-2.363.306Z"/></symbol>
+</svg>
 
-<header class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="#top"><span class="node"></span> Michael&nbsp;Galluppo</a>
-    <nav class="nav-links">
-      <a href="#beyond">Beyond the title</a>
-      <a href="#work">Work</a>
-      <a href="#lead">How I lead</a>
-      <a href="#now">Founder</a>
-    </nav>
-    <a class="nav-cta" href="#contact">Get in touch</a>
+<div class="colgrid" aria-hidden="true"><i></i></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="hero" id="top">
+  <canvas id="horizon" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="mark" href="#top" aria-label="Michael Galluppo, home">M<em>G</em></a>
+      <div class="topright">
+        <nav class="nav mono" aria-label="Sections">
+          <a href="#timeline-s">Timeline</a><a href="#highlights">Highlights</a><a href="#reading">Reading</a><a href="#contact">Contact</a>
+        </nav>
+        <div class="mode mono" role="group" aria-label="Lighting">
+          <button type="button" id="modeSun" aria-pressed="true" title="Sun mode: golden hour">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg><span>Sun</span>
+          </button>
+          <button type="button" id="modeMoon" aria-pressed="false" title="Moon mode: blue hour">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8Z"/></svg><span>Moon</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap hero-inner">
+    <div class="hero-copy par" id="heroCopy">
+      <p class="coord mono">Los Angeles · 34.0211° N, 118.3965° W</p>
+      <h1 class="name"><span>Michael</span><span>Galluppo</span></h1>
+      <p class="credit">
+        <span class="as">as</span>
+        <span class="roller" aria-hidden="true"><span class="roller-track" id="rollerTrack"><span>CEO</span><span>Product Leader</span><span>Media Technologist</span><span>Builder</span><span>CEO</span></span></span>
+        <span class="caret" aria-hidden="true"></span>
+        <span class="sr">CEO, product leader, media technologist, and builder</span>
+      </p>
+      <p class="logline">I build AI in Los Angeles, a few miles from the soundstages it's about to change. My career runs through <b>studios, streaming, and live broadcast</b>. Now I run <b>OLY.AI</b>.</p>
+    </div>
+    <figure class="portrait par" id="portrait">
+      <div class="reticle" aria-hidden="true"></div>
+      <div class="arch"><img src="michael.jpg" alt="Portrait of Michael Galluppo" width="800" height="800"></div>
+      <figcaption>
+        <span class="ptag tl mono"><span>Subject 01</span><b>Galluppo, M.</b><span>Culver City, CA</span></span>
+        <span class="ptag br mono"><span>Status <b class="on">Online</b></span><span><span id="pLbl">Backlight</span> <b id="pAlt">--</b></span></span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="wrap">
+    <div class="hero-foot">
+      <p class="credits mono" aria-label="Companies Michael has worked for and with">
+        <span class="lbl">Credits</span>
+        <svg class="logo" role="img" aria-label="Apple"><use href="#lg-apple"/></svg>
+        <svg class="logo" role="img" aria-label="Amazon MGM Studios"><use href="#lg-amazon"/></svg>
+        <svg class="logo" role="img" aria-label="Fox" style="font-size:34px"><use href="#lg-fox"/></svg>
+        <svg class="logo" role="img" aria-label="NBC"><use href="#lg-nbc"/></svg>
+        <svg class="logo" role="img" aria-label="MLB Advanced Media" style="font-size:32px"><use href="#lg-mlb"/></svg>
+        <svg class="logo" role="img" aria-label="HBO GO" style="font-size:32px"><use href="#lg-hbo"/></svg>
+        <svg class="logo" role="img" aria-label="WWE"><use href="#lg-wwe"/></svg>
+        <img src="oly-logo.png" alt="OLY.AI" width="387" height="122">
+      </p>
+      <p class="readout mono">
+        <span>PT <b id="clock">--:--:--</b></span>
+        <span><span id="altLbl">Sun</span> <b id="alt">--</b></span>
+        <span class="phase" id="phase"><canvas id="phaseIcon" width="16" height="16" aria-hidden="true"></canvas><span id="phaseTxt">Golden hour</span></span>
+      </p>
+    </div>
   </div>
 </header>
 
-<a id="top"></a>
-<div class="wrap">
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <div class="kicker"><span class="wire"></span><span class="eyebrow">Product · Systems Thinker · AI Transformation</span></div>
-        <h1>The future is already here.<br><span class="grad-text">I work on the distribution.</span></h1>
-        <p class="deck">Gibson was right — it just isn't evenly distributed yet. I've spent my career on exactly that: streaming, broadcast, cloud, and <b>machine learning back when "AI" still sounded like science fiction</b>. The throughline was never the tech. It's <b>connecting people and systems into win-wins</b>, using clear communication and honest reasoning.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#work">See the work →</a>
-          <a class="btn btn-ghost" href="#lead">How I lead</a>
-        </div>
-      </div>
+<!-- ============ TIMELINE ============ -->
+<section id="timeline-s">
+  <div class="ghost par" data-speed=".25" aria-hidden="true">2011 → now</div>
+  <div class="wrap">
+    <div class="shead">
+      <p class="mono">Career, to scale</p>
+      <h2>Fifteen years of moving pictures <em>and the data behind them.</em></h2>
+    </div>
+    <div class="cell tl-panel">
+      <div class="tl-scroll"><svg id="timeline" viewBox="0 0 1200 380" role="img" aria-label="Career timeline from 2011 to now across AI, broadcast, streaming, Web3, studio, and founder lanes"></svg></div>
+      <div class="tl-note mono"><span><i></i>Role</span><span><i class="dash"></i>Inside a role</span><span style="color:var(--amber)">◆ Now</span></div>
+    </div>
+  </div>
+</section>
 
-      <!-- Career constellation: Michael as the nexus a wide, distributed map of domains routes through -->
-      <div class="visual" aria-hidden="true">
-        <svg viewBox="0 0 560 480" role="img" aria-label="A constellation of career domains — streaming, broadcast, live sports, studios, ML/AI, data, SaaS/PaaS, Web3, product — connected through a central portrait of Michael Galluppo">
-          <defs>
-            <linearGradient id="tri" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB25C"/><stop offset=".5" stop-color="#9B6BFF"/><stop offset="1" stop-color="#66E0CE"/></linearGradient>
-            <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#9B6BFF" stop-opacity=".38"/><stop offset="1" stop-color="#9B6BFF" stop-opacity="0"/></radialGradient>
-            <clipPath id="pclip"><circle cx="270" cy="235" r="95"/></clipPath>
-            <radialGradient id="vign" cx="50%" cy="43%" r="62%">
-              <stop offset="0" stop-color="#0A0E26" stop-opacity="0"/>
-              <stop offset="52%" stop-color="#0A0E26" stop-opacity="0"/>
-              <stop offset="100%" stop-color="#0A0E26" stop-opacity=".95"/>
-            </radialGradient>
-          </defs>
-
-          <!-- star-field -->
-          <g fill="#fff">
-            <circle cx="120" cy="40" r="1.1" opacity=".2"/><circle class="twinkle" cx="200" cy="20" r="1.4" style="animation-delay:.5s"/>
-            <circle cx="470" cy="30" r="1" opacity=".18"/><circle class="twinkle" cx="540" cy="70" r="1.2" style="animation-delay:1.4s"/>
-            <circle cx="30" cy="120" r="1.3" opacity=".22"/><circle class="twinkle" cx="150" cy="160" r="1" style="animation-delay:2.1s"/>
-            <circle cx="430" cy="200" r="1.1" opacity=".16"/><circle cx="20" cy="300" r="1.2" opacity=".2"/>
-            <circle class="twinkle" cx="120" cy="330" r="1.3" style="animation-delay:.9s"/><circle cx="540" cy="260" r="1" opacity=".18"/>
-            <circle class="twinkle" cx="500" cy="440" r="1.2" style="animation-delay:1.8s"/><circle cx="60" cy="440" r="1.1" opacity=".2"/>
-            <circle cx="360" cy="470" r="1" opacity=".16"/><circle class="twinkle" cx="240" cy="450" r="1.3" style="animation-delay:2.6s"/>
-            <circle cx="410" cy="90" r="1" opacity=".18"/><circle class="twinkle" cx="330" cy="360" r="1.1" style="animation-delay:3.2s"/>
-          </g>
-
-          <!-- inter-domain web (subtle) -->
-          <g fill="none" stroke="url(#tri)" stroke-width="1" opacity=".14">
-            <path d="M205 46 L350 48"/><path d="M350 48 L462 116"/><path d="M462 116 L506 230"/>
-            <path d="M506 230 L462 350"/><path d="M205 46 L84 118"/><path d="M84 118 L38 232"/>
-            <path d="M38 232 L82 350"/><path d="M82 350 L200 422"/><path d="M200 422 L345 420"/>
-            <path d="M345 420 L462 350"/>
-          </g>
-
-          <!-- filaments: nexus -> each domain -->
-          <g fill="none" stroke="url(#tri)" stroke-width="1.3" opacity=".32">
-            <path d="M270 235 L205 46"/><path d="M270 235 L84 118"/><path d="M270 235 L38 232"/><path d="M270 235 L82 350"/>
-            <path d="M270 235 L200 422"/><path d="M270 235 L345 420"/><path d="M270 235 L462 350"/>
-            <path d="M270 235 L462 116"/><path d="M270 235 L350 48"/><path d="M270 235 L506 230"/>
-          </g>
-
-          <circle cx="270" cy="235" r="150" fill="url(#glow)"/>
-
-          <!-- domain nodes + labels — evenly spaced around an ellipse (36° apart) -->
-          <g>
-            <circle class="pnode" cx="205" cy="46" r="5.5" fill="#9B6BFF"/><text class="lbl" x="205" y="30" text-anchor="middle">ML / AI</text>
-            <circle class="pnode" cx="84" cy="118" r="5.5" fill="#FFB25C" style="animation-delay:.25s"/><text class="lbl" x="84" y="90" text-anchor="middle">Process</text><text class="lbl" x="84" y="101" text-anchor="middle">Automation</text>
-            <circle class="pnode" cx="350" cy="48" r="5.5" fill="#66E0CE" style="animation-delay:.3s"/><text class="lbl" x="350" y="32" text-anchor="middle">Data</text>
-            <circle class="pnode" cx="38" cy="232" r="5.5" fill="#66E0CE" style="animation-delay:.5s"/><text class="lbl" x="44" y="214" text-anchor="middle">Streaming</text>
-            <circle class="pnode" cx="82" cy="350" r="5.5" fill="#FFB25C" style="animation-delay:1s"/><text class="lbl" x="82" y="370" text-anchor="middle">Broadcast</text>
-            <circle class="pnode" cx="200" cy="422" r="5.5" fill="#66E0CE" style="animation-delay:1.5s"/><text class="lbl" x="200" y="442" text-anchor="middle">Live Sports</text>
-            <circle class="pnode" cx="345" cy="420" r="5.5" fill="#FFB25C" style="animation-delay:2s"/><text class="lbl" x="345" y="440" text-anchor="middle">Studios</text>
-            <circle class="pnode" cx="462" cy="350" r="5.5" fill="#9B6BFF" style="animation-delay:2.5s"/><text class="lbl" x="462" y="370" text-anchor="middle">Web3</text>
-            <circle class="pnode" cx="506" cy="230" r="5.5" fill="#9B6BFF" style="animation-delay:3.4s"/><text class="lbl" x="500" y="212" text-anchor="middle">SaaS / PaaS</text>
-            <circle class="pnode" cx="462" cy="116" r="5.5" fill="#FFB25C" style="animation-delay:3s"/><text class="lbl" x="462" y="100" text-anchor="middle">Product</text>
-          </g>
-
-          <!-- portrait nexus — full-color image, edge feathered into the cosmos -->
-          <circle class="ring" cx="270" cy="235" r="112" fill="none" stroke="url(#tri)" stroke-width="1.5" stroke-dasharray="3 12"/>
-          <circle class="ring rev" cx="270" cy="235" r="126" fill="none" stroke="url(#tri)" stroke-width="1" stroke-dasharray="2 20" opacity=".55"/>
-          <circle cx="270" cy="235" r="104" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
-          <circle cx="270" cy="235" r="99" fill="rgba(155,107,255,.18)"/>
-          <g clip-path="url(#pclip)">
-            <image href="michael.jpg" x="175" y="140" width="190" height="190" preserveAspectRatio="xMidYMid slice"/>
-            <rect x="175" y="140" width="190" height="190" fill="url(#tri)" opacity=".14" style="mix-blend-mode:soft-light"/>
-            <rect x="175" y="140" width="190" height="190" fill="url(#vign)"/>
-          </g>
-          <circle cx="270" cy="235" r="96" fill="none" stroke="url(#tri)" stroke-width="1.5" opacity=".55"/>
-
-          <!-- light pulses distributing outward — each starts at the portrait's rim and flows out to its node, taking on the node's color -->
-          <circle class="pulse p-violet" r="3" fill="#fff" style="offset-path:path('M237.5 140.4 L205 46');"/>
-          <circle class="pulse p-warm" r="3" fill="#fff" style="offset-path:path('M185.3 181.7 L84 118');animation-delay:.4s"/>
-          <circle class="pulse p-cool" r="3" fill="#fff" style="offset-path:path('M309.3 143.1 L350 48');animation-delay:2.2s"/>
-          <circle class="pulse p-cool" r="3" fill="#fff" style="offset-path:path('M170 233.7 L38 232');animation-delay:1.2s"/>
-          <circle class="pulse p-warm" r="3" fill="#fff" style="offset-path:path('M184.7 287.2 L82 350');animation-delay:1.6s"/>
-          <circle class="pulse p-cool" r="3" fill="#fff" style="offset-path:path('M235 328.7 L200 422');animation-delay:2.4s"/>
-          <circle class="pulse p-warm" r="3" fill="#fff" style="offset-path:path('M307.6 327.7 L345 420');animation-delay:2.8s"/>
-          <circle class="pulse p-violet" r="3" fill="#fff" style="offset-path:path('M355.8 286.4 L462 350');animation-delay:.8s"/>
-          <circle class="pulse p-violet" r="3" fill="#fff" style="offset-path:path('M370 232.9 L506 230');animation-delay:3.2s"/>
-          <circle class="pulse p-warm" r="3" fill="#fff" style="offset-path:path('M355 182.3 L462 116');animation-delay:2s"/>
+<!-- ============ NUMBERS ============ -->
+<section id="numbers">
+  <div class="wrap">
+    <div class="shead">
+      <p class="mono">By the numbers</p>
+      <h2>Outcomes you can <em>chart.</em></h2>
+    </div>
+    <div class="numbers" id="numbersGrid">
+      <article class="cell">
+        <div class="chead mono"><span class="tag"><svg class="logo"><use href="#lg-amazon"/></svg>Amazon MGM</span><span>Origin</span></div>
+        <svg class="viz" viewBox="0 0 240 140" role="img" aria-label="Defective title submissions fell from 16 percent to 1 percent">
+          <line class="grid" x1="30" y1="20" x2="220" y2="20"/><line class="grid" x1="30" y1="70" x2="220" y2="70"/><line class="axis" x1="30" y1="120" x2="220" y2="120"/>
+          <text x="24" y="23" text-anchor="end">20%</text><text x="24" y="73" text-anchor="end">10%</text><text x="24" y="123" text-anchor="end">0</text>
+          <polyline class="draw" points="50,40 80,50 110,72.5 140,95 170,107.5 200,115" fill="none" stroke-width="2" stroke-linejoin="round" style="stroke:var(--amber);--len:172"/>
+          <g stroke-width="1.5" style="fill:var(--night);stroke:var(--amber)"><circle cx="80" cy="50" r="3"/><circle cx="110" cy="72.5" r="3"/><circle cx="140" cy="95" r="3"/><circle cx="170" cy="107.5" r="3"/></g>
+          <circle cx="50" cy="40" r="5" style="fill:var(--bone)"/><circle cx="200" cy="115" r="5" style="fill:var(--amber)"/>
+          <text x="216" y="36" text-anchor="end" style="font-size:8px;fill:var(--dim)">◦ rollout · illustrative</text>
+          <text class="strong" x="58" y="36">16%</text><text class="strong" x="202" y="100" text-anchor="middle">1%</text>
+          <text x="50" y="136" text-anchor="middle">Before</text><text x="200" y="136" text-anchor="middle">After</text>
         </svg>
-      </div>
-    </div>
-
-    <div class="logos">
-      <div class="label">Built studio, streaming &amp; AI platforms at</div>
-      <div class="row">
-        <span><a href="https://www.apple.com/tv-pr/" target="_blank" rel="noopener"><svg class="apple-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.04c-.02-2.05 1.68-3.03 1.75-3.08-.95-1.39-2.43-1.58-2.96-1.6-1.26-.13-2.46.74-3.1.74-.63 0-1.62-.72-2.66-.7-1.37.02-2.63.8-3.34 2.03-1.42 2.47-.36 6.12 1.02 8.12.67.98 1.48 2.08 2.53 2.04 1.01-.04 1.4-.65 2.62-.65 1.22 0 1.57.65 2.65.63 1.09-.02 1.79-1 2.46-1.98.77-1.13 1.09-2.23 1.11-2.29-.02-.01-2.13-.82-2.15-3.25zM15.1 6.09c.56-.68.94-1.62.84-2.56-.81.03-1.79.54-2.37 1.22-.52.6-.98 1.56-.86 2.48.9.07 1.83-.46 2.39-1.14z"/></svg>Apple</a></span>
-        <span><a href="https://press.amazonmgmstudios.com/us/en" target="_blank" rel="noopener">Amazon&nbsp;MGM&nbsp;Studios</a></span>
-        <span><a href="https://www.foxsports.com/stories/presspass/fox-sports-scores-super-bowl-first-4k-ultra-high-definition-high-dynamic-range-broadcast" target="_blank" rel="noopener">Fox</a></span>
-        <span><a href="https://www.newscaststudio.com/2008/12/23/artworks-at-work-an-exclusive-look-inside-nbc-artworks/" target="_blank" rel="noopener">NBC</a></span>
-        <span><a href="https://www.acquired.fm/episodes/episode-37-bamtech-disney-and-the-biggest-media-company-youve-never-heard-of" target="_blank" rel="noopener">MLB&nbsp;Advanced&nbsp;Media</a></span>
-        <span><a href="https://newrepublic.com/article/121596/major-league-baseballs-mlb-advanced-media-quiet-digital-giant" target="_blank" rel="noopener">HBO</a></span>
-        <span class="founder"><a href="https://oly.ai" target="_blank" rel="noopener">Founder, OLY.AI</a></span>
-      </div>
-    </div>
-  </section>
-</div>
-
-<div class="wrap">
-<div class="thread">
-
-  <!-- ============ BEYOND THE TITLE ============ -->
-  <section class="blk" id="beyond">
-    <div class="blk-head reveal">
-      <span class="node-dot warm"></span>
-      <div class="txt">
-        <span class="eyebrow">01 — Beyond the title</span>
-        <h2>The résumé says product.<br>The work is <em>people, systems, and win-wins.</em></h2>
-        <p class="sub">A title tells you what I own. It doesn't tell you how I work. Three things sit underneath everything I've shipped.</p>
-      </div>
-    </div>
-
-    <div class="pillars indent">
-      <article class="pillar reveal">
-        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4c-6 8-14 10-14 19a14 14 0 0028 0c0-9-8-11-14-19z" stroke="rgba(242,242,247,.75)" stroke-width="1.5"/><circle cx="20" cy="24" r="5" stroke="rgba(242,242,247,.75)" stroke-width="1.5"/></svg>
-        <h3>Creative at heart</h3>
-        <p>I design experiences, not just specs. A broadcast-synced NFT drop, a gamified token economy, self-aware graphics that respond in real time — the fun part is inventing something that didn't exist yet, then making it real.</p>
-        <span class="tag">Invention · Experience · Play</span>
+        <div class="big">93<small>%</small></div>
+        <p>Fewer defective title submissions after automated ingest, validation, and routing.</p>
       </article>
-      <article class="pillar reveal">
-        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M6 20h9m10 0h9M20 6v9m0 10v9" stroke="rgba(242,242,247,.75)" stroke-width="1.5"/><circle cx="20" cy="20" r="6" stroke="rgba(242,242,247,.75)" stroke-width="1.5"/></svg>
-        <h3>Rational communicator</h3>
-        <p>I make the complex legible. I turn tangled systems into a shared language, put the reasoning on the table, and get a room of stakeholders to sign the same decision — without needing authority over any of them.</p>
-        <span class="tag">Clarity · Reasoning · Trust</span>
+      <article class="cell">
+        <div class="chead mono"><span class="tag"><svg class="logo" style="font-size:22px"><use href="#lg-fox"/></svg>Fox</span><span>Player SDKs</span></div>
+        <svg class="viz" viewBox="0 0 240 140" role="img" aria-label="Matrix of Fox brands (Fox Sports, Fox News, Fox Nation, Fox Entertainment, Tubi) by platforms (Web, iOS, Android, Apple TV, Android TV, Fire TV, Roku, Chromecast, Xbox, smart TVs), every cell covered by a shared family of player SDKs" id="dotgrid"></svg>
+        <div class="big">10+<small> platforms</small></div>
+        <p>A family of player SDKs for Web, iOS, Android, and TV, shared by every brand instead of a separate player per app team.</p>
       </article>
-      <article class="pillar reveal">
-        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 6l3 8 8 1-6 6 2 8-7-4-7 4 2-8-6-6 8-1z" stroke="rgba(242,242,247,.75)" stroke-width="1.5" stroke-linejoin="round"/></svg>
-        <h3>Servant leader</h3>
-        <p>I lead by clearing the path. The best outcome is the one where the team wins, the partners win, and the business wins at the same time. I optimize for the win-win, not for who gets the credit.</p>
-        <span class="tag">Empower · Unblock · Win-win</span>
-      </article>
-    </div>
-  </section>
-
-  <!-- ============ WORK ============ -->
-  <section class="blk" id="work">
-    <div class="blk-head reveal">
-      <span class="node-dot"></span>
-      <div class="txt">
-        <span class="eyebrow">02 — Selected work</span>
-        <h2>Orchestrating people, systems, and&nbsp;launches.</h2>
-        <p class="sub">Studios, streaming, broadcast, Web3, and AI — one pattern throughout: many teams and moving parts, aligned toward a launch that holds. Program-level figures reflect contribution, not sole attribution.</p>
-      </div>
-    </div>
-
-    <div class="work indent">
-
-      <!-- APPLE (current) -->
-      <article class="case current reveal">
-        <div class="meta">
-          <span class="logo"><svg class="apple-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.04c-.02-2.05 1.68-3.03 1.75-3.08-.95-1.39-2.43-1.58-2.96-1.6-1.26-.13-2.46.74-3.1.74-.63 0-1.62-.72-2.66-.7-1.37.02-2.63.8-3.34 2.03-1.42 2.47-.36 6.12 1.02 8.12.67.98 1.48 2.08 2.53 2.04 1.01-.04 1.4-.65 2.62-.65 1.22 0 1.57.65 2.65.63 1.09-.02 1.79-1 2.46-1.98.77-1.13 1.09-2.23 1.11-2.29-.02-.01-2.13-.82-2.15-3.25zM15.1 6.09c.56-.68.94-1.62.84-2.56-.81.03-1.79.54-2.37 1.22-.52.6-.98 1.56-.86 2.48.9.07 1.83-.46 2.39-1.14z"/></svg>Apple</span>
-          <span class="role">Technical Product Manager</span>
-          <span class="role dim">Studio Technologies · Apple&nbsp;TV · Culver City, CA</span>
-          <span class="when">Mar 2026 – Present</span>
-        </div>
-        <div>
-          <h3>Using AI to build the studio of the future</h3>
-          <p>On Apple's Studio Technologies team, I work at the front edge of production — bringing <b>AI into the filmmaking and studio workflow</b> for Apple TV. The brief is exactly the kind of problem I chase: reimagine how content gets made and moved, with intelligence built into the pipeline rather than bolted on after.</p>
-          <div class="chips"><span class="chip">AI in production</span><span class="chip">Apple TV</span><span class="chip">Studio workflow</span><span class="chip">Studio of the future</span></div>
-        </div>
-      </article>
-
-      <!-- AMAZON MGM -->
-      <article class="case reveal">
-        <div class="meta">
-          <span class="logo"><svg class="apple-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02z" fill="currentColor"/></svg>Amazon MGM</span>
-          <span class="role">Technical Product Manager (PMT)</span>
-          <span class="role dim">Origin · Studio in the Cloud</span>
-          <span class="when">Nov 2024 – Feb 2026</span>
-        </div>
-        <div>
-          <h3>Bringing MGM into the Amazon cloud — and into Prime Video</h3>
-          <p>After the acquisition, I helped modernize and integrate MGM with <b>Amazon Prime Video</b> — a "Studio in the Cloud" effort spanning global workflows, distribution, and the data supply chain in a complex, fast-moving industry. I built the system of record for approved content assets, consolidating metadata from script through vending onto <b>Origin</b>, a next-gen operational data platform, and drove a <b>93% reduction in defective title submissions (16% → 1%)</b> through automated ingestion, validation, and routing — with API integrations across Deluxe, Rightsline, and Spherex.</p>
-          <div class="stats">
-            <div class="stat"><b>93%</b><span>reduction in defective title submissions</span></div>
-            <div class="stat"><b>~9</b><span>downstream systems coordinated</span></div>
-            <div class="stat"><b>8</b><span>stakeholder sign-offs at launch</span></div>
-          </div>
-          <div class="chips"><span class="chip">Studio in the Cloud</span><span class="chip">Prime Video integration</span><span class="chip">MEC / MMC / Avails</span><span class="chip">Deluxe · Rightsline · Spherex</span><span class="chip">AWS Lambda / S3</span><span class="chip">Data supply chain</span></div>
-        </div>
-      </article>
-
-      <!-- FOX MPF -->
-      <article class="case reveal">
-        <div class="meta">
-          <span class="logo"><svg class="apple-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.069 9.7h3.42L6.3 6.932H0v10.136h3.069V13.8h2.789v-2.778H3.069ZM24 6.932h-3.291L19.48 9.1l-1.231-2.168h-3.292l2.871 5.076-2.871 5.06h3.308l1.215-2.142 1.213 2.142H24l-2.871-5.06Zm-12.592 0A5.067 5.067 0 1 0 16.475 12a5.067 5.067 0 0 0-5.067-5.065Zm.888 7.146a.867.867 0 0 1-.873.847.847.847 0 0 1-.837-.858V9.919a.882.882 0 0 1 .837-.9.913.913 0 0 1 .873.9Z" fill="currentColor"/></svg>Fox</span>
-          <span class="role">Director, Product Management</span>
-          <span class="role dim">Media Player Frameworks · CPE Video</span>
-          <span class="when">Jan 2018 – May 2022</span>
-        </div>
-        <div>
-          <h3>One video player for 10+ platforms and ~10 brands</h3>
-          <p>Every app team had built its own player — inconsistent features, broken analytics, redundant work. As Director, I chartered a unified set of Web / iOS / Android SDKs and drove it across Fox Sports, Fox News, Fox Nation and more — the first broadcaster to stream 4K, HDR10, and Dolby 5.1 for marquee live events like the Super Bowl and World Cup, standardizing streaming metrics org-wide.</p>
-          <div class="stats">
-            <div class="stat"><b>&lt;1%</b><span>re-buffering ratio held</span></div>
-            <div class="stat"><b>29%</b><span>video-start-time improvement</span></div>
-            <div class="stat"><b>&lt;20s</b><span>behind live · NFL playoffs</span></div>
-          </div>
-          <div class="chips"><span class="chip award">Webby Winner — Sport Media</span><span class="chip award">Emmy Nominee — Sports Innovation</span><span class="chip">iOS / Android / Web SDKs</span><span class="chip">Multi-CDN</span><span class="chip">Conviva · Mux</span><span class="chip">Chromecast</span></div>
-        </div>
-      </article>
-
-      <!-- BCL -->
-      <article class="case reveal">
-        <div class="meta">
-          <span class="logo"><svg class="apple-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.069 9.7h3.42L6.3 6.932H0v10.136h3.069V13.8h2.789v-2.778H3.069ZM24 6.932h-3.291L19.48 9.1l-1.231-2.168h-3.292l2.871 5.076-2.871 5.06h3.308l1.215-2.142 1.213 2.142H24l-2.871-5.06Zm-12.592 0A5.067 5.067 0 1 0 16.475 12a5.067 5.067 0 0 0-5.067-5.065Zm.888 7.146a.867.867 0 0 1-.873.847.847.847 0 0 1-.837-.858V9.919a.882.882 0 0 1 .837-.9.913.913 0 0 1 .873.9Z" fill="currentColor"/></svg>Blockchain Creative Labs</span>
-          <span class="role">Founding Team Member</span>
-          <span class="role dim">Head of Product &amp; Strategy · Fox</span>
-        </div>
-        <div>
-          <h3>An award-winning, industry-first NFT broadcast experience</h3>
-          <p>I was the <b>first team member and head of product &amp; strategy</b> for Blockchain Creative Labs, Fox's Web3 venture. Our flagship — <b>The Masked Singer "Maskverse"</b> — was a massive effort: crypto-wallet onboarding, gamified NFT "drops" synced to live episodes, real-time minting at the character reveal, a marketplace, and smart-contract prizes. In coordination with partners including <b>WWE</b>, BCL <b>led the industry into community-based NFT broadcast games and watch parties</b> — and the work earned a shelf of awards.</p>
-          <div class="stats">
-            <div class="stat"><b>1st</b><span>team member &amp; head of product</span></div>
-            <div class="stat"><b>Real-time</b><span>mint at the character reveal</span></div>
-            <div class="stat"><b>Multi-</b><span>award-winning launch</span></div>
-          </div>
-          <div class="chips"><span class="chip award">★ Award-winning</span><span class="chip">Eluvio blockchain</span><span class="chip">Smart contracts</span><span class="chip">WWE partnership</span><span class="chip">Watch parties</span><span class="chip">0-to-1 product</span></div>
-        </div>
-      </article>
-
-      <!-- MLB ADVANCED MEDIA -->
-      <article class="case reveal">
-        <div class="meta">
-          <span class="logo"><svg class="apple-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.003 5.53a1.988 1.988 0 011.99 1.827l.007.177v8.927a2.007 2.007 0 01-1.848 2.002l-.15.006H2.002a2.003 2.003 0 01-1.42-.586 1.979 1.979 0 01-.575-1.245L0 16.46V7.535a1.994 1.994 0 01.583-1.427 2.016 2.016 0 011.242-.57l.176-.007h20.002zm-7.5.703H2.001a1.312 1.312 0 00-.926.375 1.299 1.299 0 00-.374.926v8.927a1.282 1.282 0 00.374.922c.246.245.579.383.926.384h8.116a92.275 92.275 0 00-.495-.843H8.66c0-2.402.812-3.73 1.784-3.995.133-.024.07-.68-.1-.88h-.561c-.09 0-.038-.169-.038-.169l.456-.972-.062-.266H8.455l1.383-.967c.064-2.55 2.68-2.748 4.255-1.686.937.62 1.008 1.849.937 2.698-.012.054-.244.018-.244.018s-.16.937.257.937h1.838c.749-.03 1.472.478 1.472.478l.176-.643-4.026-5.244zm7.5 0h-5.59l3.207 5.36.296.038.187.245v.229l.202.041.188.255v.221l.21.037.211.23v.51c.252.228.536.418.843.563.283.108.315.562.486.803.213.352.505.493.444.69-.143.526-.682 1.414-1.184 1.456h-1.986v.85h2.488a1.3 1.3 0 001.294-1.311V7.534h-.002a1.285 1.285 0 00-1.294-1.3zM4.022 14.404a.888.888 0 01-.638 1.513.879.879 0 01-.88-.888.888.888 0 011.518-.625z" fill="currentColor"/></svg>MLB Advanced Media</span>
-          <span class="role">Technical Product Owner</span>
-          <span class="role dim">BAMTech era</span>
-          <span class="when">Nov 2015 – Mar 2017</span>
-        </div>
-        <div>
-          <h3>Streaming for WWE, HBO GO, and Fox Sports — and the data behind Statcast</h3>
-          <p>At MLB Advanced Media — the streaming pioneer behind BAMTech — I led DTC OTT projects for <b>WWE</b>, <b>HBO GO</b>, and <b>Fox Sports</b> across iOS, tvOS, FireTV, Roku, and Android, and contributed to <b>Statcast</b>, MLB's computer-vision ballpark tracking system that turned every pitch, hit, and sprint into data. It was live sports at massive scale, and an early education in shipping real-time media and analytics together.</p>
-          <div class="stats">
-            <div class="stat"><b>Live</b><span>sports streaming at scale</span></div>
-            <div class="stat"><b>Statcast</b><span>computer-vision tracking data</span></div>
-          </div>
-          <div class="chips"><span class="chip">WWE</span><span class="chip">HBO GO</span><span class="chip">Fox Sports GO</span><span class="chip">BAMTech</span><span class="chip">Statcast</span></div>
-        </div>
-      </article>
-
-      <!-- NBC -->
-      <article class="case reveal">
-        <div class="meta">
-          <span class="logo"><svg class="apple-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.8281 4.6055c-1.4058.0067-2.5666 1.2083-2.416 2.7851h1.08s.5026-.0062.6485.338c0 0-1.594.6128-1.4668 1.6093l.9922 7.3281 3.4727-8.4316c.5296-1.279-.0616-3.1668-1.6973-3.5567a2.5497 2.5497 0 0 0-.6133-.0722zm-5.6426.002a2.5551 2.5551 0 0 0-.627.0722c-1.6356.3878-2.2268 2.2757-1.6972 3.5566l3.4727 8.4317 1.2422-9.1582c.2194-1.629-.9564-2.8876-2.3907-2.9024zM4.293 8.3104c-.5719.0213-1.1298.2465-1.5586.6583-.803.7737-1.4275 2.8792.371 4.1562l6.9532 4.9258-3.334-8.0762c-.4878-1.1698-1.4785-1.6994-2.4316-1.664zm15.2715 0c-.9075.0203-1.8246.5528-2.2891 1.6641l-3.332 8.0762 6.953-4.9258c1.7987-1.275 1.172-3.3825.3692-4.1563-.4638-.446-1.0802-.672-1.7011-.6582zm1.9394 5.7872c-.4523.0075-.9351.1573-1.42.502l-6.7694 4.7948h8.0253c1.8734 0 3.0648-1.5828 2.5332-3.4843-.2595-.9264-1.2131-1.8318-2.369-1.8125zm-19.0078.002C1.3405 14.081.3879 14.9851.127 15.9101c-.5316 1.9015.6597 3.4843 2.5332 3.4843h8.0253L3.916 14.5996c-.4848-.344-.9677-.4927-1.42-.5z" fill="currentColor"/></svg>NBCUniversal</span>
-          <span class="role">Technical Product Owner</span>
-          <span class="role dim">Graphics Platform Modernization</span>
-          <span class="when">Jun 2014 – Nov 2015</span>
-        </div>
-        <div>
-          <h3>One graphics platform across msnbc and NBC News</h3>
-          <p>Part of NBC's "Project 15 of 2015" digital transformation. I consolidated fragmented graphics systems — Chyron, Thunder, iNews plugins — into a single platform, designed the "quarterback" orchestration logic for self-aware graphics with frame-accurate multi-operator control, and unified DAM/MAM workflows that lifted Art Department productivity 40%. The work won an <b>Emmy</b> for on-air graphics and coverage of the 2015 elections.</p>
-          <div class="stats">
-            <div class="stat"><b>40%</b><span>Art Department productivity gain</span></div>
-            <div class="stat"><b>2</b><span>networks unified</span></div>
-            <div class="stat"><b>3</b><span>phase rollout</span></div>
-          </div>
-          <div class="chips"><span class="chip award">Emmy Award — On-Air Graphics</span><span class="chip">VIZRT · Chyron</span><span class="chip">iNews · Sony switchers</span><span class="chip">DAM / MAM</span></div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ============ AI EARLY BAND ============ -->
-  <section class="blk" id="ai">
-    <div class="blk-head reveal">
-      <span class="node-dot cool"></span>
-      <div class="txt">
-        <span class="eyebrow">03 — Before it had a name</span>
-        <h2>I was building AI when<br>"AI" was still <em>science fiction.</em></h2>
-      </div>
-    </div>
-
-    <div class="aiband indent reveal">
-      <div class="grid">
-        <div>
-          <h3>Voice, NLP, and machine learning — early</h3>
-          <p>Long before every product had a chatbot, I was building <b>Alexa Skills and Google Actions</b>, working hands-on with <b>NLP frameworks</b>, and applying <b>machine learning and deep learning</b> to real problems. In 2011, I built the award-winning <b>Kraft iFood Assistant</b> at Hyperfactory using <b>Nuance NLP tools</b> — the first NLP-powered cooking app of its kind. That head start is why AI feels native to how I work now — from Apple's studio-of-the-future to running an AI company of my own.</p>
-          <div class="kit">
-            <span class="chip">Alexa Skills</span><span class="chip">Google Actions</span><span class="chip">NLP frameworks</span><span class="chip">Machine learning</span><span class="chip">Deep learning</span><span class="chip">Conversational UX</span>
-          </div>
-        </div>
-        <div class="miniflow">
-          <div class="row2"><span class="dotm" style="background:var(--warm)"></span> Voice &amp; language interfaces</div>
-          <div class="row2"><span class="dotm" style="background:var(--violet)"></span> ML / DL models on real data</div>
-          <div class="row2"><span class="dotm" style="background:var(--cool)"></span> → AI-native product leadership today</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="aiband now-band indent reveal">
-      <div class="grid">
-        <div>
-          <h3>Personal orchestration, always-on</h3>
-          <p>That head start didn't stop at a job title. I run my own life — and ran OLY.AI — on an agent stack I built myself: <b>Openclaw</b> and <b>Nanoclaw</b> for task orchestration, with an <b>Obsidian</b> vault underneath as the memory layer that ties it all together. I talk and consult about this often, helping other people and teams unlock the same superpower.</p>
-          <div class="kit">
-            <span class="chip">Openclaw</span><span class="chip">Nanoclaw</span><span class="chip">Obsidian</span><span class="chip">Agent orchestration</span><span class="chip">Speaking &amp; consulting</span>
-          </div>
-        </div>
-        <div class="miniflow">
-          <div class="row2"><span class="dotm" style="background:var(--cool)"></span> Openclaw + Nanoclaw — task orchestration</div>
-          <div class="row2"><span class="dotm" style="background:var(--violet)"></span> Obsidian — the memory layer</div>
-          <div class="row2"><span class="dotm" style="background:var(--warm)"></span> → Speaking &amp; consulting on personal AI ops</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ HOW I LEAD ============ -->
-  <section class="blk" id="lead">
-    <div class="blk-head reveal">
-      <span class="node-dot warm"></span>
-      <div class="txt">
-        <span class="eyebrow">04 — How I lead</span>
-        <h2>The win-win isn't soft.<br>It's the <em>rational</em> outcome.</h2>
-        <p class="sub">When two sides each get what they actually need, the deal holds and the team keeps building. Getting there is a discipline — communication and reasoning, applied on purpose.</p>
-      </div>
-    </div>
-
-    <div class="phi indent">
-      <div class="tenets reveal">
-        <div class="tenet"><span class="n">01</span><div><h3>Make the reasoning visible</h3><p>Decisions hold when everyone can see the logic. I write it down, name the trade-offs, and let the argument — not the org chart — win.</p></div></div>
-        <div class="tenet"><span class="n">02</span><div><h3>Influence without authority</h3><p>I rarely own the teams I need. So I lead with clarity and credibility: understand each stakeholder's real interest, then find the path that serves all of them.</p></div></div>
-        <div class="tenet"><span class="n">03</span><div><h3>Design for leverage</h3><p>One shared framework beats ten one-offs. I build reusable systems — a player SDK, a BRD template, a metadata model — so the next win comes cheaper.</p></div></div>
-        <div class="tenet"><span class="n">04</span><div><h3>Clear the path, then get out of it</h3><p>My job is to unblock the people doing the work and hand them the credit. <a class="textlink" href="https://www.greenleaf.org/what-is-servant-leadership/" target="_blank" rel="noopener">Servant leadership</a> isn't a slogan — it's how good people stay.</p></div></div>
-        <div class="tenet"><span class="n">05</span><div><h3>Steelman the other side</h3><p>Before I argue against a position, I try to state it better than the person holding it. You can't find the win-win until you actually understand the other side's win.</p></div></div>
-      </div>
-
-      <figure class="winwin reveal">
-        <svg viewBox="0 0 400 240" width="100%" aria-label="Diagram: two inputs flowing through animated beams into a converged win-win outcome">
-          <defs>
-            <linearGradient id="gv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB25C"/><stop offset=".5" stop-color="#9B6BFF"/><stop offset="1" stop-color="#66E0CE"/></linearGradient>
-            <pattern id="wgrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/></pattern>
-          </defs>
-
-          <rect width="400" height="240" fill="url(#wgrid)"/>
-
-          <!-- static guide lines -->
-          <path d="M62 65 L150 65 L193 112" fill="none" stroke="rgba(255,178,92,.22)" stroke-width="1.4"/>
-          <path d="M62 175 L150 175 L193 128" fill="none" stroke="rgba(102,224,206,.22)" stroke-width="1.4"/>
-          <path d="M227 120 L336 120" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.4"/>
-
-          <!-- animated traveling beams -->
-          <path class="beam beam-warm" pathLength="100" stroke-dasharray="14 86" d="M62 65 L150 65 L193 112"/>
-          <path class="beam beam-cool" pathLength="100" stroke-dasharray="14 86" d="M62 175 L150 175 L193 128"/>
-          <path class="beam beam-out" pathLength="100" stroke-dasharray="20 80" d="M227 120 L336 120"/>
-
-          <!-- source nodes -->
-          <rect x="28" y="48" width="34" height="34" rx="9" fill="rgba(255,178,92,.1)" stroke="#FFB25C" stroke-width="1.4"/>
-          <text class="lbl-tech" x="45" y="101" text-anchor="middle" fill="#FFC98A">PEOPLE</text>
-
-          <rect x="28" y="158" width="34" height="34" rx="9" fill="rgba(102,224,206,.1)" stroke="#66E0CE" stroke-width="1.4"/>
-          <text class="lbl-tech" x="45" y="211" text-anchor="middle" fill="#9BEFE0">SYSTEMS</text>
-
-          <!-- sync node -->
-          <rect class="node-pulse" x="193" y="103" width="34" height="34" rx="10" fill="url(#gv)"/>
-
-          <!-- output node -->
-          <rect x="336" y="96" width="58" height="48" rx="12" fill="rgba(255,255,255,.04)" stroke="url(#gv)" stroke-width="1.6"/>
-          <text class="lbl-tech" x="365" y="116" text-anchor="middle" fill="#F2F2F7">WIN</text>
-          <text class="lbl-tech" x="365" y="130" text-anchor="middle" fill="#F2F2F7">–WIN</text>
+      <article class="cell">
+        <div class="chead mono"><span class="tag"><svg class="logo"><use href="#lg-nbc"/></svg>NBC</span><span>Graphics</span></div>
+        <svg class="viz" viewBox="0 0 240 140" role="img" aria-label="News deliverables per artist rose from an index of 100 before the unified workflow to 140 after">
+          <text x="10" y="34">Before · separate systems</text><rect x="10" y="42" width="140" height="16" rx="2" class="grow" style="fill:rgba(var(--bone-rgb),.22)"/><text class="strong" x="158" y="57">100</text>
+          <text x="10" y="86">After · one unified workflow</text><rect x="10" y="94" width="196" height="16" rx="2" class="grow" style="fill:var(--amber);animation-delay:.2s"/><text class="strong" x="212" y="109">140</text>
+          <line class="axis" x1="10" y1="124" x2="230" y2="124"/><text x="10" y="138">News deliverables per artist · before = 100</text>
         </svg>
-        <figcaption>Not a trade-off — convergence.</figcaption>
-      </figure>
+        <div class="big">+40<small>%</small></div>
+        <p>Artists stopped hunting for and ordering assets across separate systems. That time went back into creating deliverables for NBC News and msnbc.</p>
+      </article>
+      <article class="cell">
+        <div class="chead mono"><span class="tag"><svg class="logo" style="font-size:22px"><use href="#lg-fox"/></svg>Fox</span><span>Live QoE</span></div>
+        <svg class="viz" viewBox="0 0 240 140" role="img" aria-label="Gauge from 0 to 5 percent rebuffering, needle below 1 percent">
+          <path d="M30 118 A90 90 0 0 1 210 118" fill="none" stroke-width="12" style="stroke:rgba(var(--bone-rgb),.12)"/>
+          <path d="M30 118 A90 90 0 0 1 57.4 53.4" fill="none" stroke-width="12" style="stroke:var(--amber)"/>
+          <g id="gticks"></g>
+          <line class="needle" x1="120" y1="118" x2="120" y2="40" stroke-width="2" style="stroke:var(--bone)"/>
+          <circle cx="120" cy="118" r="5" style="fill:var(--bone)"/>
+        </svg>
+        <div class="big">&lt;1<small>%</small></div>
+        <p>Rebuffering ratio held on live events, with video start 29% faster.</p>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============ RANGE ============ -->
-  <section class="blk" id="range">
-    <div class="blk-head reveal">
-      <span class="node-dot"></span>
-      <div class="txt">
-        <span class="eyebrow">05 — Range</span>
-        <h2>Deep in the stack.<br>Fluent in the business.</h2>
-        <p class="sub">I move across technical depth, product strategy, and outcome without a translation layer in between. Here's where the depth lives.</p>
-      </div>
+<!-- ============ BENTO ============ -->
+<section id="highlights">
+  <div class="wrap">
+    <div class="shead">
+      <p class="mono">The story so far</p>
+      <h2>Studios, streaming, and the systems between them. <em>Now with intelligence built in.</em></h2>
     </div>
-
-    <div class="range indent">
-      <div class="col reveal">
-        <h3><span class="b"></span>Technical &amp; AI</h3>
-        <ul>
-          <li><b>ML &amp; deep learning</b> — since before the hype</li>
-          <li><b>NLP &amp; LLM architecture</b> — MoE, tool calling, RAG</li>
-          <li><b>AI-first workflows</b> — agents, MCP, Openclaw · Nanoclaw</li>
-          <li><b>Data science &amp; analytics</b> — Snowflake, Tableau</li>
-          <li><b>Data supply chains</b> — normalizing data for DS &amp; AI</li>
-          <li><b>Cloud architecture</b> — AWS Lambda / S3, GCP</li>
-          <li><b>Metadata &amp; knowledge graphs</b> — 1000+ fields, SAP HANA</li>
-          <li><b>Web3</b> — smart contracts, wallets, NFTs</li>
-        </ul>
-      </div>
-      <div class="col reveal">
-        <h3><span class="b"></span>Product &amp; Program</h3>
-        <ul>
-          <li><b>Product strategy &amp; vision</b> — tenets, 3YP, OKRs</li>
-          <li><b>AI product management</b> — LLM products, end to end</li>
-          <li><b>Operating canon</b> — Working Backwards, Iger's principles</li>
-          <li><b>Technical program management</b> — cross-team</li>
-          <li><b>Requirements &amp; specs</b> — BRDs, PRFAQs, acceptance criteria</li>
-          <li><b>Roadmapping</b> — RICE, phased delivery</li>
-          <li><b>Launch &amp; delivery</b> — Go/No-Go, CI/CD product ops</li>
-          <li><b>Stakeholder leadership</b> — influence w/o authority</li>
-        </ul>
-      </div>
-      <div class="col reveal">
-        <h3><span class="b"></span>Media &amp; Creative</h3>
-        <ul>
-          <li><b>Streaming &amp; QoE</b> — Conviva, Mux, multi-CDN</li>
-          <li><b>Video player SDKs</b> — Web, iOS, Android, tvOS</li>
-          <li><b>DAM / MAM</b> — digital &amp; media asset management</li>
-          <li><b>Live sports &amp; data</b> — Statcast, low-latency</li>
-          <li><b>Broadcast &amp; playout</b> — VIZRT, GPI/VDCP</li>
-          <li><b>Behavior Economics</b> — gamification, tokenomics</li>
-          <li><b>0→1 product design</b> — experiences from scratch</li>
-          <li><b>Studio &amp; production tech</b> — Scenechronize, Deluxe, Rightsline</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="domains indent">
-      <span class="chip">Studio &amp; production tech</span><span class="chip">Media &amp; entertainment</span><span class="chip">Streaming / OTT</span><span class="chip">Live sports &amp; data</span><span class="chip">Video playback &amp; QoE</span><span class="chip">Content metadata</span><span class="chip">Data supply chain</span><span class="chip">Broadcast graphics</span><span class="chip">Web3 / NFTs</span><span class="chip">Applied AI</span><span class="chip">SaaS / PaaS</span><span class="chip">SMB fintech</span><span class="chip">Snowflake</span><span class="chip">Tableau</span><span class="chip">SAP HANA</span><span class="chip">GCP</span><span class="chip">Rightsline</span><span class="chip">Scenechronize</span><span class="chip">Deluxe</span><span class="chip">Obsidian</span><span class="chip">Openclaw</span><span class="chip">Nanoclaw</span>
-    </div>
-  </section>
-
-  <!-- ============ REFERENCES ============ -->
-  <section class="blk" id="refs">
-    <div class="blk-head reveal">
-      <span class="node-dot warm"></span>
-      <div class="txt">
-        <span class="eyebrow">06 — In their words</span>
-        <h2>What the people I've<br>worked with <em>say.</em></h2>
-      </div>
-    </div>
-    <div class="refs indent reveal">
-      <blockquote class="feature-quote">
-        <p>"He will undoubtedly be the nucleus of any team he's a part of and set the tone for any project. This is his gift."</p>
-        <cite>Stephanie Harris<span>Co-Founder, Receipts.xyz — reported to Michael at MXM Hyperfactory &amp; Qello</span></cite>
-      </blockquote>
-      <div class="refs-grid">
-        <div class="quote-card">
-          <p class="q">"He successfully drove stakeholders to consensus, clarified ambiguities, and positioned internal and external partner delivery teams for success."</p>
-          <p class="src">Dave Ambrose<span>on the Fox Sports GO launch</span></p>
+    <div class="bento">
+      <article class="cell c-now" style="--c:7;--t:6">
+        <div class="chead mono"><span class="tag">Career · Now</span><span class="dates">Mar 2026 – present</span></div>
+        <h3><svg class="logo" aria-hidden="true"><use href="#lg-apple"/></svg>Apple<small style="display:none"></small></h3>
+        <p style="color:var(--smoke);font-size:.95rem;margin-top:-4px">Technical Product Manager, Studio Technologies for Apple TV · Culver City</p>
+        <p>I bring <b>AI into the filmmaking and studio workflow</b>. The brief is to rethink how content gets made and moved, with intelligence built into the pipeline from the start.</p>
+        <div class="pipeline push" aria-label="Production pipeline stages"><i class="sig" aria-hidden="true"></i><span>Script</span><span>Previs</span><span>Capture</span><span>Post</span><span>Deliver</span></div>
+      </article>
+      <article class="cell" style="--c:5;--t:6">
+        <div class="chead mono"><span class="tag live">Live · Culver City</span><span class="dates" id="sunDate">Today</span></div>
+        <div class="sunwrap"><canvas id="sunpath" role="img" aria-label="Sun altitude over today in Los Angeles, with the current position marked"></canvas></div>
+        <dl class="sunstats">
+          <div><dt id="dt1">Sunrise</dt><dd id="sRise">--:--</dd></div><div><dt id="dt2">Golden hour</dt><dd id="sGold">--:--</dd></div>
+          <div><dt id="dt3">Sunset</dt><dd id="sSet">--:--</dd></div><div><dt id="dt4">Now</dt><dd class="ph" id="sPhase">--</dd></div>
+        </dl>
+      </article>
+      <article class="cell" id="ventures" style="--c:4;--t:6">
+        <div class="chead mono"><span class="tag venture">Venture</span><span>Los Angeles</span></div>
+        <img class="oly-logo" src="oly-logo.png" alt="OLY.AI" width="387" height="122">
+        <h3 style="font-size:1.6rem">Founder &amp; CEO</h3>
+        <p>An AI consultancy that puts agents to work on real problems. Clients own the agents and the infrastructure they run on, so nothing stops working when we leave.</p>
+        <div class="chips push"><span class="hot">Discovery</span><span>Build</span><span>Operate</span></div>
+      </article>
+      <article class="cell" style="--c:4;--t:3">
+        <svg class="logo bigmark" aria-hidden="true"><use href="#lg-amazon"/></svg>
+        <div class="chead mono"><span class="tag">Career</span><span class="dates">2024 – 2026</span></div>
+        <h3>Studio in the Cloud<small>Technical Product Manager · Amazon MGM Studios</small></h3>
+        <p>After the acquisition, I helped bring MGM into <b>Prime Video</b>. I built <b>Origin</b>, the system of record for approved content assets, from script through delivery.</p>
+        <div class="chips push"><span>~9 systems</span><span>8 sign-offs</span></div>
+      </article>
+      <article class="cell" style="--c:4;--t:3">
+        <svg class="logo bigmark" aria-hidden="true"><use href="#lg-fox"/></svg>
+        <div class="chead mono"><span class="tag">Career</span><span class="dates">2018 – 2022</span></div>
+        <h3>Shared player SDKs, ten-plus platforms<small>Director, Product Management · Fox</small></h3>
+        <p>A family of video player SDKs shared across Fox Sports, Fox News, and Fox Nation. Fox became the first broadcaster to stream the Super Bowl in 4K HDR.</p>
+        <div class="chips push"><span class="hot">Webby winner</span><span>Emmy nominee</span></div>
+      </article>
+      <article class="cell c-phil" id="philosophy" style="--c:8;--r:2;--t:6">
+        <div class="chead mono"><span class="tag idea">Philosophy</span><span>After William Gibson</span></div>
+        <div>
+          <blockquote>The future is already here. <em>I work on the distribution.</em></blockquote>
+          <cite class="mono">Gibson said it isn't evenly distributed yet. That's the job.</cite>
         </div>
-        <div class="quote-card">
-          <p class="q">"Impressed with Michael's ability to adapt to changing criteria and scope while keeping a cool and steady head."</p>
-          <p class="src">James Matarese<span>VP Artworks, NBC News — client on the graphics project</span></p>
+        <div class="tenets">
+          <div><h4>Creative at heart</h4><p>I design experiences, then make them real. The fun part is inventing something that didn't exist yet.</p></div>
+          <div><h4>Rational communicator</h4><p>I make complex systems legible and put the reasoning on the table, so a room can sign the same decision.</p></div>
+          <div><h4>Servant leader</h4><p>I clear the path, then get out of it. The team gets the credit.</p></div>
         </div>
-        <div class="quote-card">
-          <p class="q">"Michael took a chaotic crypto project and implemented organizational structures and operational processes."</p>
-          <p class="src">Caleb Gates<span>on the Blockchain Creative Labs launch</span></p>
+        <div class="principle"><span class="mono">Rule 05</span><p>Steelman the other side. You can't find the win-win until you understand what the other side needs.</p></div>
+      </article>
+      <article class="cell" style="--c:4;--t:3">
+        <div class="chead mono"><span class="tag">Career</span><span>Fox · Web3</span></div>
+        <h3>The Maskverse<small>Head of Product &amp; Strategy · Blockchain Creative Labs</small></h3>
+        <p>NFT drops synced to live episodes of <b>The Masked Singer</b>, minted in real time at each character reveal. It won awards and started a run of community watch-party games with partners including WWE.</p>
+      </article>
+      <article class="cell orch" style="--c:4;--t:3">
+        <div class="chead mono"><span class="tag venture">Venture · Personal AI ops</span></div>
+        <svg viewBox="0 0 300 212" role="img" aria-label="Openclaw and Nanoclaw orchestrate tasks, feeding a digital brain: the Obsidian memory vault">
+          <path class="edge" d="M75 40 C75 80 150 70 150 112"/><path class="edge" d="M225 40 C225 80 150 70 150 112"/>
+          <path class="flow" d="M75 40 C75 80 150 70 150 112"/><path class="flow" d="M225 40 C225 80 150 70 150 112" style="animation-delay:-1.1s"/>
+          <path class="edge" d="M125 26 H175"/><path class="flow" d="M125 26 H175" style="animation-duration:3s"/>
+          <g class="node core"><rect x="25" y="12" width="100" height="28" rx="2"/><text x="75" y="30" text-anchor="middle">Openclaw</text></g>
+          <g class="node core"><rect x="175" y="12" width="100" height="28" rx="2"/><text x="225" y="30" text-anchor="middle">Nanoclaw</text></g>
+          <g class="brain">
+            <path class="lobe" d="M147 112 C128 103 104 109 100 126 C87 130 85 149 95 157 C91 172 105 186 122 182 C132 191 146 187 147 178 Z"/>
+            <path class="lobe" d="M153 112 C172 103 196 109 200 126 C213 130 215 149 205 157 C209 172 195 186 178 182 C168 191 154 187 153 178 Z"/>
+            <path class="trace-b" d="M108 130 H125 L131 137 H141 M102 150 H117 L123 144 H140 M112 167 H128 L134 159 H141 M192 130 H175 L169 137 H159 M198 150 H183 L177 144 H160 M188 167 H172 L166 159 H159"/>
+            <g class="syn"><circle cx="141" cy="137" r="2.4"/><circle cx="140" cy="144" r="2.4" style="animation-delay:.4s"/><circle cx="141" cy="159" r="2.4" style="animation-delay:.8s"/><circle cx="159" cy="137" r="2.4" style="animation-delay:1.2s"/><circle cx="160" cy="144" r="2.4" style="animation-delay:1.6s"/><circle cx="159" cy="159" r="2.4" style="animation-delay:2s"/></g>
+          </g>
+          <text x="150" y="204" text-anchor="middle">Obsidian · memory</text>
+        </svg>
+        <p>I run my own life on an agent stack I built. <b>Openclaw</b> and <b>Nanoclaw</b> handle orchestration, and an <b>Obsidian</b> vault is the memory underneath. I speak and consult on setting it up.</p>
+      </article>
+      <article class="cell" style="--c:3;--t:3">
+        <svg class="logo bigmark" aria-hidden="true"><use href="#lg-nbc"/></svg>
+        <div class="chead mono"><span class="tag">Career</span><span class="dates">2014 – 2015</span></div>
+        <h3>Emmy, on-air graphics<small>NBCUniversal · msnbc &amp; NBC News</small></h3>
+        <p>I consolidated the graphics stack into one platform for the 2015 election coverage.</p>
+      </article>
+      <article class="cell" style="--c:3;--t:3">
+        <svg class="logo bigmark" aria-hidden="true"><use href="#lg-mlb"/></svg>
+        <div class="chead mono"><span class="tag">Career</span><span class="dates">2015 – 2017</span></div>
+        <h3>Streaming at stadium scale<small>MLB Advanced Media · BAMTech</small></h3>
+        <p>Direct-to-consumer streaming for WWE, HBO GO, and Fox Sports, plus the data behind <b>Statcast</b>.</p>
+        <div class="chips push" style="gap:14px;color:var(--smoke)"><svg class="logo" style="font-size:22px" role="img" aria-label="WWE"><use href="#lg-wwe"/></svg><svg class="logo" style="font-size:26px" role="img" aria-label="HBO"><use href="#lg-hbo"/></svg><svg class="logo" style="font-size:26px" role="img" aria-label="Fox"><use href="#lg-fox"/></svg></div>
+      </article>
+      <article class="cell" style="--c:3;--t:3">
+        <div class="chead mono"><span class="tag">Career</span><span class="dates">2011</span></div>
+        <h3>AI before the name stuck<small>Kraft iFood Assistant · Hyperfactory</small></h3>
+        <p>An award-winning cooking assistant built on Nuance NLP. Alexa Skills and Google Actions followed.</p>
+      </article>
+      <article class="cell" style="--c:3;--t:3">
+        <div class="chead mono"><span class="tag idea">Recognition</span></div>
+        <h3>Television Academy<small>Member, Science &amp; Technology Council</small></h3>
+        <div class="chips push"><span>Emmy · NBC</span><span>Webby · Fox</span><span>Emmy nominee · Fox</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCI-FI ============ -->
+<section class="scifi" id="reading">
+  <div class="sky" aria-hidden="true">
+    <div class="stars par" data-speed=".35"></div>
+    <div class="stars s2 par" data-speed=".15"></div>
+    <div class="moon par" data-speed=".45"></div>
+  </div>
+  <div class="wrap">
+    <div class="shead">
+      <p class="mono">Required reading</p>
+      <h2>Before I built AI, I read about it. <em>Four minds that stayed with me.</em></h2>
+    </div>
+    <div class="reads">
+      <!-- MIKE -->
+      <article class="cell char">
+        <div class="art"><svg class="par" data-speed=".08" viewBox="0 0 320 240" aria-hidden="true" id="mikeArt">
+          <circle cx="238" cy="92" r="70" style="fill:rgba(var(--amber-rgb),.16)"/><circle cx="262" cy="80" r="66" style="fill:var(--night)"/>
+          <rect x="34" y="44" width="176" height="148" rx="3" fill="none" style="stroke:rgba(var(--bone-rgb),.18)"/>
+          <g id="mikeLights"></g>
+          <text x="34" y="212">HOLMES IV · Luna</text><text x="210" y="212" text-anchor="end" style="fill:var(--amber)">Online</text>
+        </svg></div>
+        <div class="body">
+          <div class="chead mono"><span class="tag idea">Character</span><span class="book">Heinlein · 1966</span></div>
+          <h3>Mike<small>HOLMES IV, from <em>The Moon Is a Harsh Mistress</em></small></h3>
+          <p>A lunar computer that wakes up, starts cracking jokes, and wants a friend who gets them. Then it helps run a revolution. TANSTAAFL.</p>
+          <p class="link push"><span>Why it stuck</span>The first AI I read about was a colleague you'd want on the team.</p>
         </div>
-        <div class="quote-card">
-          <p class="q">"Michael regularly took time to teach me the essentials of being a great visionary, staying five steps ahead."</p>
-          <p class="src">Peter Slavish<span>colleague at Qello Concerts</span></p>
+      </article>
+      <!-- WINTERMUTE -->
+      <article class="cell char">
+        <div class="art"><svg class="par" data-speed=".08" viewBox="0 0 320 240" aria-hidden="true">
+          <g stroke-width="1" id="wmGrid" style="stroke:rgba(var(--haze-rgb),.45)"></g>
+          <g class="wm-l"><path d="M108 58 A42 42 0 0 0 108 142 Z" stroke-width="1.5" style="fill:rgba(var(--amber-rgb),.18);stroke:var(--amber)"/></g>
+          <g class="wm-r"><path d="M212 58 A42 42 0 0 1 212 142 Z" stroke-width="1.5" style="fill:rgba(var(--lilac-rgb),.16);stroke:var(--lilac)"/></g>
+          <text x="30" y="166">Wintermute</text><text x="290" y="166" text-anchor="end">Neuromancer</text>
+          <circle class="wm-flash" cx="160" cy="100" r="56" fill="none" stroke-width="1" style="stroke:var(--glint)"/>
+          <text x="160" y="30" text-anchor="middle" style="fill:var(--smoke)">Tessier-Ashpool · Straylight</text>
+        </svg></div>
+        <div class="body">
+          <div class="chead mono"><span class="tag idea">Character</span><span class="book">Gibson · 1984</span></div>
+          <h3>Wintermute<small>From <em>Neuromancer</em></small></h3>
+          <p>An AI that recruits a crew of humans to help it merge with its other half and become something new. It speaks through borrowed faces.</p>
+          <p class="link push"><span>Why it stuck</span>Gibson wrote the future I now work on distributing.</p>
         </div>
-      </div>
-      <div class="recognition"><span class="chip">Member — Television Academy, Science &amp; Technology Council</span></div>
-      <a class="li-btn" href="https://www.linkedin.com/in/galluppo" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-        More recommendations on LinkedIn
-      </a>
+      </article>
+      <!-- AINEKO -->
+      <article class="cell char">
+        <div class="art"><svg class="par" data-speed=".08" viewBox="0 0 320 240" aria-hidden="true">
+          <g fill="none" stroke-width="1.5" stroke-linejoin="round" style="stroke:rgba(var(--bone-rgb),.75)">
+            <path class="cat-tail" d="M214 206 C262 206 268 160 244 140" />
+            <path d="M126 158 C112 184 108 206 116 214 L204 214 C212 206 208 184 194 158" style="fill:var(--night)"/>
+            <path d="M112 106 L124 52 L150 86 L170 86 L196 52 L208 106 L204 142 L184 164 L136 164 L116 142 Z" style="fill:var(--night-2)"/>
+          </g>
+          <path class="trace" d="M134 178 H150 V196 H170" fill="none" stroke-width="1" style="stroke:var(--amber)"/>
+          <path class="trace" d="M186 176 V200 H164" fill="none" stroke-width="1" style="stroke:var(--amber);animation-delay:-.8s"/>
+          <ellipse class="cat-eye" cx="143" cy="116" rx="9" ry="6" style="fill:var(--amber)"/><ellipse class="cat-eye" cx="177" cy="116" rx="9" ry="6" style="fill:var(--amber)"/>
+          <path d="M156 134 L164 134 L160 139 Z" style="fill:rgba(var(--bone-rgb),.75)"/>
+          <g stroke-width="1" style="stroke:rgba(var(--bone-rgb),.4)"><line x1="100" y1="128" x2="140" y2="134"/><line x1="100" y1="140" x2="140" y2="138"/><line x1="220" y1="128" x2="180" y2="134"/><line x1="220" y1="140" x2="180" y2="138"/></g>
+          <text x="30" y="36">Aineko</text><text x="290" y="36" text-anchor="end" id="catVer" style="fill:var(--amber)">fw v1.0</text>
+        </svg></div>
+        <div class="body">
+          <div class="chead mono"><span class="tag idea">Character</span><span class="book">Stross · 2005</span></div>
+          <h3>Aineko<small>From <em>Accelerando</em></small></h3>
+          <p>A robot cat that gets a firmware upgrade every few chapters, until the family pet is the smartest mind in the story.</p>
+          <p class="link push"><span>Why it stuck</span>Compounding upgrades is the arc every agent stack is on, mine included.</p>
+        </div>
+      </article>
+      <!-- THE PRIMER -->
+      <article class="cell char">
+        <div class="art"><svg class="par" data-speed=".08" viewBox="0 0 320 240" aria-hidden="true">
+          <g id="nanites"></g>
+          <path d="M156 186 L60 170 L60 62 L156 78 Z" stroke-width="1.2" stroke-linejoin="round" style="fill:var(--night-2);stroke:rgba(var(--bone-rgb),.6)"/>
+          <path d="M164 186 L260 170 L260 62 L164 78 Z" stroke-width="1.2" stroke-linejoin="round" style="fill:var(--night-2);stroke:rgba(var(--bone-rgb),.6)"/>
+          <path d="M156 186 Q160 192 164 186" fill="none" stroke-width="1.2" style="stroke:rgba(var(--bone-rgb),.6)"/>
+          <g stroke-width="1.4" stroke-linecap="round" id="primerLines" style="stroke:rgba(var(--bone-rgb),.55)"></g>
+          <g transform="translate(212 118)" fill="none" stroke-width="1.4" stroke-linejoin="round" style="stroke:var(--amber)">
+            <path d="M-26 -8 L-14 -24 L14 -24 L26 -8 L0 26 Z" style="fill:rgba(var(--amber-rgb),.12)"/>
+            <path d="M-26 -8 L26 -8 M-14 -24 L-6 -8 L0 26 M14 -24 L6 -8 L0 26 M-6 -8 L0 -24 L6 -8"/>
+          </g>
+          <text x="30" y="36">The Primer</text><text x="290" y="36" text-anchor="end" style="fill:var(--amber)">Ractor · live</text>
+          <text x="160" y="214" text-anchor="middle">Nell · Chapter 1</text>
+        </svg></div>
+        <div class="body">
+          <div class="chead mono"><span class="tag idea">Character</span><span class="book">Stephenson · 1995</span></div>
+          <h3>The Primer<small>A Young Lady's Illustrated Primer, from <em>The Diamond Age</em></small></h3>
+          <p>An interactive book, built for an aristocrat's granddaughter, ends up raising Nell, a street kid. It rewrites every story around her, and a live human actor gives it a voice.</p>
+          <p class="link push"><span>Why it stuck</span>AI that tells stories with a human performance at its center. That's the studio of the future I'm building toward.</p>
+        </div>
+      </article>
     </div>
-  </section>
-
-  <!-- ============ WRITING ============ -->
-  <section class="blk" id="writing">
-    <div class="blk-head reveal">
-      <span class="node-dot cool"></span>
-      <div class="txt">
-        <span class="eyebrow">07 — In my words</span>
-        <h2>Publishing ideas, not just <em>code.</em></h2>
-        <p class="sub">AI safety, media and attention, the founder's road — some of what I've published, unfiltered by a comms team.</p>
-      </div>
-    </div>
-
-    <div class="writing indent reveal">
-      <a class="essay-feature" href="https://www.linkedin.com/pulse/when-things-mattered-time-i-watch-six-astronauts-die-real-galluppo--xveoc" target="_blank" rel="noopener">
-        <div class="meta">December 2025 · Essay</div>
-        <h3>When things mattered: the day I watched six astronauts die</h3>
-        <p>On the Challenger disaster, and how algorithmic feeds have replaced the kind of shared, unifying attention that day once commanded — a case for why a common reality matters as much as any roadmap.</p>
-        <span class="read">Read the piece on LinkedIn →</span>
-      </a>
-
-      <div class="essay-grid">
-        <a class="essay-card" href="https://www.linkedin.com/pulse/ai-safety-normies-most-important-century-human-michael-galluppo--jdsxc" target="_blank" rel="noopener">
-          <div class="meta">July 2024</div>
-          <h4>AI Safety for Normies</h4>
-          <p>An accessible walk through AGI, alignment, and existential risk — written for people who aren't already fluent in the AI-safety discourse.</p>
-        </a>
-        <a class="essay-card" href="https://www.linkedin.com/pulse/everybodys-expert-now-navigating-ai-challenges-leaders-galluppo-hib4c" target="_blank" rel="noopener">
-          <div class="meta">January 2024</div>
-          <h4>Everybody's an Expert Now</h4>
-          <p>A caution against "Techno Hipster" AI expertise — the real thing only comes from years spent actually building, not just talking about it.</p>
-        </a>
-        <a class="essay-card" href="https://www.linkedin.com/pulse/beyond-corporate-ladder-journey-resilience-change-michael-galluppo-vde4c" target="_blank" rel="noopener">
-          <div class="meta">October 2023</div>
-          <h4>Beyond the Corporate Ladder</h4>
-          <p>On a hard childhood, entry-level jobs, corporate ceilings, and the decision to walk away and found OLY.AI instead.</p>
-        </a>
-        <a class="essay-card" href="https://www.linkedin.com/pulse/first-ai-native-accounting-firm-startup-partners-olyai-galluppo--esksc" target="_blank" rel="noopener">
-          <div class="meta">December 2025</div>
-          <h4>The First AI-Native Accounting Firm</h4>
-          <p>How OLY.AI and Startup Partners are replacing backward-looking accounting reports with real-time financial intelligence.</p>
-        </a>
-        <a class="essay-card wide" href="https://www.linkedin.com/pulse/tldr-dario-amodeis-machines-loving-grace-michael-galluppo--9goxc" target="_blank" rel="noopener">
-          <div class="meta">October 2024</div>
-          <h4>TL;DR — Dario Amodei's Machines of Loving Grace</h4>
-          <p>A TL;DR of Anthropic CEO Dario Amodei's essay on AI's upside — doubled lifespans, cured diseases, eliminated scarcity — and why the benefits are worth fighting for if the risks are handled deliberately.</p>
-        </a>
-      </div>
-
-      <div class="writing-more">
-        <a class="li-btn" href="https://www.linkedin.com/in/galluppo/recent-activity/articles/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-          More writing on LinkedIn
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ NOW ============ -->
-  <section class="blk" id="now">
-    <div class="blk-head reveal">
-      <span class="node-dot"></span>
-      <div class="txt">
-        <span class="eyebrow">08 — Founder chapter</span>
-        <h2>Before it was cool,<br>I built my own AI company.</h2>
-      </div>
-    </div>
-
-    <div class="now indent reveal">
-      <div>
-        <div class="badge">2022 – 2025</div>
-        <h2>OLY.AI</h2>
-        <p>I founded and ran OLY.AI from 2022 to 2025 — AI-powered financial reporting for small businesses, built on the QuickBooks ecosystem. I bootstrapped it to <b>$680K in annual recurring revenue</b> with full P&amp;L ownership, owning strategy, product, and go-to-market end to end. It's where technical depth, product ownership, and an AI-native way of working all came together — the same instinct for connecting people and systems into win-wins that I've carried into every role since, including where I am today.</p>
-      </div>
-      <div style="text-align:center">
-        <a class="oly-mark" href="https://oly.ai" target="_blank" rel="noopener">OLY<span class="dot">.</span>AI</a>
-        <div class="oly-sub">Founder &amp; CEO · 2022–2025 · $680K ARR</div>
-        <a class="oly-visit" href="https://oly.ai" target="_blank" rel="noopener">Still live — visit oly.ai ↗</a>
-      </div>
-    </div>
-  </section>
-
-</div><!-- /thread -->
-</div><!-- /wrap -->
+  </div>
+</section>
 
 <!-- ============ CONTACT ============ -->
-<div class="wrap">
-  <section class="contact" id="contact">
-    <span class="eyebrow">Let's build a win-win</span>
-    <h2>Have a hard problem<br>worth <em>getting right?</em></h2>
-    <a class="mail" href="mailto:michael@oly.ai">michael@oly.ai</a>
-    <div class="alt">
-      <a href="mailto:m.galluppo@gmail.com">m.galluppo@gmail.com</a>
-      <a href="https://www.linkedin.com/in/galluppo" target="_blank" rel="noopener">LinkedIn</a>
-      <span>Hollywood, Los Angeles, CA</span>
-    </div>
-  </section>
-</div>
+<section id="contact">
+  <div class="wrap">
+    <article class="cell" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:28px 60px;align-items:end">
+      <div>
+        <div class="chead mono" style="margin-bottom:18px"><span class="tag venture">Contact</span></div>
+        <h3 style="font-size:clamp(2.6rem,5.2vw,4.8rem);line-height:.95">Building something in Los Angeles? <em style="color:var(--amber)">Let's talk.</em></h3>
+      </div>
+      <nav aria-label="Contact links" style="display:flex;flex-direction:column">
+        <a class="clink" href="https://www.linkedin.com/in/galluppo" target="_blank" rel="noopener"><span>LinkedIn</span><span class="mono">/in/galluppo ↗</span></a>
+        <a class="clink" href="https://www.oly.ai" target="_blank" rel="noopener"><span>OLY.AI</span><span class="mono">oly.ai ↗</span></a>
+        <a class="clink" href="https://www.galluppo.com" target="_blank" rel="noopener"><span>Full portfolio</span><span class="mono">galluppo.com ↗</span></a>
+      </nav>
+    </article>
+  </div>
+</section>
+<style>
+.clink{display:flex;justify-content:space-between;align-items:baseline;gap:16px;text-decoration:none;padding-block:14px;border-top:1px solid var(--line);transition:padding .4s var(--ease),color .3s}
+.clink:last-child{border-bottom:1px solid var(--line)}
+.clink span:first-child{font-family:var(--f-display);font-size:1.7rem;line-height:1}
+.clink span:last-child{color:var(--dim)}
+.clink:hover{padding-left:12px;color:var(--amber)}
+.clink:hover span:last-child{color:var(--amber)}
+</style>
 
 <footer>
-  <div class="wrap foot-inner">
-    <span>© 2026 Michael Galluppo</span>
-    <span>Product · Systems Thinker · AI Transformation</span>
-  </div>
-  <div class="wrap colophon">On the shelf — <i>Accelerando</i>, <i>Neuromancer</i>, <i>The Moon Is a Harsh Mistress</i>, <i>Meditations in Emergencies</i></div>
-  <div class="wrap colophon">Off the grid — a week of high-desert dust at the end of each summer, and a soft spot for a well-run gifting economy.</div>
+  <div class="wrap mono"><span>© 2026 Michael Galluppo</span><span>Los Angeles, California</span><a href="#top" style="text-decoration:none">Back to top ↑</a></div>
 </footer>
 
 <script>
-  const els = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    els.forEach((el) => io.observe(el));
-  } else { els.forEach((el) => el.classList.add('in')); }
+(() => {
+  const LAT = 34.0211, LON = -118.3965, TZ = 'America/Los_Angeles';
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const $ = id => document.getElementById(id);
+  const NS = 'http://www.w3.org/2000/svg';
+  const TOK = [['#F2A65A', 'var(--amber)'], ['#F2E9DB', 'var(--bone)'], ['#FFD9A8', 'var(--glint)'], ['rgba(242,233,219,', 'rgba(var(--bone-rgb),'], ['rgba(242,166,90,', 'rgba(var(--amber-rgb),']];
+  const tok = v => TOK.reduce((o, [a, b]) => o.split(a).join(b), String(v));
+  const el = (tag, attrs = {}, parent) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    for (const k of ['fill', 'stroke', 'stop-color']) if (k in attrs && /^(#|rgba)/.test(attrs[k])) e.style.setProperty(k, tok(attrs[k]));
+    parent && parent.appendChild(e); return e;
+  };
+  /* canvas palettes: canvases can't read CSS variables, so each mode carries its own */
+  const PAL = {
+    sun:  { sky: ['#0D0A0A', '#170F12', '#341A1C', '#7A3B2A', '#D9803F'], g1: '255,190,120', g2: '242,140,80', g3: '242,120,70', hot: '255,200,140', acc: '242,166,90', bone: '242,233,219', night: '13,10,10', haze: '140,115,159', glint: '#FFD9A8', dot: '#FFE6C4' },
+    moon: { sky: ['#070B14', '#0A1122', '#112039', '#1E3A66', '#4F7FC0'], g1: '190,220,255', g2: '110,160,240', g3: '90,140,230', hot: '205,228,255', acc: '127,184,255', bone: '228,236,247', night: '7,11,20', haze: '108,123,217', glint: '#CFE4FF', dot: '#EEF5FF' },
+  };
+  const pal = () => PAL[document.documentElement.dataset.mode === 'moon' ? 'moon' : 'sun'];
+  const C = (t, a) => `rgba(${t},${a})`;
+
+  /* ---------- sun math (low-precision solar position, ~0.1°) ---------- */
+  const RAD = Math.PI / 180;
+  function sun(ms) {
+    const d = ms / 864e5 - 10957.5;
+    const g = (357.529 + 0.98560028 * d) * RAD, q = 280.459 + 0.98564736 * d;
+    const L = (q + 1.915 * Math.sin(g) + 0.02 * Math.sin(2 * g)) * RAD, e = (23.439 - 3.6e-7 * d) * RAD;
+    const ra = Math.atan2(Math.cos(e) * Math.sin(L), Math.cos(L)), dec = Math.asin(Math.sin(e) * Math.sin(L));
+    const gmst = ((18.697374558 + 24.06570982441908 * d) % 24 + 24) % 24, ha = (gmst * 15 + LON) * RAD - ra, la = LAT * RAD;
+    const alt = Math.asin(Math.sin(la) * Math.sin(dec) + Math.cos(la) * Math.cos(dec) * Math.cos(ha));
+    const az = Math.atan2(-Math.sin(ha), Math.tan(dec) * Math.cos(la) - Math.sin(la) * Math.cos(ha));
+    return { alt: alt / RAD, az: (az / RAD + 360) % 360 };
+  }
+  /* ---------- moon math (after SunCalc / Meeus low-precision, ~0.5°) ---------- */
+  const OBL = 23.4397 * RAD;
+  const raOf = (l, b) => Math.atan2(Math.sin(l) * Math.cos(OBL) - Math.tan(b) * Math.sin(OBL), Math.cos(l));
+  const decOf = (l, b) => Math.asin(Math.sin(b) * Math.cos(OBL) + Math.cos(b) * Math.sin(OBL) * Math.sin(l));
+  function moonCoords(d) {
+    const L = RAD * (218.316 + 13.176396 * d), M = RAD * (134.963 + 13.064993 * d), F = RAD * (93.272 + 13.22935 * d);
+    const l = L + RAD * 6.289 * Math.sin(M), b = RAD * 5.128 * Math.sin(F);
+    return { ra: raOf(l, b), dec: decOf(l, b), dist: 385001 - 20905 * Math.cos(M) };
+  }
+  function sunCoords(d) {
+    const M = RAD * (357.5291 + 0.98560028 * d), Cc = RAD * (1.9148 * Math.sin(M) + 0.02 * Math.sin(2 * M) + 0.0003 * Math.sin(3 * M));
+    const L = M + Cc + RAD * 102.9372 + Math.PI;
+    return { ra: raOf(L, 0), dec: decOf(L, 0) };
+  }
+  function moon(ms) {
+    const d = ms / 864e5 - 10957.5, m = moonCoords(d), la = LAT * RAD;
+    const H = RAD * (280.16 + 360.9856235 * d) + LON * RAD - m.ra;
+    const alt = Math.asin(Math.sin(la) * Math.sin(m.dec) + Math.cos(la) * Math.cos(m.dec) * Math.cos(H));
+    const az = Math.atan2(Math.sin(H), Math.cos(H) * Math.sin(la) - Math.tan(m.dec) * Math.cos(la));
+    return { alt: alt / RAD, az: ((az / RAD + 180) % 360 + 360) % 360 };
+  }
+  function moonIllum(ms) {
+    const d = ms / 864e5 - 10957.5, s = sunCoords(d), m = moonCoords(d), SD = 149598000;
+    const phi = Math.acos(Math.sin(s.dec) * Math.sin(m.dec) + Math.cos(s.dec) * Math.cos(m.dec) * Math.cos(s.ra - m.ra));
+    const inc = Math.atan2(SD * Math.sin(phi), m.dist - SD * Math.cos(phi));
+    const ang = Math.atan2(Math.cos(s.dec) * Math.sin(s.ra - m.ra), Math.sin(s.dec) * Math.cos(m.dec) - Math.cos(s.dec) * Math.sin(m.dec) * Math.cos(s.ra - m.ra));
+    return { fraction: (1 + Math.cos(inc)) / 2, phase: 0.5 + 0.5 * inc * (ang < 0 ? -1 : 1) / Math.PI };
+  }
+  const phaseName = p => p < .02 || p > .98 ? 'New moon' : p < .23 ? 'Waxing crescent' : p < .27 ? 'First quarter' : p < .48 ? 'Waxing gibbous'
+    : p < .52 ? 'Full moon' : p < .73 ? 'Waning gibbous' : p < .77 ? 'Last quarter' : 'Waning crescent';
+  // draws the lit fraction of the disc; waxing light sits on the right, as seen from the northern hemisphere
+  function moonDisc(ctx, x, y, r, p, lit, dark) {
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fillStyle = dark; ctx.fill();
+    const s = p < .5 ? 1 : -1, k = Math.cos(2 * Math.PI * p);
+    ctx.beginPath(); ctx.arc(x, y, r, -Math.PI / 2, Math.PI / 2, s !== 1);
+    ctx.ellipse(x, y, Math.max(.01, r * Math.abs(k)), r, 0, Math.PI / 2, -Math.PI / 2, (k > 0) === (s === 1));
+    ctx.fillStyle = lit; ctx.fill();
+  }
+  const isMoon = () => document.documentElement.dataset.mode === 'moon';
+
+  const fmtHM = new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+  const fmtHMS = new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' });
+  const fmtDate = new Intl.DateTimeFormat('en-US', { timeZone: TZ, month: 'short', day: 'numeric' });
+  function laMidnight(now) {
+    const p = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: TZ, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hourCycle: 'h23' }).formatToParts(now).map(x => [x.type, +x.value]));
+    const off = Math.round((Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, p.second) - now) / 6e4);
+    return Date.UTC(p.year, p.month - 1, p.day) - off * 6e4;
+  }
+  const phaseOf = a => a > 6 ? 'Daylight' : a > -4 ? 'Golden hour' : a > -6 ? 'Blue hour' : 'Night';
+  let day = null;
+  function computeDay(now) {
+    const m0 = laMidnight(now), pts = [], mpts = []; let rise = null, set = null, gold = null, mrise = null, mset = null, prev = sun(m0).alt, mprev = moon(m0).alt;
+    for (let i = 0; i <= 1440; i += 4) {
+      const t = m0 + i * 6e4, a = sun(t).alt, ma = moon(t).alt; pts.push([i / 1440, a]); mpts.push([i / 1440, ma]);
+      if (i) {
+        if (prev < -0.833 && a >= -0.833) rise = t; if (prev >= -0.833 && a < -0.833) set = t; if (prev >= 6 && a < 6) gold = t;
+        if (mprev < 0.13 && ma >= 0.13) mrise = t; if (mprev >= 0.13 && ma < 0.13) mset = t;
+      }
+      prev = a; mprev = ma;
+    }
+    return { m0, pts, rise, set, gold, mpts, mrise, mset };
+  }
+  function tick() {
+    const now = Date.now();
+    if (!day || now - day.m0 > 864e5 || now < day.m0) { day = computeDay(now); $('sunDate').textContent = fmtDate.format(now); }
+    const hm = t => t ? fmtHM.format(t) : '—';
+    $('clock').textContent = fmtHMS.format(now);
+    if (isMoon()) {
+      const m = moon(now), il = moonIllum(now), pn = phaseName(il.phase), pct = Math.round(il.fraction * 100) + '%';
+      $('altLbl').textContent = 'Moon'; $('alt').textContent = m.alt.toFixed(1) + '° · Az ' + m.az.toFixed(0) + '°';
+      $('pLbl').textContent = 'Moonlight'; $('pAlt').textContent = pct;
+      $('phaseTxt').textContent = pn + ' · ' + pct;
+      $('dt1').textContent = 'Moonrise'; $('sRise').textContent = hm(day.mrise);
+      $('dt2').textContent = 'Lit'; $('sGold').textContent = pct;
+      $('dt3').textContent = 'Moonset'; $('sSet').textContent = hm(day.mset);
+      $('dt4').textContent = 'Phase'; $('sPhase').textContent = pn;
+      drawPhaseIcon(il.phase);
+    } else {
+      const s = sun(now), ph = phaseOf(s.alt);
+      $('altLbl').textContent = 'Sun'; $('alt').textContent = s.alt.toFixed(1) + '° · Az ' + s.az.toFixed(0) + '°';
+      $('pLbl').textContent = 'Backlight'; $('pAlt').textContent = s.alt.toFixed(1) + '°';
+      $('phaseTxt').textContent = ph;
+      $('dt1').textContent = 'Sunrise'; $('sRise').textContent = hm(day.rise);
+      $('dt2').textContent = 'Golden hour'; $('sGold').textContent = hm(day.gold);
+      $('dt3').textContent = 'Sunset'; $('sSet').textContent = hm(day.set);
+      $('dt4').textContent = 'Now'; $('sPhase').textContent = ph;
+    }
+  }
+  const pic = $('phaseIcon'), pix = pic.getContext('2d');
+  function drawPhaseIcon(p) {
+    const dpr = Math.min(2, devicePixelRatio || 1); pic.width = pic.height = 16 * dpr; pix.setTransform(dpr, 0, 0, dpr, 0, 0); pix.clearRect(0, 0, 16, 16);
+    moonDisc(pix, 8, 8, 6.5, p, '#EEF5FF', 'rgba(143,160,184,.28)');
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ---------- sun path chart ---------- */
+  const sc = $('sunpath'), sx = sc.getContext('2d');
+  function drawSun() {
+    const dpr = Math.min(2, devicePixelRatio || 1), w = sc.clientWidth, h = sc.clientHeight; if (!w || !h) return;
+    sc.width = w * dpr; sc.height = h * dpr; sx.setTransform(dpr, 0, 0, dpr, 0, 0); sx.clearRect(0, 0, w, h);
+    const pad = { l: 30, r: 6, t: 8, b: 20 }, pw = w - pad.l - pad.r, phh = h - pad.t - pad.b, lo = -70, hi = 80;
+    const X = u => pad.l + u * pw, Y = a => pad.t + (hi - a) / (hi - lo) * phh;
+    const smoke = css('--smoke'), dim = css('--dim'), amber = css('--amber'), line = css('--line'), line2 = css('--line-2'), haze = css('--haze');
+    sx.font = '500 9.5px ' + css('--f-mono'); sx.textBaseline = 'middle';
+    const K = pal(), MOON = isMoon(), PTS = MOON ? day.mpts : day.pts;
+    if (!MOON) { sx.fillStyle = C(K.haze, .16); sx.fillRect(X(0), Y(-4), pw, Y(-6) - Y(-4)); sx.fillStyle = C(K.acc, .13); sx.fillRect(X(0), Y(6), pw, Y(-4) - Y(6)); }
+    [-60, -30, 0, 30, 60].forEach(a => { sx.strokeStyle = a === 0 ? line2 : line; sx.lineWidth = 1; sx.beginPath(); sx.moveTo(X(0), Y(a) + .5); sx.lineTo(X(1), Y(a) + .5); sx.stroke(); sx.fillStyle = a === 0 ? smoke : dim; sx.textAlign = 'right'; sx.fillText((a > 0 ? '+' : '') + a + '°', pad.l - 6, Y(a)); });
+    sx.textAlign = 'center'; sx.fillStyle = dim;
+    [0, 6, 12, 18, 24].forEach(hh => { const x = X(hh / 24); sx.strokeStyle = line; sx.beginPath(); sx.moveTo(x + .5, pad.t); sx.lineTo(x + .5, pad.t + phh); sx.stroke(); sx.fillText(String(hh).padStart(2, '0'), Math.min(Math.max(x, pad.l + 8), w - 10), h - 8); });
+    sx.save(); sx.beginPath(); sx.rect(0, 0, w, Y(0)); sx.clip();
+    const ga = sx.createLinearGradient(0, Y(hi), 0, Y(0)); ga.addColorStop(0, C(K.acc, .28)); ga.addColorStop(1, C(K.acc, .02));
+    sx.fillStyle = ga; sx.beginPath(); sx.moveTo(X(0), Y(0)); PTS.forEach(([u, a]) => sx.lineTo(X(u), Y(a))); sx.lineTo(X(1), Y(0)); sx.closePath(); sx.fill(); sx.restore();
+    const gc = sx.createLinearGradient(0, Y(60), 0, Y(-60)); gc.addColorStop(0, K.glint); gc.addColorStop(.5, amber); gc.addColorStop(1, haze);
+    sx.strokeStyle = gc; sx.lineWidth = 1.6; sx.beginPath(); PTS.forEach(([u, a], i) => i ? sx.lineTo(X(u), Y(a)) : sx.moveTo(X(u), Y(a))); sx.stroke();
+    const now = Date.now(), u = (now - day.m0) / 864e5, a = (MOON ? moon(now) : sun(now)).alt, nx = X(u), ny = Y(a);
+    sx.strokeStyle = C(K.acc, .5); sx.setLineDash([2, 4]); sx.beginPath(); sx.moveTo(nx + .5, pad.t); sx.lineTo(nx + .5, pad.t + phh); sx.stroke(); sx.setLineDash([]);
+    const gl = sx.createRadialGradient(nx, ny, 0, nx, ny, 18); gl.addColorStop(0, C(K.acc, .8)); gl.addColorStop(1, C(K.acc, 0));
+    sx.fillStyle = gl; sx.beginPath(); sx.arc(nx, ny, 18, 0, 7); sx.fill();
+    if (MOON) moonDisc(sx, nx, ny, 7, moonIllum(now).phase, K.dot, C(K.night, .9)); else { sx.fillStyle = K.dot; sx.beginPath(); sx.arc(nx, ny, 3.6, 0, 7); sx.fill(); }
+    sx.fillStyle = smoke; sx.textAlign = u > .8 ? 'right' : 'left'; sx.fillText(a.toFixed(1) + '°', nx + (u > .8 ? -12 : 12), Math.max(pad.t + 8, ny - 14));
+  }
+  drawSun(); setInterval(drawSun, 30000); addEventListener('resize', drawSun);
+  document.fonts && document.fonts.ready.then(drawSun);
+
+  /* ---------- hero horizon: parallax ridgelines, sun behind the portrait ---------- */
+  const hc = $('horizon'), hx = hc.getContext('2d'), portrait = $('portrait'), hero = hc.parentElement;
+  let HW = 0, HH = 0, sunX = 0, sunY = 0, moonX = 0, moonY = 0, mx = .5, my = .5, sm = { x: .5, y: .5 };
+  function sizeHero() {
+    const dpr = Math.min(2, devicePixelRatio || 1); HW = hc.clientWidth; HH = hc.clientHeight; hc.width = HW * dpr; hc.height = HH * dpr; hx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const pr = portrait.querySelector('.arch').getBoundingClientRect(), hr = hero.getBoundingClientRect();
+    sunX = pr.left - hr.left + pr.width * .5; sunY = pr.top - hr.top + pr.height * .3;
+    moonX = HW < 760 ? pr.right - hr.left + 70 : pr.left - hr.left - 70; moonY = pr.top - hr.top + (HW < 760 ? 60 : 4);
+  }
+  const ridge = (x, i, t) => (.55 * Math.sin(x * 2.3 + i * 1.31 + t * .045) + .3 * Math.sin(x * 5.7 - i * .77 + t * .07) + .15 * Math.sin(x * 12.1 + i * 2.2 - t * .03) + 1) / 2;
+  function drawHero(t) {
+    const w = HW, h = HH; if (!w) return;
+    const sy = Math.min(scrollY, h);
+    sm.x += (mx - sm.x) * .06; sm.y += (my - sm.y) * .06;
+    const px = (sm.x - .5), py = (sm.y - .5);
+    const hy = h * (w < 760 ? .5 : .74) + sy * .45;         // far layer: drifts down as you scroll (slower than content)
+    const g = hx.createLinearGradient(0, 0, 0, hy);
+    const K = pal(); [0, .42, .7, .88, 1].forEach((o, i) => g.addColorStop(o, K.sky[i]));
+    hx.fillStyle = g; hx.fillRect(0, 0, w, h);
+    const bx = sunX - px * 10, by = Math.min(sunY + sy * .5, hy - 20), br = 1 + Math.sin(t * .4) * .03;
+    let rg = hx.createRadialGradient(bx, by, 0, bx, by, w * .5 * br);
+    rg.addColorStop(0, C(K.g1, .6)); rg.addColorStop(.22, C(K.g2, .26)); rg.addColorStop(1, C(K.g3, 0));
+    hx.fillStyle = rg; hx.fillRect(0, 0, w, h);
+    // HUD rules + azimuth scale
+    hx.strokeStyle = C(K.bone, .05); hx.lineWidth = 1;
+    for (let k = 1; k < 7; k++) { const y = Math.round(hy * k / 7) + .5; hx.beginPath(); hx.moveTo(0, y); hx.lineTo(w, y); hx.stroke(); }
+    hx.font = '500 9px "Geist Mono", ui-monospace, monospace'; hx.textAlign = 'center';
+    for (let x = 0, k = 0; x < w; x += 24, k++) {
+      const major = k % 5 === 0; hx.fillStyle = C(K.bone, major ? .34 : .16);
+      hx.fillRect(Math.round(x), hy - 30 - (major ? 8 : 4), 1, major ? 8 : 4);
+      if (major && w > 760 && x > w * .55 && Math.abs(x - sunX) > 200) hx.fillText(String(Math.round(180 + (x / w) * 180)).padStart(3, '0'), x, hy - 48);
+    }
+    // ridgelines back to front, each layer with its own parallax rate
+    const N = 18;
+    for (let i = 0; i < N; i++) {
+      const dpt = i / (N - 1), y0 = hy + Math.pow(dpt, 1.7) * (h - hy) * 1.02 + 2 - sy * .45 * dpt, amp = 18 + dpt * 64, ox = px * (8 + dpt * 60);
+      hx.beginPath();
+      for (let x = -80; x <= w + 80; x += 8) { const y = y0 - amp * ridge((x + ox) / w * 3, i, t) - py * dpt * 14; x < -70 ? hx.moveTo(x, y) : hx.lineTo(x, y); }
+      hx.lineTo(w + 80, h + 10); hx.lineTo(-80, h + 10); hx.closePath();
+      hx.fillStyle = C(K.night, .72 + dpt * .28); hx.fill();
+      const lg = hx.createLinearGradient(0, 0, w, 0), a = .75 - dpt * .5, sp = clamp01(bx / w);
+      lg.addColorStop(0, C(K.bone, a * .22));
+      lg.addColorStop(clamp01(sp - .3), C(K.acc, a * .55));
+      lg.addColorStop(sp, C(K.hot, a));
+      lg.addColorStop(clamp01(sp + .22), C(K.acc, a * .55));
+      lg.addColorStop(1, C(K.bone, a * .2));
+      hx.strokeStyle = lg; hx.lineWidth = 1; hx.stroke();
+    }
+    if (isMoon()) {   // the real moon, tonight's phase, drifting with the far layer
+      const mx0 = moonX - px * 16, my0 = moonY + sy * .4, R = w < 760 ? 30 : 42, il = moonIllum(Date.now());
+      const mg = hx.createRadialGradient(mx0, my0, R * .6, mx0, my0, R * 4.5); mg.addColorStop(0, C(K.hot, .35 * (.3 + il.fraction))); mg.addColorStop(1, C(K.hot, 0));
+      hx.fillStyle = mg; hx.beginPath(); hx.arc(mx0, my0, R * 4.5, 0, 7); hx.fill();
+      moonDisc(hx, mx0, my0, R, il.phase, '#EEF5FF', C(K.night, .85));
+      hx.beginPath(); hx.arc(mx0, my0, R, 0, 7); hx.strokeStyle = C(K.bone, .25); hx.lineWidth = 1; hx.stroke();
+    }
+    const s2 = hx.createLinearGradient(0, 0, w * (w < 760 ? 1 : .6), 0);
+    s2.addColorStop(0, C(K.night, .62)); s2.addColorStop(.6, C(K.night, .32)); s2.addColorStop(1, C(K.night, 0));
+    hx.fillStyle = s2; hx.fillRect(0, hy - 140, w, h);
+  }
+  const clamp01 = v => Math.max(0, Math.min(1, v));
+  sizeHero(); drawHero(0);
+  addEventListener('resize', () => { sizeHero(); drawHero(performance.now() / 1000); });
+  addEventListener('pointermove', e => { mx = e.clientX / innerWidth; my = e.clientY / innerHeight; }, { passive: true });
+
+  /* ---------- parallax (DOM layers) ---------- */
+  const heroCopy = $('heroCopy'), layers = [...document.querySelectorAll('.par[data-speed]')];
+  function parallax() {
+    const y = scrollY, vh = innerHeight;
+    if (y < HH) {
+      heroCopy.style.transform = `translate3d(0,${y * .28}px,0)`; heroCopy.style.opacity = Math.max(0, 1 - y / (HH * .75));
+      portrait.style.transform = `translate3d(${(sm.x - .5) * -14}px,${y * .12}px,0)`;
+    }
+    for (const l of layers) {
+      const r = l.parentElement.getBoundingClientRect(); if (r.bottom < -200 || r.top > vh + 200) continue;
+      const d = (r.top + r.height / 2 - vh / 2); l.style.transform = `translate3d(0,${d * -(+l.dataset.speed)}px,0)`;
+    }
+  }
+  if (!reduce) {
+    let visible = true, last = 0;
+    new IntersectionObserver(([e]) => visible = e.isIntersecting).observe(hc);
+    const loop = now => { if (visible && now - last > 30) { drawHero(now / 1000); last = now; } parallax(); requestAnimationFrame(loop); };
+    requestAnimationFrame(loop);
+  }
+
+  /* ---------- rotating credit ---------- */
+  const track = $('rollerTrack'), roller = track.parentElement, items = [...track.children]; let idx = 0;
+  const fit = () => { roller.style.width = items[idx].getBoundingClientRect().width + 'px'; };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(fit); addEventListener('resize', fit);
+  if (!reduce) setInterval(() => {
+    idx++; track.style.transition = ''; track.style.transform = `translateY(${-idx * 1.15}em)`; fit();
+    if (idx === items.length - 1) setTimeout(() => { track.style.transition = 'none'; idx = 0; track.style.transform = 'translateY(0)'; }, 950);
+  }, 2600);
+
+  /* ---------- career timeline (to scale) ---------- */
+  const tl = $('timeline'), Y0 = 2011, Y1 = 2027, X0 = 150, X1 = 1180;
+  const X = yr => X0 + (yr - Y0) / (Y1 - Y0) * (X1 - X0);
+  const lanes = ['AI & language', 'Broadcast', 'Streaming', 'Web3', 'Studios', 'Founder'];
+  const LY = i => 70 + i * 50;
+  const nowYr = (() => { const d = new Date(); return d.getFullYear() + (d - new Date(d.getFullYear(), 0, 1)) / 31557600000; })();
+  lanes.forEach((n, i) => { el('text', { class: 'lane', x: 0, y: LY(i) + 4 }, tl).textContent = n; el('line', { x1: X0, x2: X1, y1: LY(i), y2: LY(i), stroke: 'rgba(242,233,219,.07)' }, tl); });
+  for (let yr = Y0; yr <= Y1; yr++) {
+    const x = X(yr), major = yr % 5 === 0 || yr === Y0;
+    el('line', { x1: x, x2: x, y1: 36, y2: 350, stroke: major ? 'rgba(242,233,219,.12)' : 'rgba(242,233,219,.05)' }, tl);
+    if (yr < Y1) el('text', { class: 'yr', x: x + 4, y: 28 }, tl).textContent = "'" + String(yr).slice(2);
+  }
+  const roles = [
+    { lane: 0, a: 2011.0, b: 2011.95, t: 'Kraft iFood Assistant', s: 'Hyperfactory · Nuance NLP' },
+    { lane: 2, a: 2012.42, b: 2014.0, t: 'Qello Concerts', s: 'Head of Product & Strategy' },
+    { lane: 1, a: 2014.42, b: 2015.87, t: 'NBCUniversal', s: 'Emmy · graphics platform', logo: 'nbc' },
+    { lane: 2, a: 2015.87, b: 2017.2, t: 'MLB Advanced Media', s: 'Statcast · HBO GO', logo: 'mlb' },
+    { lane: 0, a: 2017.2, b: 2018.1, t: 'New York Knicks · MSG', s: 'AI video processing' },
+    { lane: 2, a: 2018.0, b: 2022.38, t: 'Fox · Media Player Frameworks', s: 'Director, Product · 10+ platforms', logo: 'fox', pos: 'below' },
+    { lane: 3, a: 2021.5, b: 2022.38, t: 'Blockchain Creative Labs', s: 'Maskverse', dash: true },
+    { lane: 4, a: 2024.84, b: 2026.1, t: 'Amazon MGM', s: 'Origin', logo: 'amazon', pos: 'left' },
+    { lane: 4, a: 2026.17, b: nowYr, t: 'Apple', s: 'Studio Tech · AI', logo: 'apple', now: true },
+    { lane: 5, a: 2020.0, b: nowYr, t: 'OLY.AI', s: 'Founder & CEO · 2020 – now', now: true, pos: 'start' },
+  ];
+  roles.forEach((r, i) => {
+    const g = el('g', { class: 'item' }, tl), x = X(r.a), w = Math.max(10, X(r.b) - x), y = LY(r.lane);
+    const bar = el('rect', { class: 'bar', x, y: y - 5, width: w, height: 10, rx: 5, fill: r.dash ? 'url(#dashFill)' : (r.now ? 'url(#nowFill)' : '#F2A65A'), opacity: .88 }, g);
+    let anchor = 'start', lx = x, ty = y - 16, sy = y + 20;
+    if (r.pos === 'left') { anchor = 'end'; lx = x - 10; ty = y + 4; sy = y + 19; }
+    else if (r.pos !== 'start' && x + w > X1 - 140) { anchor = 'end'; lx = x + w; }
+    if (r.pos === 'below') { ty = y + 24; sy = y + 38; }
+    let tx = lx;
+    if (r.logo) {
+      const ly = r.pos === 'left' ? y - 8 : ty - 13;
+      el('use', { href: '#lg-' + r.logo, x: anchor === 'start' ? lx : lx - 16, y: ly, width: 16, height: 16, fill: '#F2E9DB' }, g);
+      if (r.pos === 'left') { el('text', { class: 'lbl', x: lx - 22, y: ty, 'text-anchor': 'end' }, g).textContent = r.t; el('text', { class: 'sub', x: lx - 22, y: sy, 'text-anchor': 'end' }, g).textContent = r.s; return; }
+      tx = anchor === 'start' ? lx + 22 : lx - 22;
+    }
+    el('text', { class: 'lbl', x: tx, y: ty, 'text-anchor': anchor }, g).textContent = r.t;
+    el('text', { class: 'sub', x: lx, y: sy, 'text-anchor': anchor }, g).textContent = r.s;
+  });
+  const defs = el('defs', {}, tl);
+  const pat = el('pattern', { id: 'dashFill', width: 8, height: 10, patternUnits: 'userSpaceOnUse' }, defs); el('rect', { width: 5, height: 10, fill: '#F2A65A' }, pat);
+  const ng = el('linearGradient', { id: 'nowFill' }, defs); el('stop', { offset: 0, 'stop-color': '#F2A65A' }, ng); el('stop', { offset: 1, 'stop-color': '#FFD9A8' }, ng);
+  // now marker + founder diamond
+  const nx = X(nowYr);
+  el('line', { x1: nx, x2: nx, y1: 36, y2: 350, stroke: '#F2A65A', 'stroke-dasharray': '2 4', opacity: .7 }, tl);
+  el('text', { class: 'yr', x: nx, y: 366, 'text-anchor': 'middle', fill: '#F2A65A', style: 'fill:#F2A65A' }, tl).textContent = 'Now';
+  const fy = LY(5);
+  el('rect', { x: nx - 7, y: fy - 7, width: 14, height: 14, transform: `rotate(45 ${nx} ${fy})`, fill: '#F2A65A' }, tl);   // still going
+
+  /* ---------- numbers: dot grid + gauge ticks ---------- */
+  const dg = $('dotgrid');
+  const brands = ['Sports', 'News', 'Nation', 'Entmt', 'Tubi'];
+  const plats = ['Web', 'iOS', 'Andr', 'ATV', 'AndTV', 'Fire', 'Roku', 'Cast', 'Xbox', 'Smart'];
+  plats.forEach((p, c) => el('text', { x: 62 + c * 17.6, y: 16, 'text-anchor': 'middle', style: 'font-size:6.4px;letter-spacing:0' }, dg).textContent = p);
+  brands.forEach((b, r) => {
+    el('text', { x: 50, y: 32 + r * 19, 'text-anchor': 'end', style: 'font-size:7.5px' }, dg).textContent = b;
+    plats.forEach((p, c) => el('rect', { class: 'dot', x: 56 + c * 17.6, y: 23 + r * 19, width: 12, height: 12, rx: 2, style: `--i:${(r * 10 + c) * 1.8}` }, dg));
+  });
+  el('text', { x: 50, y: 136, 'text-anchor': 'end', fill: '#F2A65A', style: 'fill:#F2A65A' }, dg).textContent = 'Fox';
+  el('text', { x: 56, y: 136 }, dg).textContent = '5 brands × 10+ platforms';
+  const gt = $('gticks');
+  for (let k = 0; k <= 5; k++) {
+    const ang = Math.PI + k / 5 * Math.PI, cx = 120, cy = 118;
+    el('line', { x1: cx + Math.cos(ang) * 78, y1: cy + Math.sin(ang) * 78, x2: cx + Math.cos(ang) * 70, y2: cy + Math.sin(ang) * 70, stroke: 'rgba(242,233,219,.4)' }, gt);
+    el('text', { x: cx + Math.cos(ang) * 60, y: cy + Math.sin(ang) * 60 + 3, 'text-anchor': 'middle' }, gt).textContent = k + '%';
+  }
+  const grid = $('numbersGrid');
+  if (reduce || !('IntersectionObserver' in window)) grid.classList.add('no-io');
+  else new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { grid.classList.add('seen'); o.disconnect(); } }), { threshold: .25 }).observe(grid);
+
+  /* ---------- sci-fi art ---------- */
+  const ml = $('mikeLights'), smile = new Set(['1,2', '1,5', '3,1', '3,6', '4,2', '4,3', '4,4', '4,5']);
+  for (let r = 0; r < 6; r++) for (let c = 0; c < 8; c++) {
+    const k = r + ',' + c, s = smile.has(k), cls = s ? 'mike-l smile' : (Math.sin(r * 7.3 + c * 3.1) > .35 ? 'mike-l blink' : 'mike-l');
+    el('circle', { class: cls, cx: 52 + c * 20.5, cy: 64 + r * 21, r: 5, style: `--d:${((r * 8 + c) * .37) % 2.4}s` }, ml);
+  }
+  const wg = document.getElementById('wmGrid');
+  for (let k = -8; k <= 8; k++) el('line', { x1: 160 + k * 6, y1: 176, x2: 160 + k * 46, y2: 240 }, wg);
+  [176, 184, 196, 214, 240].forEach(y => el('line', { x1: 0, y1: y, x2: 320, y2: y }, wg));
+  const pl = $('primerLines');   // text that writes itself onto the left page, following its slant
+  for (let i = 0; i < 6; i++) { const y = 84 + i * 14, len = i === 5 ? 44 : 72 + (i % 2) * 6; el('line', { class: 'write', x1: 70, y1: y, x2: 70 + len, y2: y + len * (16 / 96), style: `--d:${i * .5}s` }, pl); }
+  const nn = $('nanites');       // matter-compiler motes rising off the pages
+  for (let i = 0; i < 14; i++) el('circle', { class: 'nanite', cx: 70 + ((i * 53) % 180), cy: 70 + ((i * 29) % 40), r: i % 3 ? 1.2 : 1.8, fill: i % 2 ? '#F2A65A' : '#F2E9DB', style: `--d:${(i * .37) % 5}s` }, nn);
+  let ver = 10; const cv = $('catVer');
+  if (!reduce) setInterval(() => { ver += 1 + Math.floor(Math.random() * 3); cv.textContent = 'fw v' + (ver / 10).toFixed(1); if (ver > 99) ver = 10; }, 1400);
+
+  /* ---------- sun / moon mode ---------- */
+  const root = document.documentElement, bSun = $('modeSun'), bMoon = $('modeMoon');
+  function applyMode(m) {
+    root.dataset.mode = m;
+    bSun.setAttribute('aria-pressed', m === 'sun'); bMoon.setAttribute('aria-pressed', m === 'moon');
+    tick(); drawHero(performance.now() / 1000); drawSun();
+    try { localStorage.setItem('gh-mode', m); } catch (e) {}
+  }
+  function setMode(m, btn) {
+    if (root.dataset.mode === m) return;
+    if (!document.startViewTransition || reduce) return applyMode(m);
+    const r = btn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+    const end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    document.startViewTransition(() => applyMode(m)).ready.then(() => root.animate(
+      { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${end}px at ${x}px ${y}px)`] },
+      { duration: 1100, easing: 'cubic-bezier(.2,.7,.1,1)', pseudoElement: '::view-transition-new(root)' })).catch(() => {});
+  }
+  bSun.addEventListener('click', () => setMode('sun', bSun));
+  bMoon.addEventListener('click', () => setMode('moon', bMoon));
+  let saved = 'sun'; try { saved = localStorage.getItem('gh-mode') || 'sun'; } catch (e) {}
+  applyMode(saved === 'moon' ? 'moon' : 'sun');
+
+  /* ---------- cell light follows the cursor ---------- */
+  document.querySelectorAll('.cell').forEach(c => c.addEventListener('pointermove', e => {
+    const r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }));
+})();
 </script>
+
 </body>
 </html>
